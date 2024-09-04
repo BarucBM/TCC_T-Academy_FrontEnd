@@ -1,0 +1,17 @@
+<p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage()" optionLabel="name"
+    placeholder="{{ 'language-selector.placeholder' | translate }}">
+    <ng-template pTemplate="selectedItem">
+        <div class="flex align-items-center gap-2" *ngIf="selectedLanguage">
+            <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                [class]="'flag flag-' + selectedLanguage" style="width: 18px" />
+            <div>{{ selectedLanguage }}</div>
+        </div>
+    </ng-template>
+    <ng-template let-language pTemplate="item">
+        <div class="flex align-items-center gap-2">
+            <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                [class]="'flag flag-' + language" style="width: 18px" />
+            <div>{{ language }}</div>
+        </div>
+    </ng-template>
+</p-dropdown>

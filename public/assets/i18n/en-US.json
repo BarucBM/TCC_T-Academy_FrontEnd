@@ -1,8 +1,8 @@
 {
-	"demo": {
-		"simple": {
-			"text": "A simple text"
-		},
-		"title": "Translation Test"
+	"language-selector": {
+		"placeholder": "Select a language"
+	},
+	"home": {
+		"title": "Welcome to TCC"
 	}
 }
