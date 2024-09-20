@@ -1,9 +1,9 @@
 
 <div class="flex flex-row w-full h-full justify-content-center">
     <div class=" w-11 h-max card-section ">
-        <div class=" w-full card-image bg-black-alpha-90 border-round-lg mb-1" >
+        <div class=" w-full card-image border-round-lg mb-1" >
             <div class=" w-full h-full background  border-round-lg">
-                <button (click)="getEventById()" >sfazfas</button>
+
             </div>
         </div>
         <div class="h-max bg-bluegray-50 mb-1">
@@ -17,8 +17,7 @@
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC_umb2xQn6m9e1OD_xI5XWZTPhgGqfwe4
-                    &q={{event.location}}">
+                src="{{this.url}}">
             </iframe>
         </div>
     </div>

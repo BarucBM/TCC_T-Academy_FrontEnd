@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
-import { Event } from '../../../models/Event';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
+import { Event } from '../../../../core/models/event.model';
 
 @Component({
   selector: 'ticket-selection',

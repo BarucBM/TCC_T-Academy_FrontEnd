@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { LayoutComponent } from './components/layout/layout.component';
-import { HomeComponent } from './pages/home/home.component';
-import { EventAcquisitionComponent } from './pages/event-acquisition/event-acquisition.component';
+import { LoginComponent } from './features/login/pages/login/login.component';
+import { HomeComponent } from './features/home/pages/home/home.component';
+import { EventAcquisitionComponent } from './features/event-acquisition/pages/event-acquisition.component';
+import { LayoutComponent } from './core/layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
     {

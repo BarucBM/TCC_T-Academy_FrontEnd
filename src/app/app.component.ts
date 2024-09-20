@@ -12,3 +12,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'tcc_t-academy';
 }
+
+
+
