@@ -2,7 +2,33 @@
 	"language-selector": {
 		"placeholder": "Selecione um idioma"
 	},
-	"home": {
-		"title": "Bem-vindo ao TCC"
+	"login": {
+		"title": "Bem-vindo de volta",
+		"haveAccount": "Já possui uma conta?",
+		"logIn": "Login",
+		"dontHaveAccount": "Ainda não possui uma conta?",
+		"signUp": "Registre-se"
+	},
+	"register": {
+		"title": "Cadastrar nova conta",
+		"subtitle": "Comece agora a utilizar nosso sistema!",
+		"accountType": {
+			"label": "Escolha o tipo da sua conta",
+			"customer": "Pessoal",
+			"company": "Empresarial"
+		}
+	},
+	"buttons": {
+		"register": "Registrar",
+		"save": "Salvar",
+		"delete": "Remover"
+	},
+	"forms": {
+		"requiredMessage": " é obrigatório!",
+		"customer": {
+			"name": "Nome",
+			"phone": "Telefone",
+			"address": "Endereço"
+		}
 	}
 }

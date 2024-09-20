@@ -1,0 +1,23 @@
+<div class="h-full flex flex-column justify-content-center px-8">
+  <div class="mb-6">
+    <h1>{{ 'register.title' | translate }}</h1>
+    <p class="text-sm">{{ 'register.subtitle' | translate }}</p>
+  </div>
+
+  <div class="flex flex-column align-items-center mb-6">
+    <p class="text-sm">{{ 'register.accountType.label' | translate }}</p>
+    <p-selectButton [options]="accountOptions" [(ngModel)]="selectedAccountOption" optionLabel="label" optionValue="value" />
+  </div>
+
+  <div *ngIf="selectedAccountOption == 'customer'">
+    <app-customer-form></app-customer-form>
+  </div>
+  <div *ngIf="selectedAccountOption == 'company'">
+    <app-company-form></app-company-form>
+  </div>
+
+  <div class="text-sm text-center">
+    {{ 'login.haveAccount' | translate }}
+    <a routerLink="/login">{{ 'login.logIn' | translate }}</a>
+  </div>
+</div>
