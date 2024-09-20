@@ -1,0 +1,45 @@
+<section class="flex justify-content-center align-items-center w-full h-full border-round-lg bg-black-alpha-90 ">
+    <div class="w-full h-max px-5 ">
+        <p-divider />
+        <div class="flex justify-content-around align-items-center w-full">       
+            <div class="flex justify-content-center align-items-center w-6 gap-3">
+                <div class="flex flex-column p-1">
+                    <p class="text-4xl text-white font-bold w-max h-min mb-2 mt-0">
+                        {{event.title}}
+                    </p>
+                    <span class="text-white">
+                        {{event.description}}
+                    </span>
+                </div>
+            </div>
+            <div class=" flex justify-content-center align-items-center w-6 gap-3">
+
+                <p-inputNumber class="number-selector bg-bluegray-50 border-round-lg"
+                    [(ngModel)]="ticketsQtt"
+                    (ngModelChange)="buttonIsDisable()"
+                    min="0"
+                    maxlength="1"
+                    [showButtons]="true" 
+                    buttonLayout="horizontal" 
+                    inputId="horizontal" 
+                    spinnerMode="horizontal" 
+                    [step]="1"
+                    decrementButtonClass="p-button-danger"
+                    incrementButtonClass="p-button-success"
+                    incrementButtonIcon="pi pi-plus" 
+                    decrementButtonIcon="pi pi-minus"  
+                    currency="EUR" />
+
+                <p-button 
+                disabled="{{buttonDisable}}"
+                icon="pi pi-shopping-bag" 
+                label="Buy Event"
+                severity="contrast"
+                [raised]="true"
+                />
+            </div>
+            
+        </div>
+        <p-divider />
+    </div>
+</section>

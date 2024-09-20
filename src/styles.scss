@@ -2,3 +2,9 @@
 @import "primeng/resources/themes/aura-light-amber/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeflex/primeflex.css";
+
+.p-inputnumber-input {
+    flex: 1 1 auto;
+    width: 2.6rem;
+    padding: 0.5rem 0.9rem;
+}
