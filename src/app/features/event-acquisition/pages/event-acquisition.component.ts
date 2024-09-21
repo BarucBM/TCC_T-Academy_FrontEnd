@@ -32,7 +32,7 @@ export class EventAcquisitionComponent implements OnInit {
         console.log(res)
          this.event = res;
          this.event.location = "RuaHiléiaAmazônica,250"
-         this.url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyC_umb2xQn6m9e1OD_xI5XWZTPhgGqfwe4&q=" + this.event.location
+         this.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyC_umb2xQn6m9e1OD_xI5XWZTPhgGqfwe4&q=" + this.event.location)
       },
       error:(error) => console.log(error) 
     })

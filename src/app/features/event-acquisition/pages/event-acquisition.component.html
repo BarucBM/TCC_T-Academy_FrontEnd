@@ -1,24 +1,27 @@
 
 <div class="flex flex-row w-full h-full justify-content-center">
-    <div class=" w-11 h-max card-section ">
-        <div class=" w-full card-image border-round-lg mb-1" >
+    <div class=" w-11 h-max p-4 ">
+        <div class=" w-full card-image border-round-lg mb-1 shadow-7" >
             <div class=" w-full h-full background  border-round-lg">
 
             </div>
         </div>
-        <div class="h-max bg-bluegray-50 mb-1">
+        <div class="h-max bg-bluegray-50 mb-1 border-round-lg shadow-7">
             <ticket-selection [event]="event"></ticket-selection>
         </div>
-        <div class="flex justify-content-center align-items-center h-max bg-blue-700 border-round-lg border-1 border-black-alpha-90">
-            <iframe class="border-round-lg"
-                width="600"
-                height="450"
+        <div class="flex flex-column lg:flex-row justify-content-around align-items-center h-max bg-primary border-round-lg shadow-7 p-4 gap-3">
+            <iframe class="border-round-lg w-9 height-min"
                 style="border:0"
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="no-referrer-when-downgrade"
-                src="{{this.url}}">
+                [src]="url">
             </iframe>
+            <div class="w-min ">
+                <h3>Addres</h3>
+                <p>{{event.location}}</p>
+                <h5></h5>
+            </div>
         </div>
     </div>
 </div>

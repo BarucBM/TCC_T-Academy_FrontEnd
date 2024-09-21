@@ -32,7 +32,17 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/theme-dark.scss",
+                "bundleName": "theme-dark",
+                "inject": false
+              },
+              {
+                "input": "src/theme-light.scss",
+                "bundleName": "theme-light",
+                "inject": false
+              }
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -105,6 +115,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "32ed7196-4945-43c2-931f-1ce8815d3904"
   }
 }

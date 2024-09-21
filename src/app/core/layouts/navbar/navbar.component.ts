@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LanguageSelectorComponent } from '../language-selector/language-selector.component';
+import { LanguageSelectorComponent } from '../../../shared/components/language-selector/language-selector.component';
 
 @Component({
   selector: 'app-navbar',
