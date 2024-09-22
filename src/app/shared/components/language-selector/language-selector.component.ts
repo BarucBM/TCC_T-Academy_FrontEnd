@@ -1,34 +1,29 @@
-import { Component } from '@angular/core';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../modules/shared.module';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
   selector: 'app-language-selector',
   standalone: true,
-  imports: [CommonModule, FormsModule, DropdownModule, TranslateModule],
+  imports: [SharedModule, FormsModule, DropdownModule],
   templateUrl: './language-selector.component.html',
   styleUrl: './language-selector.component.scss'
 })
-export class LanguageSelectorComponent {
-  languages: string[] = ['pt-BR', 'en-US'];
-  selectedLanguage: string = 'en-US';
+export class LanguageSelectorComponent implements OnInit {
+  @Input() showLabel: boolean = true;
+  languages: { code: string, name: string }[] = [];
+  selectedLanguage?: { code: string, name: string };
 
-  constructor(private translate: TranslateService) {
-    this.translate.addLangs(this.languages);
+  constructor(private languageService: LanguageService) {}
 
-    let lang = 'en-US'
-    if (typeof window !== 'undefined' && window.localStorage) {
-      lang = localStorage.getItem('language') || 'en-US';
-    }
-
-    this.translate.setDefaultLang(lang);
-    this.translate.use(lang);
+  ngOnInit(): void {
+    this.languages = this.languageService.getSupportedLanguages();
+    this.selectedLanguage = this.languages.find(lang => lang.code === this.languageService.getLanguage());   
   }
 
-  changeLanguage(): void {
-    this.translate.use(this.selectedLanguage);
-    localStorage.setItem('language', this.selectedLanguage);
+  changeLanguage(languageCode: string): void {
+    this.languageService.setLanguage(languageCode);
   }
 }
