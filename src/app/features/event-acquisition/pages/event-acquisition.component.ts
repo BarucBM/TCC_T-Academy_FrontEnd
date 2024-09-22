@@ -3,18 +3,22 @@ import { Event } from '../../../core/models/event.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TicketSelectionComponent } from '../components/ticket-selection/ticket-selection.component';
 import { EventService } from '../../../core/services/event.service';
+import { SidebarModule } from 'primeng/sidebar';
+import { SideBarComponent } from "../components/side-bar/side-bar.component";
 
 
 
 @Component({
   selector: 'app-event-acquisition',
   standalone: true,
-  imports: [TicketSelectionComponent],
+  imports: [TicketSelectionComponent, SidebarModule, SideBarComponent],
   templateUrl: './event-acquisition.component.html',
   styleUrl: './event-acquisition.component.scss'
 })
 export class EventAcquisitionComponent implements OnInit {
   event!:Event;
+  sideBarVisible :boolean = false
+  ticketQt:number = 0
   private id:string = 'ac492b36-6f48-4f68-8b82-a622736c02f7'
   url:any = "";
   
@@ -36,5 +40,10 @@ export class EventAcquisitionComponent implements OnInit {
       },
       error:(error) => console.log(error) 
     })
+  }
+
+  sideBarIsVisible(tickets:number){
+    this.ticketQt = tickets
+    this.sideBarVisible = !this.sideBarVisible
   }
 }

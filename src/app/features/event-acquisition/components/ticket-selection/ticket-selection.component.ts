@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Event } from '../../../../core/models/event.model';
+
 
 @Component({
   selector: 'ticket-selection',
@@ -15,8 +16,10 @@ import { Event } from '../../../../core/models/event.model';
 })
 export class TicketSelectionComponent {
   @Input() event!:Event;
+  @Output() ticketsOp = new EventEmitter<number>()
 
   ticketsQtt:number = 0
+
   buttonDisable :boolean = true;
 
   buttonIsDisable(){
@@ -25,5 +28,9 @@ export class TicketSelectionComponent {
     }else{
       this.buttonDisable = true 
     }
+  }
+
+  sideBarIsVisible(){ 
+    this.ticketsOp.emit(this.ticketsQtt)
   }
 }

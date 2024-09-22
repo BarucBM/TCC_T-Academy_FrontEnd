@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="h-max bg-bluegray-50 mb-1 border-round-lg shadow-7">
-            <ticket-selection [event]="event"></ticket-selection>
+            <ticket-selection [event]="event" (ticketsOp)="sideBarIsVisible($event)" ></ticket-selection>
         </div>
         <div class="flex flex-column lg:flex-row justify-content-around align-items-center h-max bg-primary border-round-lg shadow-7 p-4 gap-3">
             <iframe class="border-round-lg w-9 height-min"
@@ -24,4 +24,9 @@
             </div>
         </div>
     </div>
+    <p-sidebar [(visible)]="sideBarVisible" position="right" styleClass="w-10 sm:w-30rem">
+
+        
+        <side-bar [ticketQt]="ticketQt" [event]="event"></side-bar>
+    </p-sidebar>
 </div>
