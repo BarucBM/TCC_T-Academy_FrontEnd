@@ -6,4 +6,10 @@ export interface Company {
   name: string
   address: string
   phone: string
+  duns: string
+}
+
+export interface NewCompany {
+  user: User
+  company: Company
 }
