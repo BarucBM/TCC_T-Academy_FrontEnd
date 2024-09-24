@@ -1,1 +1,14 @@
-<p>events works!</p>
+<Section class="w-screen h-screen flex justify-content-center ">
+    <div class="flex flex-column bg-primary w-9 gap-2 border-round-lg"> 
+        <div class="w-full h-10rem bg-blue-900 border-round-lg">
+            <filter-component (emitter)="filterSubmit($event)" ></filter-component>
+        </div> 
+        <div class="flex flex-column px-5 gap-3">  
+            <div  *ngFor="let event of events"
+            class="">
+                <event-component [event]="event"></event-component>
+            </div>
+        </div>
+    </div>  
+</Section>
+S

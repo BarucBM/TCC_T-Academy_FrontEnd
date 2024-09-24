@@ -37,6 +37,14 @@ export const routes: Routes = [
             {
                 path: 'home',
                 component: HomeComponent
+            },
+            {
+                path: 'event/:id',
+                component: EventAcquisitionComponent
+            },
+            {
+                path:'events',
+                component: EventsComponent
             }
         ]
     },

@@ -13,8 +13,9 @@ export class EventService {
 
   constructor(private htttp:HttpClient) { }
 
-  getAllEvents():Observable<Event[]>{
-    return this.htttp.get<Event[]>(this.url )
+  getAllEvents(param?:Event):Observable<Event[]>{
+    console.log(this.url + `?title=${param?.title}&description=${param?.description}&location=${param?.location}`)
+    return this.htttp.get<Event[]>(this.url + `?title=${param?.title}&description=${param?.description}&location=${param?.location}`)
   }
 
   getEventById(id:string):Observable<Event>{

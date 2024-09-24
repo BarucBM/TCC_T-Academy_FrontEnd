@@ -1,19 +1,19 @@
 export interface Event{
-    id:string,
+    id:string | null,
 
-    title:string,
+    title:string | null,
 
-    startTime:Date,
+    startTime:Date | null,
 
     //tickets:TicketType[],
 
-    endTime:Date,
+    endTime:Date | null, 
 
-    createdAt:Date,
+    createdAt:Date | null,
 
-    location:string,
+    location:string | null,
 
-    description:string,
+    description:string | null,
 
     weatherImpact:boolean
 }
