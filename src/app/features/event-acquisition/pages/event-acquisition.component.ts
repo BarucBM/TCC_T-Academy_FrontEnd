@@ -53,5 +53,5 @@ export class EventAcquisitionComponent implements OnInit {
   sideBarIsVisible(tickets:number){
     this.ticketQt = tickets
     this.sideBarVisible = !this.sideBarVisible
-  }
+  } 
 }
