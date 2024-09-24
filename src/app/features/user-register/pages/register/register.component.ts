@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { SharedModule } from '../../../../shared/modules/shared.module';
-import { TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { CompanyFormComponent } from '../../components/company-form/company-form.component';
 import { CustomerFormComponent } from '../../components/customer-form/customer-form.component';
 
@@ -14,18 +14,27 @@ import { CustomerFormComponent } from '../../components/customer-form/customer-f
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  selectedAccountOption: string = 'customer';
   accountOptions: any[] = [
-    { label: 'register.accountType.customer', value: 'customer' },
-    { label: 'register.accountType.company', value: 'company' }
+    { label: 'Personal', value: 'customer' },
+    { label: 'Corporate', value: 'company' }
   ];
 
-  selectedAccountOption: string = 'customer';
+  constructor(private translateService: TranslateService) { }
 
-  constructor(private translate: TranslateService) {
-    this.accountOptions = this.accountOptions.map(option => ({
-      label: this.translate.instant(option.label),
-      value: option.value
-    }));
+  ngOnInit(): void {
+    this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.translateOptions(event.lang);
+    });
+  }
+
+  translateOptions(language: string) {
+    this.translateService.getTranslation(language).subscribe(translations => {     
+      this.accountOptions = [
+        { label: translations.register.accountType.customer, value: 'customer' },
+        { label: translations.register.accountType.company, value: 'company' }
+      ];
+    });
   }
 }

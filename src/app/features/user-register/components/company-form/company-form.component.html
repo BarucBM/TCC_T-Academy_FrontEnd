@@ -1,1 +1,92 @@
-<p>company-form works!</p>
+<form [formGroup]="companyForm" (ngSubmit)="handleSubmit()">
+  <div formGroupName="company" class="mb-6">
+    <h2 class="text-lg mb-4">{{ 'forms.company.label' | translate }}</h2>
+    <div class="grid">
+      <div class="col-6">
+        <p-floatLabel>
+          <input type="text" pInputText formControlName="name" class="w-full" />
+          <label for="name">{{ 'forms.company.name' | translate}}</label>
+        </p-floatLabel>
+        <div class="form-error" *ngIf="companyForm.get('company.name')?.hasError('required') && companyForm.get('company.name')?.touched">
+          {{ 'forms.company.name' | translate}} {{ 'forms.requiredMessage' | translate}}
+        </div>
+      </div>
+      <div class="col-6">
+        <p-floatLabel>
+          <input type="text" pInputText formControlName="phone" class="w-full" />
+          <label for="phone">{{ 'forms.company.phone' | translate}}</label>
+        </p-floatLabel>
+        <div class="form-error" *ngIf="companyForm.get('company.phone')?.hasError('required') && companyForm.get('company.phone')?.touched">
+          {{ 'forms.company.phone' | translate}} {{ 'forms.requiredMessage' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <p-floatLabel>
+        <input type="text" pInputText formControlName="address" class="w-full" />
+        <label for="address">{{ 'forms.company.address' | translate}}</label>
+      </p-floatLabel>
+      <div class="form-error" *ngIf="companyForm.get('company.address')?.hasError('required') && companyForm.get('company.address')?.touched">
+        {{ 'forms.company.address' | translate}} {{ 'forms.requiredMessage' | translate}}
+      </div>
+    </div>
+    <div class="mt-4">
+      <p-floatLabel>
+        <input type="text" pInputText formControlName="duns" class="w-full" />
+        <label for="duns">D.U.N.S</label>
+      </p-floatLabel>
+      <div class="form-error" *ngIf="companyForm.get('company.duns')?.hasError('required') && companyForm.get('company.duns')?.touched">
+        D.U.N.S {{ 'forms.requiredMessage' | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div formGroupName="user" class="mb-6">
+    <h2 class="text-lg mb-4">{{ 'forms.user.label' | translate }}</h2>
+    <div class="mt-4">
+      <p-floatLabel>
+        <input type="text" pInputText formControlName="email" class="w-full" />
+        <label for="email">{{ 'forms.user.email' | translate}}</label>
+      </p-floatLabel>
+      <div class="form-error" *ngIf="companyForm.get('user.email')?.hasError('required') && companyForm.get('user.email')?.touched">
+        {{ 'forms.user.email' | translate}} {{ 'forms.requiredMessage' | translate}}
+      </div>
+      <div class="form-error" *ngIf="companyForm.get('user.email')?.hasError('email')">
+        {{ 'forms.emailFormatMessage' | translate}}
+      </div>
+    </div>
+    <div class="mt-4">
+      <p-floatLabel>
+        <p-password formControlName="password" [toggleMask]="true" autocomplete="on" [promptLabel]="'forms.passwordValidator.label' | translate" [weakLabel]="'forms.passwordValidator.status.weak' | translate" [mediumLabel]="'forms.passwordValidator.status.medium' | translate" [strongLabel]="'forms.passwordValidator.status.strong' | translate">
+          <ng-template pTemplate="footer">
+            <p-divider></p-divider>
+            <p class="mt-2">{{ "forms.passwordValidator.suggestions" | translate }}</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+              <li>{{ "forms.passwordValidator.tips.lowercase" | translate }}</li>
+              <li>{{ "forms.passwordValidator.tips.uppercase" | translate }}</li>
+              <li>{{ "forms.passwordValidator.tips.numeric" | translate }}</li>
+              <li>{{ "forms.passwordValidator.tips.minimum" | translate }}</li>
+            </ul>
+          </ng-template>
+        </p-password>
+        <label for="password">{{ 'forms.user.password' | translate}}</label>
+      </p-floatLabel>
+      <div class="form-error" *ngIf="companyForm.get('user.password')?.hasError('required') && companyForm.get('user.password')?.touched">
+        {{ 'forms.user.password' | translate}} {{ 'forms.requiredMessage' | translate}}
+      </div>
+    </div>
+    <div class="mt-4">
+      <p-floatLabel>
+        <p-password formControlName="confirmPassword" autocomplete="on" [toggleMask]="true" [feedback]="false"></p-password>
+        <label>{{ 'forms.user.confirmPassword' | translate}}</label>
+      </p-floatLabel>
+      <div class="form-error" *ngIf="showPasswordError">
+        {{ 'forms.user.passwordDontMatch' | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div class="my-3">
+    <p-button label="{{'buttons.register' | translate}}" type="submit" severity="contrast" styleClass="w-full" />
+  </div>
+</form>
