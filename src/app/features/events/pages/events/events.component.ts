@@ -27,8 +27,6 @@ export class EventsComponent implements OnInit {
     weatherImpact:false
   };
 
-
-
   constructor(private eventService:EventService){}
 
   ngOnInit(): void {
