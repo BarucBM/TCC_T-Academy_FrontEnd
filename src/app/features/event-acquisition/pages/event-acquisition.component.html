@@ -10,7 +10,7 @@
             <ticket-selection [event]="event" (ticketsOp)="sideBarIsVisible($event)" ></ticket-selection>
         </div>
         <div class="flex flex-column lg:flex-row justify-content-around align-items-center h-max bg-primary border-round-lg shadow-7 p-4 gap-3">
-            <iframe class="border-round-lg w-9 height-min"
+            <iframe class="border-round-lg w-8 height-min"
                 style="border:0"
                 loading="lazy"
                 allowfullscreen
@@ -18,9 +18,12 @@
                 [src]="url">
             </iframe>
             <div class="w-min ">
-                <h3>Addres</h3>
-                <p>{{event.location}}</p>
-                <h5></h5>
+                <app-weather-card class="h-10rem"></app-weather-card>
+                <div class="w-full h-full">
+                    <p>{{event.location}}</p>
+                    <p>event.time</p>
+                </div>
+
             </div>
         </div>
     </div>
