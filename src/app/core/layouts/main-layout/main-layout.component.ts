@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from "../navbar/navbar.component";
-import { FooterComponent } from "../footer/footer.component";
 import { RouterOutlet } from '@angular/router';
+import { LanguageSelectorComponent } from '../../../shared/components/language-selector/language-selector.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
-  selector: 'app-main-layout',
+  selector: 'app-layout',
   standalone: true,
   imports: [RouterOutlet, NavbarComponent, FooterComponent],
   templateUrl: './main-layout.component.html',

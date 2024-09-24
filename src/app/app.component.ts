@@ -11,3 +11,6 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'tcc_t-academy';
 }
+
+
+

@@ -1,0 +1,35 @@
+
+<div class="flex flex-row w-full h-full justify-content-center">
+    <div class=" w-11 h-max p-4 ">
+        <div class=" w-full card-image border-round-lg mb-1 shadow-7" >
+            <div class=" w-full h-full background  border-round-lg">
+
+            </div>
+        </div>
+        <div class="h-max bg-bluegray-50 mb-1 border-round-lg shadow-7">
+            <ticket-selection [event]="event" (ticketsOp)="sideBarIsVisible($event)" ></ticket-selection>
+        </div>
+        <div class="flex flex-column lg:flex-row justify-content-around align-items-center h-max bg-primary border-round-lg shadow-7 p-4 gap-3">
+            <iframe class="border-round-lg w-8 height-min"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                [src]="url">
+            </iframe>
+            <div class="w-min ">
+                <app-weather-card class="h-10rem"></app-weather-card>
+                <div class="w-full h-full">
+                    <p>{{event.location}}</p>
+                    <p>event.time</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <p-sidebar [(visible)]="sideBarVisible" position="right" styleClass="w-10 sm:w-30rem">
+
+        
+        <side-bar [ticketQt]="ticketQt" [event]="event"></side-bar>
+    </p-sidebar>
+</div>
