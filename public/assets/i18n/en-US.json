@@ -25,8 +25,37 @@
 	},
 	"forms": {
 		"requiredMessage": " is required!",
+		"emailFormatMessage": "Invalid email format",
+		"passwordValidator": {
+			"label": "Pick a Password",
+			"suggestions": "Suggestions",
+			"status": {
+				"weak": "Weak",
+				"medium": "Medium",
+				"strong": "Strong"
+			},
+			"tips": {
+				"lowercase": "At least one lowercase",
+				"uppercase": "At least one uppercase",
+				"numeric": "At least one numeric",
+				"minimum": "Minimum 8 characters"
+			}
+		},
+		"user": {
+			"label": "User Information",
+			"email": "Email",
+			"password": "Password",
+			"confirmPassword": "Confirm password",
+			"passwordDontMatch": "Password don't Match"
+		},
 		"customer": {
 			"name": "Name",
+			"phone": "Phone",
+			"address": "Address"
+		},
+		"company": {
+			"label": "Company Information",
+			"name": "Company name",
 			"phone": "Phone",
 			"address": "Address"
 		}
