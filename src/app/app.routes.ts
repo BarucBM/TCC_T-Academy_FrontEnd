@@ -6,6 +6,7 @@ import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.comp
 import { UnauthorizedComponent } from './features/error/pages/unauthorized/unauthorized.component';
 import { NotFoundComponent } from './features/error/pages/not-found/not-found.component';
 import { LoginComponent } from './features/login/pages/login/login.component';
+import { EventsComponent } from './features/events/pages/events/events.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
             {
                 path: 'home',
                 component: HomeComponent
+            },
+            {
+                path:'events',
+                component:EventsComponent
             }
         ]
     },
