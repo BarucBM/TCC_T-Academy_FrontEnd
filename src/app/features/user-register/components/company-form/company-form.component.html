@@ -57,7 +57,7 @@
     </div>
     <div class="mt-4">
       <p-floatLabel>
-        <p-password formControlName="password" [toggleMask]="true" [promptLabel]="'forms.passwordValidator.label' | translate" [weakLabel]="'forms.passwordValidator.status.weak' | translate" [mediumLabel]="'forms.passwordValidator.status.medium' | translate" [strongLabel]="'forms.passwordValidator.status.strong' | translate">
+        <p-password formControlName="password" [toggleMask]="true" autocomplete="on" [promptLabel]="'forms.passwordValidator.label' | translate" [weakLabel]="'forms.passwordValidator.status.weak' | translate" [mediumLabel]="'forms.passwordValidator.status.medium' | translate" [strongLabel]="'forms.passwordValidator.status.strong' | translate">
           <ng-template pTemplate="footer">
             <p-divider></p-divider>
             <p class="mt-2">{{ "forms.passwordValidator.suggestions" | translate }}</p>
@@ -77,7 +77,7 @@
     </div>
     <div class="mt-4">
       <p-floatLabel>
-        <p-password formControlName="confirmPassword" [toggleMask]="true" [feedback]="false"></p-password>
+        <p-password formControlName="confirmPassword" autocomplete="on" [toggleMask]="true" [feedback]="false"></p-password>
         <label>{{ 'forms.user.confirmPassword' | translate}}</label>
       </p-floatLabel>
       <div class="form-error" *ngIf="showPasswordError">

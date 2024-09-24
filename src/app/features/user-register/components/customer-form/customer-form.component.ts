@@ -4,15 +4,13 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../core/auth/services/auth.service';
 import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-customer-form',
   standalone: true,
-  imports: [CustomFormsModule, ToastModule],
+  imports: [CustomFormsModule],
   templateUrl: './customer-form.component.html',
   styleUrl: './customer-form.component.scss',
-  providers: [MessageService]
 })
 export class CustomerFormComponent {
   customerForm: FormGroup;
@@ -38,19 +36,15 @@ export class CustomerFormComponent {
     if (this.customerForm.valid) {
       this.authService.createUserCustomer(this.customerForm.value).subscribe({
         next: (res) => {
-          this.showFeedbackMessage('success', 'Success', 'User created successfully!');
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User created successfully!' });
           this.router.navigate(["/login"]);
         },
         error: (error) => {
-          this.showFeedbackMessage('error', 'Error', 'Could not create your user, please try again later.');
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Could not create your user, please try again later.' });
         }
       })
     } else {
       this.customerForm.markAllAsTouched();
     }
-  }
-
-  showFeedbackMessage(severity: string, title: string, message: string) {
-    this.messageService.add({ severity: severity, summary: title, detail: message });
   }
 }
