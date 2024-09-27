@@ -28,9 +28,10 @@ export class ThemeService {
 
   private applyThemeToDocument(theme: string): void {
     let themeLink = this.document.getElementById('app-theme') as HTMLLinkElement;
-
+    
     if (themeLink) {
       themeLink.href = `theme-${theme}.css`;
+      this.document.firstElementChild?.setAttribute('data-theme', theme);
     }
   }
 
