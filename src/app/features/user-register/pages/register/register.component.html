@@ -1,7 +1,7 @@
-<div class="h-full flex flex-column justify-content-center px-8">
-  <div class="mb-6">
-    <h1>{{ 'register.title' | translate }}</h1>
-    <p class="text-sm">{{ 'register.subtitle' | translate }}</p>
+<div class="h-full flex flex-column justify-content-center md:px-4 lg:px-8">
+  <div class="mb-5">
+    <h1 class="my-1 text-4xl capitalize">{{ 'register.title' | translate }}</h1>
+    <p class="text-sm text-color-secondary">{{ 'register.subtitle' | translate }}</p>
   </div>
 
   <div class="flex flex-column align-items-center mb-6">
@@ -18,6 +18,6 @@
 
   <div class="text-sm text-center">
     {{ 'login.haveAccount' | translate }}
-    <a routerLink="/login">{{ 'login.logIn' | translate }}</a>
+    <a class="text-primary hover:text-primary-700" routerLink="/login">{{ 'login.logIn' | translate }}</a>
   </div>
 </div>

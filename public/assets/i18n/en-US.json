@@ -2,6 +2,7 @@
 	"language-selector": {
 		"placeholder": "Select a language"
 	},
+	"slogan": "Successful events start with accurate forecasts.",
 	"login": {
 		"title": "Welcome back",
 		"haveAccount": "Already have an account?",
@@ -10,7 +11,7 @@
 		"signUp": "Sign up"
 	},
 	"register": {
-		"title": "Create an account",
+		"title": "Create account",
 		"subtitle": "Let's get started!",
 		"accountType": {
 			"label": "Choose your account type",
