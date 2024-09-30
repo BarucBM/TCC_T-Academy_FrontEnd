@@ -60,5 +60,23 @@
 			"phone": "Telefone",
 			"address": "Endereço"
 		}
+	},
+	"navbar": {
+		"navigateLabel": "Navegar",
+		"othersLabel": "Outros",
+		"home": "Início",
+		"discover": "Explorar",
+		"events": "Meus Eventos",
+		"cart": "Carrinho",
+		"notifications": "Notificações",
+		"settings": "Configurações",
+		"logout": "Sair"
+	},
+	"header": {
+		"hello": "Olá",
+		"customerAccount": "Conta de cliente",
+		"notifications": {
+			"title": "Notificações"
+		}
 	}
 }

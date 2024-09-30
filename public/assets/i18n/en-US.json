@@ -60,5 +60,23 @@
 			"phone": "Phone",
 			"address": "Address"
 		}
+	},
+	"navbar": {
+		"navigateLabel": "Navigate",
+		"othersLabel": "Others",
+		"home": "Home",
+		"discover": "Discover",
+		"events": "My Events",
+		"cart": "Cart",
+		"notifications": "Notifications",
+		"settings": "Settings",
+		"logout": "Logout"
+	},
+	"header": {
+		"hello": "Hello",
+		"customerAccount": "Customer Account",
+		"notifications": {
+			"title": "Notifications"
+		}
 	}
 }

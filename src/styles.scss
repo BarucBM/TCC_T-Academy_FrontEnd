@@ -34,3 +34,41 @@
 .bg-accent-100 {
     background-color: #8e5d00 !important;
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(21 20 26 / 63%);
+    border-radius: 10px;
+}
+
+html[data-theme='light'] {
+    .show-light {
+        display: block !important;
+    }
+
+    .show-dark {
+        display: none !important;
+    }
+
+    .page-bg {
+        background-color: var(--surface-200);
+    }
+}
+
+html[data-theme='dark'] {
+    .show-light {
+        display: none !important;
+    }
+
+    .show-dark {
+        display: block !important;
+    }
+
+    .page-bg {
+        background-color: #18181b;
+    }
+}
