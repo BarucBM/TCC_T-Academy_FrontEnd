@@ -1,0 +1,136 @@
+.sidebar {
+  .logo {
+    display: none;
+    width: 30px;
+    height: 30px;
+    background-color: #2cb2ba;
+    flex-shrink: 0;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+
+    &-expand {
+      text-decoration: none;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 34px;
+      position: sticky;
+      top: 0;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 0;
+        width: 200px;
+        height: 70px;
+        z-index: -1;
+      }
+    }
+  }
+
+  &-link {
+    transition: ease-in-out .2s;
+    color: var(--text-color);
+
+    &:hover,
+    &.is-active {
+      font-weight: 600;
+
+      &:nth-child(2n + 1) {
+        i {
+          background: #2cb2ba !important;
+        }
+      }
+
+      &:nth-child(2n) {
+        i {
+          background: #7370bb !important;
+        }
+      }
+
+      &:nth-child(2n + 3) {
+        i {
+          background: #8ead49 !important;
+        }
+      }
+
+      &:nth-child(2n + 4) {
+        i {
+          background: #e382be !important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 90px !important;
+
+    .logo-expand,
+    .side-title {
+      display: none;
+    }
+
+    .logo {
+      display: flex;
+    }
+
+    .side-wrapper {
+      width: 30px;
+    }
+
+    .side-menu i {
+      margin-right: 30px;
+    }
+  }
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    &+a {
+      margin-top: 26px;
+    }
+  }
+
+  i {
+    color: white !important;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: var(--bluegray-400);
+    flex-shrink: 0;
+    margin-right: 16px;
+    transition: ease-in-out .2s;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.side-title {
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  margin-bottom: 24px;
+  font-weight: 500;
+  color: var(--text-color) !important;
+}
+
+.side-wrapper {
+  border-bottom: 1px solid var(--border-color);
+  padding: 36px 0;
+  width: 100%;
+
+  &+& {
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,70 @@
+.toggle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  user-select: none;
+  cursor: pointer;
+}
+
+.toggle:focus-within {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
+.toggle [type="checkbox"] {
+  visibility: hidden;
+  position: absolute;
+}
+
+.wrapper,
+.handle {
+  display: inline-block;
+  border-radius: 1.5em;
+}
+
+.wrapper {
+  box-sizing: content-box;
+  width: calc(1em * 2);
+  height: auto;
+  padding: 0.2em;
+  vertical-align: calc(0.2em * -0.8);
+  background: hsl(48, 90%, 85%);
+}
+
+.handle {
+  display: grid;
+  place-items: center;
+  height: 1em;
+  width: 1em;
+  background: #FBB92D;
+  transition: transform 180ms ease;
+  box-shadow: 0 0.2em 0.4em rgb(0 0 0 / 0.15);
+}
+
+.toggle input:checked~.wrapper {
+  background: #313D44;
+}
+
+.toggle input:checked~.wrapper .handle {
+  background: #002022;
+  transform: translateX(100%);
+}
+
+.icon {
+  grid-area: 1/1;
+  width: 80%;
+  height: 80%;
+  stroke: #ffffff;
+  transition: opacity 250ms;
+}
+
+.icon-tabler-moon {
+  opacity: 0;
+}
+
+.toggle input:checked~.wrapper .icon-tabler-moon {
+  opacity: 1;
+}
+
+.toggle input:checked~.wrapper .icon-tabler-sun {
+  opacity: 0;
+}

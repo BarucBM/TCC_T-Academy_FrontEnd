@@ -1,0 +1,27 @@
+<div class="flex align-items-center py-4 px-6 gap-5 justify-content-end">
+  <div class="flex align-items-center gap-3">
+    <div class="cursor-pointer">
+      <div (click)="userSettings.toggle($event)">
+        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png" size="large" shape="circle" />
+      </div>
+      <p-overlayPanel #userSettings>
+        <app-user-dropdown />
+      </p-overlayPanel>
+    </div>
+    <div class="hidden md:block">
+      <p class="font-bold text-xl m-0">{{ 'header.hello' | translate}}, John Doe</p>
+      <span class="text-xs font-medium">{{ 'header.customerAccount' | translate}}</span>
+    </div>
+  </div>
+
+  <app-switch-theme />
+
+  <div class="cursor-pointer">
+    <div (click)="notifications.toggle($event)">
+      <i class="pi pi-bell text-2xl" pBadge value="2"></i>
+    </div>
+    <p-overlayPanel #notifications>
+      <app-notification-list />
+    </p-overlayPanel>
+  </div>
+</div>

@@ -2,6 +2,7 @@
 	"language-selector": {
 		"placeholder": "Selecione um idioma"
 	},
+	"slogan": "Eventos bem-sucedidos começam com previsões precisas.",
 	"login": {
 		"title": "Bem-vindo de volta",
 		"haveAccount": "Já possui uma conta?",
@@ -10,8 +11,8 @@
 		"signUp": "Registre-se"
 	},
 	"register": {
-		"title": "Cadastrar nova conta",
-		"subtitle": "Comece agora a utilizar nosso sistema!",
+		"title": "Cadastrar conta",
+		"subtitle": "Comece agora mesmo!",
 		"accountType": {
 			"label": "Escolha o tipo da sua conta",
 			"customer": "Pessoal",
@@ -58,6 +59,24 @@
 			"name": "Nome da empresa",
 			"phone": "Telefone",
 			"address": "Endereço"
+		}
+	},
+	"navbar": {
+		"navigateLabel": "Navegar",
+		"othersLabel": "Outros",
+		"home": "Início",
+		"discover": "Explorar",
+		"events": "Meus Eventos",
+		"cart": "Carrinho",
+		"notifications": "Notificações",
+		"settings": "Configurações",
+		"logout": "Sair"
+	},
+	"header": {
+		"hello": "Olá",
+		"customerAccount": "Conta de cliente",
+		"notifications": {
+			"title": "Notificações"
 		}
 	}
 }
