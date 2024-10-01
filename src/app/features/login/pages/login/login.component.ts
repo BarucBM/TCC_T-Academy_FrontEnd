@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CustomFormsModule } from '../../../../shared/modules/custom-forms.module';
 import { LoginFormComponent } from '../../components/login-form/login-form.component';
+
+declare var google: any;
 
 @Component({
   selector: 'app-login',
@@ -10,6 +12,9 @@ import { LoginFormComponent } from '../../components/login-form/login-form.compo
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+  ngOnInit(): void {
+    
+  }
 
 }
