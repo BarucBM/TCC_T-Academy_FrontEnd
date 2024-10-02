@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
@@ -9,7 +10,7 @@ import { ToastModule } from 'primeng/toast';
   imports: [RouterOutlet, ToastModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [MessageService]
+  providers: [DialogService, MessageService]
 })
 export class AppComponent {
   title = 'tcc_t-academy';

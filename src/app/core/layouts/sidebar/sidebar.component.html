@@ -1,0 +1,70 @@
+<aside class="sidebar w-15rem h-full p-5 flex flex-column flex-shrink-0 overflow-y-auto overflow-x-hidden">
+  <span class="logo">
+    <img src="assets/images/logo-icon.png" alt="Logo" width="40">
+  </span>
+  <a class="logo-expand" routerLink="home">
+    <img src="assets/images/logo.png" alt="Breeze" width="170" class="show-light">
+    <img src="assets/images/logo-white.png" alt="Breeze" width="170" class="show-dark">
+  </a>
+  <div class="side-wrapper">
+    <div class="side-title uppercase">{{ 'navbar.navigateLabel' | translate }}</div>
+    <div class="side-menu">
+      <a class="sidebar-link discover" routerLink="home" routerLinkActive="is-active">
+        <i class="material-symbols-rounded">home</i>
+        {{ 'navbar.home' | translate }}
+      </a>
+      <a class="sidebar-link trending" routerLink="test" routerLinkActive="is-active">
+        <i class="material-symbols-rounded">manage_search</i>
+        {{ 'navbar.discover' | translate }}
+      </a>
+      <a class="sidebar-link" routerLink="test" routerLinkActive="is-active">
+        <i class="material-symbols-rounded">calendar_month</i>
+        {{ 'navbar.events' | translate }}
+      </a>
+      <a class="sidebar-link" routerLink="test" routerLinkActive="is-active">
+        <i class="material-symbols-rounded">shopping_cart</i>
+        {{ 'navbar.cart' | translate }}
+      </a>
+    </div>
+  </div>
+  <div class="side-wrapper">
+    <div class="side-title uppercase">{{ 'navbar.othersLabel' | translate }}</div>
+    <div class="side-menu">
+      <a class="sidebar-link" routerLink="test" routerLinkActive="is-active">
+        <i class="material-symbols-rounded">edit_notifications</i>
+        {{ 'navbar.notifications' | translate }}
+      </a>
+      <a class="sidebar-link cursor-pointer" (click)="openSettings()">
+        <i class="material-symbols-rounded">settings</i>
+        {{ 'navbar.settings' | translate }}
+      </a>
+    </div>
+  </div>
+  <div class="side-wrapper pb-0 flex-1 flex flex-column justify-content-end">
+    <div class="side-menu">
+      <div (click)="handleLogout()" class="sidebar-link flex align-items-center cursor-pointer">
+        <i class="material-symbols-rounded">logout</i>
+        {{ 'navbar.logout' | translate }}
+      </div>
+    </div>
+  </div>
+</aside>
+
+<p-dialog header="App settings" [modal]="true" [(visible)]="settingsOpen" [style]="{ width: '25rem' }" [draggable]="false">
+  <span class="p-text-secondary block mb-5">Customize your application.</span>
+  <div class="flex align-items-center gap-3 mb-3">
+      <label class="font-semibold w-6rem">Language</label>
+      <app-language-selector></app-language-selector>
+  </div>
+  <div class="flex align-items-center gap-3 mb-5">
+      <label class="font-semibold w-6rem">Theme</label>
+      <div class="flex align-items-center text-sm gap-2">
+        <span>Light</span>
+        <app-switch-theme></app-switch-theme>
+        <span>Dark</span>
+      </div>
+  </div>
+  <div class="flex justify-content-end gap-2">
+      <p-button label="Close" severity="secondary" (onClick)="settingsOpen = false" />
+  </div>
+</p-dialog>
