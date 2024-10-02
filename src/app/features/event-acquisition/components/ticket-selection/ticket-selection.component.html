@@ -1,10 +1,10 @@
 <section class="flex justify-content-center align-items-center w-full h-full border-round-lg bg-primary ">
     <div class="w-full h-max px-5 ">
         <p-divider />
-        <div class="flex flex-column md:flex-row justify-content-around align-items-center w-full">       
+        <div class="flex flex-column lg:flex-row justify-content-around align-items-center w-full">       
             <div class="flex justify-content-center align-items-center w-6 gap-3 mb-3 md:mb-0">
                 <div class="flex flex-column p-1">
-                    <p class=" text-2xl sm:text-4xl text-secondary font-bold w-max h-min mb-2 mt-0">
+                    <p class=" text-4xl text-secondary font-bold w-max h-min mb-2 mt-0">
                         {{event.title}}
                     </p>
                     <span class="text-secondary">
@@ -14,7 +14,7 @@
             </div>
             <div class=" flex justify-content-center align-items-center w-6 gap-3">
 
-                <p-inputNumber class="number-selector bg-bluegray-50 border-round-lg"
+                <p-inputNumber class=" number-selector bg-bluegray-50 border-round-lg"
                     [(ngModel)]="ticketsQtt"
                     (ngModelChange)="buttonIsDisable()"
                     min="0"
@@ -28,7 +28,7 @@
                     incrementButtonClass="p-button-success"
                     incrementButtonIcon="pi pi-plus" 
                     decrementButtonIcon="pi pi-minus"  
-                    currency="EUR" />
+                    />
 
                 <p-button 
                 (onClick)="sideBarIsVisible()"

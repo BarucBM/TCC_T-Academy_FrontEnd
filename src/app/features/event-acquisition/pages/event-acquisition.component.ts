@@ -31,10 +31,7 @@ export class EventAcquisitionComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')
     if(this.id != null){
       this.getEventById(this.id)
-    }else{
-      this.router.navigateByUrl("/home")
-    }
- 
+    } 
   }
 
   getEventById(id:string){
