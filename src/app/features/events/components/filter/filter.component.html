@@ -3,21 +3,18 @@
         <form [formGroup]="formFilter" (ngSubmit)="onSubmit()" class="flex align-items-center justify-content-around w-full">
             <p-floatLabel>
                 <input pInputText class="w-10rem" id="title" formControlName="title" />
-                <label for="title">TITLE</label>
+                <label class="text-primary" for="title">SEARCH</label>
             </p-floatLabel>
+
             <p-floatLabel>
-                <input pInputText class="w-10rem" id="location" formControlName="location" />
-                <label for="location">LOCATION</label>
-            </p-floatLabel>
-            <p-floatLabel>
-                <input pInputText class="w-10rem" id="descrption" formControlName="description" />
-                <label for="descrption">DESCRIPTION</label>
-            </p-floatLabel>
-            <p-calendar 
-                formControlName="firstDate"
+                <p-calendar            
+                formControlName="dates"
+                selectionMode="range" 
                 [iconDisplay]="'input'" 
                 [showIcon]="true" 
                 inputId="icondisplay" />
+                <label class="text-primary" for="title">DATE</label>
+            </p-floatLabel>
         </form>
         <div class="flex align-items-center justify-content-around w-full">
 

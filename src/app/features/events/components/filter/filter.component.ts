@@ -16,18 +16,16 @@ export class FilterComponent {
 
 
   formFilter = new FormGroup({
-    title:new FormControl(''),
-    location:new FormControl(''),
-    description:new FormControl(''),
-    firstDate :new FormControl(''),
-    secondDate :new FormControl(''),
+    title:new FormControl(null),
+    location:new FormControl(null),
+    description:new FormControl(null),
+    dates :new FormControl(null)
   })
 
   
   @Output() emitter = new EventEmitter()
 
   onSubmit(){
-    console.log(this.formFilter.value)
     this.emitter.emit(this.formFilter.value)
   }
 }

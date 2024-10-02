@@ -47,8 +47,12 @@ export class EventsComponent implements OnInit {
     this.params.title = event.title
     this.params.location = event.location
     this.params.description = event.description
-    this.params.startTime = event.firstDate
-    this.params.endTime = event.secondDate
+    this.params.startTime = event.dates == null ?
+      null :
+      event.dates[0];
+    this.params.endTime = event.dates == null ?
+      null :
+      event.dates[1];
     this.getAllEvents()
   }
 }
