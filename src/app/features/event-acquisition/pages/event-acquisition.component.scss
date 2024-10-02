@@ -12,3 +12,13 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.hide-scrollbar{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}
+
+.hide-scrollbar::-webkit-scrollbar{
+    display: none;
+}
