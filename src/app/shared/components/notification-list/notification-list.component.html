@@ -1,0 +1,55 @@
+<div class="flex flex-column gap-3 w-12rem">
+  <span class="font-medium text-900 block mb-2">{{ 'header.notifications.title' | translate}}</span>
+</div>
+<div class="card">
+  <h3>Configurações de Notificação</h3>
+  <div>
+      <label>
+          <input type="checkbox" [(ngModel)]="notificationsEnabled.suggestions" />
+          Ativar Sugestões
+      </label>
+      <label>
+          <input type="checkbox" [(ngModel)]="notificationsEnabled.reminders" />
+          Ativar Lembretes
+      </label>
+      <label>
+          <input type="checkbox" [(ngModel)]="notificationsEnabled.weatherChanges" />
+          Ativar Mudanças de Clima
+      </label>
+  </div>
+
+  <div class="message-buttons">
+      <p-button 
+          *ngIf="notificationsEnabled.suggestions" 
+          type="button" 
+          pRipple 
+          (onClick)="addMessage('suggestions')" 
+          label="Mostrar Sugestões" 
+          styleClass="mr-2" />
+      
+      <p-button 
+          *ngIf="notificationsEnabled.reminders" 
+          type="button" 
+          pRipple 
+          (onClick)="addMessage('reminders')" 
+          label="Mostrar Lembretes" 
+          styleClass="mr-2" />
+      
+      <p-button 
+          *ngIf="notificationsEnabled.weatherChanges" 
+          type="button" 
+          pRipple 
+          (onClick)="addMessage('weatherChanges')" 
+          label="Mostrar Mudanças de Clima" 
+          styleClass="mr-2" />
+      
+      <p-button 
+          type="button" 
+          pRipple 
+          (onClick)="clearMessages()" 
+          label="Limpar" 
+          severity="secondary" />
+  </div>
+
+  <p-messages [(value)]="messages" [enableService]="false"></p-messages>
+</div>
