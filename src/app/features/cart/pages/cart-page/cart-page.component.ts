@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartEvent } from '../../../../core/models/event.model';
 
 @Component({
   selector: 'app-cart-page',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './cart-page.component.scss'
 })
 export class CartPageComponent {
-
+  tickets:CartEvent[] = []
 }

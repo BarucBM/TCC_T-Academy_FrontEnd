@@ -18,6 +18,11 @@ export interface Event{
     weatherImpact:boolean
 }
 
+export interface CartEvent{
+    id: string,
+    quantity: number
+}
+
 // export interface TicketType{
 //     name:string,
 //     price:number,
