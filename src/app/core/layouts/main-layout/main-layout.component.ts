@@ -5,7 +5,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
-  selector: 'app-main-layout',
+  selector: 'app-layout',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, SidebarComponent],
   templateUrl: './main-layout.component.html',

@@ -1,0 +1,33 @@
+<div class="w-full h-full flex align-items-center justify-content-center">
+    <div class="w-full">
+        <h2>SUMMARY:</h2>
+        <p-divider />
+        <span class="flex flex-row justify-content-between my-4">
+            <div>
+                <p>Quantity:</p>
+                <p>{{ticketQt}} x {{event.title}}</p>
+            </div>
+            <div>
+                <p>Price:</p>
+                <P>ticket.price</P>
+            </div>
+        </span>
+        <div class="background w-full h-10rem ">
+
+        </div>
+        <div class="flex flex-row justify-content-between my-4">
+            <p>{{event.location}}</p>
+        </div>
+        <div class="flex flex-row justify-content-between my-4">
+            <p>event.date</p>
+        </div>
+        <div class="flex flex-row justify-content-between my-4">
+            <p class="text-sm">Sold by: company.name</p>
+        </div>
+        <div class="flex align-items-center justify-content-around my-4">
+            <p-button label="Buy Now" [outlined]="true" severity="danger"  />
+            <p-button label="Add To Cart" [outlined]="true"  />
+        </div>
+    </div>
+
+</div>
