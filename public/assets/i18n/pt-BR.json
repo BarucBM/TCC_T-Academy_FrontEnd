@@ -25,8 +25,8 @@
 		"delete": "Remover"
 	},
 	"forms": {
-		"requiredMessage": " é obrigatório!",
-		"emailFormatMessage": "Formato de e-mail inválido",
+		"requiredMessage": "Este campo é obrigatório.",
+		"emailFormatMessage": "Formato de e-mail inválido.",
 		"passwordValidator": {
 			"label": "Escolha uma senha",
 			"suggestions": "Sugestões",

@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { DropdownModule } from 'primeng/dropdown';
+import { FormErrorComponent } from '../components/form-error/form-error.component';
 
 @NgModule({
   declarations: [],
@@ -23,7 +24,8 @@ import { DropdownModule } from 'primeng/dropdown';
     DropdownModule,
     FormsModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    FormErrorComponent
   ],
   exports: [
     SharedModule, 
@@ -36,7 +38,8 @@ import { DropdownModule } from 'primeng/dropdown';
     DropdownModule,
     FormsModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    FormErrorComponent
   ]
 })
 export class CustomFormsModule { }
