@@ -3,7 +3,7 @@
         <form [formGroup]="formFilter" (ngSubmit)="onSubmit()" class="flex align-items-center justify-content-around w-full">
             <p-floatLabel>
                 <input pInputText class="w-10rem" id="title" formControlName="title" />
-                <label class="text-primary" for="title">SEARCH</label>
+                <label class="text-primary" for="title">{{ 'events.search' | translate }}</label>
             </p-floatLabel>
 
             <p-floatLabel>
@@ -13,7 +13,7 @@
                 [iconDisplay]="'input'" 
                 [showIcon]="true" 
                 inputId="icondisplay" />
-                <label class="text-primary" for="title">DATE</label>
+                <label class="text-primary" for="title">{{'events.date'| translate }}</label>
             </p-floatLabel>
         </form>
         <div class="flex align-items-center justify-content-around w-full">
@@ -21,6 +21,6 @@
         </div>
     </div>
     <div class="absolute bottom-0 right-0 p-2">
-        <p-button label="Submit" severity="info" (onClick)="onSubmit()"  />
+        <p-button label="{{'events.submit' | translate }}" severity="info" (onClick)="onSubmit()"  />
     </div>
 </div>

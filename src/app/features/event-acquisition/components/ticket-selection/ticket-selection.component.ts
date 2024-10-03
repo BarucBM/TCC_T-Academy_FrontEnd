@@ -5,12 +5,14 @@ import { DividerModule } from 'primeng/divider';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Event } from '../../../../core/models/event.model';
+import { SharedModule } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'ticket-selection',
   standalone: true,
-  imports: [CommonModule, InputNumberModule, ButtonModule, FormsModule, DividerModule],
+  imports: [CommonModule, InputNumberModule, ButtonModule, FormsModule, DividerModule, TranslateModule],
   templateUrl: './ticket-selection.component.html',
   styleUrl: './ticket-selection.component.scss'
 })
