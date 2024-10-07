@@ -8,6 +8,7 @@ import { NotFoundComponent } from './features/error/pages/not-found/not-found.co
 import { LoginComponent } from './features/login/pages/login/login.component';
 import { EventAcquisitionComponent } from './features/event-acquisition/pages/event-acquisition.component';
 import { EventsComponent } from './features/events/pages/events/events.component';
+import { CreateEventComponent } from './features/events/pages/create-event/create-event.component';
 
 export const routes: Routes = [
     {
@@ -20,8 +21,8 @@ export const routes: Routes = [
         component: AuthLayoutComponent,
         children: [
             {
-              path: 'login',
-              component: LoginComponent
+                path: 'login',
+                component: LoginComponent
             },
             {
                 path: 'register',
@@ -43,8 +44,12 @@ export const routes: Routes = [
                 component: EventAcquisitionComponent
             },
             {
-                path:'events',
+                path: 'events',
                 component: EventsComponent
+            },
+            {
+                path: 'create-event',
+                component: CreateEventComponent
             }
         ]
     },

@@ -63,6 +63,10 @@ html[data-theme='light'] {
     .page-bg {
         background-color: var(--surface-200);
     }
+
+    .main-bg {
+        background-color: var(--surface-100);
+    }
 }
 
 html[data-theme='dark'] {
@@ -76,5 +80,9 @@ html[data-theme='dark'] {
 
     .page-bg {
         background-color: #18181b;
+    }
+
+    .main-bg {
+        background-color: #1e1e22;
     }
 }
