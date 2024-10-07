@@ -7,13 +7,15 @@ import { SidebarModule } from 'primeng/sidebar';
 import { SideBarComponent } from "../components/side-bar/side-bar.component";
 import { ActivatedRoute, Router } from '@angular/router';
 import { WeatherCardComponent } from "../../../shared/components/weather-card/weather-card.component";
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../../shared/modules/shared.module';
 
 
 
 @Component({
   selector: 'app-event-acquisition',
   standalone: true,
-  imports: [TicketSelectionComponent, SidebarModule, SideBarComponent, WeatherCardComponent],
+  imports: [TicketSelectionComponent, SidebarModule, SideBarComponent, WeatherCardComponent, CommonModule, SharedModule],
   templateUrl: './event-acquisition.component.html',
   styleUrl: './event-acquisition.component.scss'
 })

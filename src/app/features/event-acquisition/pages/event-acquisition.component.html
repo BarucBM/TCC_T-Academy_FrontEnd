@@ -9,7 +9,7 @@
         <div class="h-max bg-bluegray-50 mb-1 border-round-lg shadow-5">
             <ticket-selection [event]="event" (ticketsOp)="sideBarIsVisible($event)" ></ticket-selection>
         </div>
-        <div class="flex flex-column xl:flex-row justify-content-around align-items-center h-max bg-primary border-round-lg shadow-5 p-4 gap-3">
+        <div class="flex flex-column xl:flex-row justify-content-around align-items-center h-max border-round-lg border-2 shadow-5 p-4 gap-3">
             <iframe class="border-round-lg w-8 height-min"
                 style="border:0"
                 loading="lazy"
@@ -20,8 +20,7 @@
             <div class="w-min ">
                 <app-weather-card class="h-10rem"></app-weather-card>
                 <div class="w-full h-full">
-                    <p>{{event.location}}</p>
-                    <p>event.time</p>
+                    <p class="my-3 mx-0">{{event.location}}, {{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}  </p>
                 </div>
 
             </div>

@@ -89,3 +89,9 @@ html[data-theme='dark'] {
 .border-filter input:hover{
     background-color:#8f8f8f ;
 }
+
+.p-divider.p-divider-horizontal::before {
+    border-top: 2px;
+    border-color: var(--surface-600);
+    border-top-style: solid;
+}
