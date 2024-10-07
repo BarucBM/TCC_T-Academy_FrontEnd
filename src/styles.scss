@@ -78,3 +78,14 @@ html[data-theme='dark'] {
         background-color: #18181b;
     }
 }
+
+.border-filter input{
+    border: none;
+    border-radius: 32px;
+    width: 10rem;
+    height: 3rem;
+}
+
+.border-filter input:hover{
+    background-color:#8f8f8f ;
+}

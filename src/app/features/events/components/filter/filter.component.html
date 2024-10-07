@@ -1,20 +1,24 @@
-<div class="relative w-full h-full  align-items-center justify-content-around">
+<div class=" text-color w-full h-full  align-items-center justify-content-around ">
     <div class="w-full h-full flex flex-column align-items-center justify-content-center gap-2">
-        <form [formGroup]="formFilter" (ngSubmit)="onSubmit()" class="flex align-items-center justify-content-around w-full">
-            <p-floatLabel>
-                <input pInputText class="w-10rem" id="title" formControlName="title" />
-                <label class="text-primary" for="title">{{ 'events.search' | translate }}</label>
-            </p-floatLabel>
-
-            <p-floatLabel>
-                <p-calendar            
-                formControlName="dates"
-                selectionMode="range" 
-                [iconDisplay]="'input'" 
-                [showIcon]="true" 
-                inputId="icondisplay" />
-                <label class="text-primary" for="title">{{'events.date'| translate }}</label>
-            </p-floatLabel>
+        <form [formGroup]="formFilter" (ngSubmit)="onSubmit()" 
+        class="flex w-max flex-row align-items-center  w-full  surface-0 borda">
+            <div class="border-filter">
+                <p-floatLabel >
+                    <input pInputText class="w-10rem "  id="title" formControlName="title" />
+                    <label class="" for="title">{{ 'events.search' | translate }}</label>
+                </p-floatLabel>
+            </div>
+            <div class="border-filter">
+                <p-floatLabel>
+                    <p-calendar class=""           
+                    formControlName="dates"
+                    selectionMode="range" 
+                    [iconDisplay]="'input'" 
+                    [showIcon]="true" 
+                    inputId="icondisplay" />
+                    <label class="" for="title">{{'events.date'| translate }}</label>
+                </p-floatLabel>
+            </div>
         </form>
         <div class="flex align-items-center justify-content-around w-full">
 
