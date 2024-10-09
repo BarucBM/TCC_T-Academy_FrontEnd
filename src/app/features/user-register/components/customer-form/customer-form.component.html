@@ -6,9 +6,7 @@
           <input type="text" pInputText formControlName="name" class="w-full" />
           <label for="name">{{ 'forms.customer.name' | translate}}</label>
         </p-floatLabel>
-        <div class="form-error" *ngIf="customerForm.get('customer.name')?.hasError('required') && customerForm.get('customer.name')?.touched">
-          {{ 'forms.customer.name' | translate}} {{ 'forms.requiredMessage' | translate}}
-        </div>
+        <app-form-error [control]="customerForm.get('customer.name')!" />
       </div>
       <div class="col-6">
         <p-floatLabel>
@@ -22,9 +20,7 @@
         <input type="text" pInputText formControlName="address" class="w-full" />
         <label for="address">{{ 'forms.customer.address' | translate}}</label>
       </p-floatLabel>
-      <div class="form-error" *ngIf="customerForm.get('customer.address')?.hasError('required') && customerForm.get('customer.address')?.touched">
-        {{ 'forms.customer.address' | translate}} {{ 'forms.requiredMessage' | translate}}
-      </div>
+      <app-form-error [control]="customerForm.get('customer.address')!" />
     </div>
   </div>
 

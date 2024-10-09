@@ -1,0 +1,66 @@
+<div [formGroup]="addressForm" class="formgrid grid">
+  <div class="field-col col-12 mb-5">
+    <p-floatLabel>
+      <input #inputField type="text" pInputText formControlName="fullAddress" placeholder="{{ 'forms.address.addressPlaceholder' | translate }}" />
+      <label>{{ 'forms.address.address' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('fullAddress')!"></app-form-error>
+  </div>
+
+  <div class="field-col col-4 mb-5">
+    <p-floatLabel>
+      <input type="text" pInputText formControlName="postalCode" />
+      <label for="postalCode">{{ 'forms.address.postalCode' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('postalCode')!"></app-form-error>
+  </div>
+  <div class="field-col col-4 mb-5">
+    <p-floatLabel>
+      <input type="text" pInputText formControlName="streetName" />
+      <label for="streetName">{{ 'forms.address.streetName' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('streetName')!"></app-form-error>
+  </div>
+  <div class="field-col col-4 mb-5">
+    <p-floatLabel>
+      <input type="text" pInputText formControlName="streetNumber" />
+      <label for="streetNumber">{{ 'forms.address.streetNumber' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('streetNumber')!"></app-form-error>
+  </div>
+  <div class="field-col col-12 mb-5">
+    <p-floatLabel>
+      <input type="text" pInputText formControlName="addressComplement" />
+      <label for="addressComplement">{{ 'forms.address.addressComplement' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('addressComplement')!"></app-form-error>
+  </div>
+  <div class="field-col col-6 mb-5">
+    <p-floatLabel>
+      <input type="text" pInputText formControlName="neighborhood" />
+      <label for="neighborhood">{{ 'forms.address.neighborhood' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('neighborhood')!"></app-form-error>
+  </div>
+  <div class="field-col col-6 mb-5">
+    <p-floatLabel>
+      <input type="text" pInputText formControlName="city" />
+      <label for="city">{{ 'forms.address.city' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('city')!"></app-form-error>
+  </div>
+  <div class="field-col col-6 mb-5">
+    <p-floatLabel>
+      <input type="text" pInputText formControlName="state" />
+      <label for="state">{{ 'forms.address.state' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('state')!"></app-form-error>
+  </div>
+  <div class="field-col col-6 mb-5">
+    <p-floatLabel>
+      <input type="text" pInputText formControlName="country" />
+      <label for="country">{{ 'forms.address.country' | translate }}</label>
+    </p-floatLabel>
+    <app-form-error [control]="addressForm.get('country')!"></app-form-error>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<p-card>
+  <ng-template pTemplate="title">
+    <div class="flex align-items-center gap-2">
+      <i class="material-symbols-rounded text-primary">confirmation_number</i>
+      {{ 'forms.event.steps.tickets.title' | translate }}
+    </div>
+  </ng-template>
+  <ng-template pTemplate="subtitle">{{ 'forms.event.steps.tickets.subtitle' | translate }}</ng-template>
+  <ng-template pTemplate="content">
+    <form [formGroup]="ticketForm" class="formgrid grid my-3">
+      <div class="field-col col-12 mb-5">
+        <div class="flex align-items-center gap-3">
+          <p-inputSwitch formControlName="freeEntry" />
+          <label for="freeEntry" class="block font-semibold pb-1">{{ 'forms.event.freeEntry' | translate }}</label>
+        </div>
+      </div>
+      <div class="field-col col-12 md:col-6 mb-5" *ngIf="showPriceInfo">
+        <div class="flex-auto w-full">
+          <label class="block font-semibold mb-2" for="ticketUnitPrice">{{ 'forms.event.ticketUnitPrice' | translate }}</label>
+          <p-inputNumber formControlName="ticketUnitPrice" mode="currency" currency="BRL" locale="pt-BR" />
+        </div>
+        <app-form-error [control]="ticketForm.get('ticketUnitPrice')!"></app-form-error>
+      </div>
+      <div class="field-col col-12 md:col-6 mb-5" *ngIf="showPriceInfo">
+        <div class="flex-auto w-full">
+          <label class="block font-semibold mb-2" for="ticketTax">{{ 'forms.event.ticketTax' | translate }}</label>
+          <p-inputNumber formControlName="ticketTax" mode="currency" currency="BRL" locale="pt-BR" />
+        </div>
+        <app-form-error [control]="ticketForm.get('ticketTax')!"></app-form-error>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="grid grid-nogutter justify-content-between">
+      <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left"></p-button>
+      <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+    </div>
+  </ng-template>
+</p-card>

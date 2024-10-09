@@ -2,11 +2,16 @@ p-calendar.ng-dirty.ng-invalid > .p-calendar > .p-inputtext {
     @include invalid-input();
 }
 
+.p-calendar {
+    width: 100%;
+}
+
 .p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext {
     @include focused-input();
 }
 
 .p-datepicker {
+    min-width: auto !important;
     padding: $calendarPadding;
     background: $calendarInlineBg;
     color: $calendarTextColor;
