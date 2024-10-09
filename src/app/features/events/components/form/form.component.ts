@@ -7,6 +7,7 @@ import { RouterOutlet } from '@angular/router';
 import { StepsModule } from 'primeng/steps';
 import { CardModule } from 'primeng/card';
 import { EventFormService } from '../../services/event-form.service';
+import { LanguageService } from '../../../../core/services/language.service';
 
 @Component({
   selector: 'app-form',
@@ -16,31 +17,19 @@ import { EventFormService } from '../../services/event-form.service';
   styleUrl: './form.component.scss'
 })
 export class FormComponent implements OnInit {
-  items: MenuItem[] = [];
+  steps: MenuItem[] = [];
   subscription!: Subscription;
   update: boolean = false;
 
-  constructor(private eventFormService: EventFormService, private eventService: EventService, private messageService: MessageService) { }
+  constructor(
+    private eventFormService: EventFormService, 
+    private eventService: EventService, 
+    private messageService: MessageService,
+    private languageService: LanguageService
+  ) { }
 
   ngOnInit() {
-    this.items = [
-      {
-        label: 'Basic Info',
-        routerLink: 'information'
-      },
-      {
-        label: 'Address',
-        routerLink: 'address'
-      },
-      {
-        label: 'Tickets',
-        routerLink: 'tickets'
-      },
-      {
-        label: 'Confirmation',
-        routerLink: 'confirmation'
-      }
-    ];
+    this.getSteps();
 
     this.subscription = this.eventFormService.formComplete$.subscribe((formData: FormData) => {
       if (this.update) {
@@ -54,6 +43,29 @@ export class FormComponent implements OnInit {
         });
       }
     });
+  }
+
+  async getSteps() {
+    let translations = await this.languageService.getTranslations();
+
+    this.steps = [
+      {
+        label: translations.forms.event.steps.info.label,
+        routerLink: 'information'
+      },
+      {
+        label: translations.forms.event.steps.address.label,
+        routerLink: 'address'
+      },
+      {
+        label: translations.forms.event.steps.tickets.label,
+        routerLink: 'tickets'
+      },
+      {
+        label: translations.forms.event.steps.confirmation.label,
+        routerLink: 'confirmation'
+      }
+    ];
   }
 
   ngOnDestroy() {

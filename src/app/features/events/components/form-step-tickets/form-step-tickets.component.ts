@@ -35,6 +35,8 @@ export class FormStepTicketsComponent implements OnInit {
 
     if (event) {
       this.ticketForm.patchValue(event);
+    } else {
+      this.router.navigateByUrl('create-event');
     }
   }
 

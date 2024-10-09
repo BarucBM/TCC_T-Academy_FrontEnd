@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { Event } from '../../../../core/models/event.model';
 import { FieldsetModule } from 'primeng/fieldset';
 import { GalleriaModule } from 'primeng/galleria';
-import { ImageProcessorService } from '../../../../core/services/image-processor.service';
 
 @Component({
   selector: 'app-form-step-confirmation',
@@ -24,6 +23,11 @@ export class FormStepConfirmationComponent implements OnInit {
 
   ngOnInit() {
     this.event = this.eventFormService.event;
+
+    if (!this.event) {
+      this.router.navigateByUrl('create-event')
+    }
+
     this.responsiveImageOptions = [
       {
         breakpoint: '1024px',

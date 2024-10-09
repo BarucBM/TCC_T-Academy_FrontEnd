@@ -21,7 +21,7 @@
           </div>
           <span class="font-semibold">{{ file.name }}</span>
           <div>{{ formatSize(file.size) }}</div>
-          <p-badge value="Pending" severity="warning" />
+          <p-badge value="{{ 'forms.imageUploader.statusPending' | translate }}" severity="warning" />
           <p-button icon="pi pi-times" (onClick)="onRemoveTemplatingFile($event, file, removeFileCallback, i)" [outlined]="true" [rounded]="true" severity="danger" />
         </div>
       </div>
@@ -35,7 +35,7 @@
           </div>
           <span class="font-semibold">{{ file.name }}</span>
           <div>{{ formatSize(file.size) }}</div>
-          <p-badge value="Completed" class="mt-3" severity="success" />
+          <p-badge value="{{ 'forms.imageUploader.statusComplete' | translate }}" class="mt-3" severity="success" />
           <p-button icon="pi pi-times" (onClick)="removeUploadedFileCallback(i)" [outlined]="true" [rounded]="true" severity="danger" />
         </div>
       </div>
@@ -45,7 +45,7 @@
   <ng-template pTemplate="empty">
     <div class="flex align-items-center justify-content-center flex-column">
       <i class="pi pi-cloud-upload border-2 border-circle p-5 text-8xl text-400 border-400"></i>
-      <p class="mt-4 mb-0">Drag and drop files here to upload.</p>
+      <p class="mt-4 mb-0">{{ 'forms.imageUploader.info' | translate }}</p>
     </div>
   </ng-template>
 </p-fileUpload>

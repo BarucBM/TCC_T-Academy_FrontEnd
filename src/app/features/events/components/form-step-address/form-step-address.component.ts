@@ -5,7 +5,6 @@ import { EventFormService } from '../../services/event-form.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AddressFormComponent } from "../../../../shared/components/address-form/address-form.component";
-import { Address } from '../../../../core/models/address.model';
 
 @Component({
   selector: 'app-form-step-address',
@@ -14,7 +13,7 @@ import { Address } from '../../../../core/models/address.model';
   templateUrl: './form-step-address.component.html',
   styleUrl: './form-step-address.component.scss'
 })
-export class FormStepAddressComponent {
+export class FormStepAddressComponent implements OnInit {
   addressForm: any;
 
   constructor(
@@ -23,6 +22,12 @@ export class FormStepAddressComponent {
     private router: Router
   ) {
     this.addressForm = this.fb.group({});
+  }
+
+  ngOnInit(): void {
+    if (!this.eventFormService.getEvent()) {
+      this.router.navigateByUrl('create-event')
+    }
   }
 
   onAddressFormReady(addressForm: FormGroup) {

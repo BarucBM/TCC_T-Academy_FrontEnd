@@ -20,7 +20,7 @@ export class LanguageService {
 
   private setInitialLanguage(): void {
     const storedLanguage = this.getStoredLanguage();
-    
+
     this.currentLanguageCode = storedLanguage || this.defaultLanguage;
     this.setLanguage(this.currentLanguageCode);
   }
@@ -37,6 +37,19 @@ export class LanguageService {
 
   getSupportedLanguages() {
     return this.supportedLanguages;
+  }
+
+  getTranslations(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.translateService.getTranslation(this.currentLanguageCode).subscribe(
+        {
+          next: (translations) => {
+            resolve(translations);
+          },
+          error: (error) => reject(error)
+        }
+      );
+    });
   }
 
   private getStoredLanguage(): string | null {

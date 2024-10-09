@@ -2,38 +2,38 @@
   <ng-template pTemplate="title">
     <div class="flex align-items-center gap-2">
       <i class="material-symbols-rounded text-primary">check_circle</i>
-      Confirmation
+      {{ 'forms.event.steps.confirmation.title' | translate }}
     </div>
   </ng-template>
-  <ng-template pTemplate="subtitle">Confirm your event information</ng-template>
+  <ng-template pTemplate="subtitle">{{ 'forms.event.steps.confirmation.subtitle' | translate }}</ng-template>
   <ng-template pTemplate="content">
     <div class="grid my-3">
       <div class="field-col col-12 mb-2">
-        <h3 class="m-0">Informations</h3>
+        <h3 class="m-0">{{ 'forms.event.steps.info.title' | translate }}</h3>
       </div>
       <div class="field-col col-12 mb-3">
-        <p-fieldset legend="Title">
+        <p-fieldset legend="{{ 'forms.event.title' | translate }}">
           <p class="m-0">
             {{ event.title }}
           </p>
         </p-fieldset>
       </div>
       <div class="field-col col-12 mb-3">
-        <p-fieldset legend="Description">
+        <p-fieldset legend="{{ 'forms.event.description' | translate }}">
           <p class="m-0">
             {{ event.description }}
           </p>
         </p-fieldset>
       </div>
       <div class="field-col col-6 mb-3">
-        <p-fieldset legend="Start Date">
+        <p-fieldset legend="{{ 'forms.event.startDate' | translate }}">
           <p class="m-0">
             {{ event.startTime| date:'short' }}
           </p>
         </p-fieldset>
       </div>
       <div class="field-col col-6 mb-5">
-        <p-fieldset legend="End Date">
+        <p-fieldset legend="{{ 'forms.event.endDate' | translate }}">
           <p class="m-0">
             {{ event.endTime| date:'short' }}
           </p>
@@ -42,17 +42,17 @@
     </div>
     <div class="grid my-3">
       <div class="field-col col-12 mb-2">
-        <h3 class="m-0">Address Information</h3>
+        <h3 class="m-0">{{ 'forms.event.steps.address.title' | translate }}</h3>
       </div>
       <div class="field-col col-12 mb-3">
-        <p-fieldset legend="Address">
+        <p-fieldset legend="{{ 'forms.address.fullAddress' | translate }}">
           <p class="m-0">
             ({{event.address.postalCode}}) - {{event.address.streetName}} {{event.address.streetNumber}}, {{event.address.neighborhood}}, {{event.address.city}} - {{event.address.state}}, {{event.address.country}}
           </p>
         </p-fieldset>
       </div>
       <div class="field-col col-12 mb-3" *ngIf="event.address.addressComplement">
-        <p-fieldset legend="Address Complement">
+        <p-fieldset legend="{{ 'forms.address.addressComplement' | translate }}">
           <p class="m-0">
             {{event.address.addressComplement}}
           </p>
@@ -61,24 +61,24 @@
     </div>
     <div class="grid my-3">
       <div class="field-col col-12 mb-2">
-        <h3 class="m-0">Ticket Information</h3>
+        <h3 class="m-0">{{ 'forms.event.steps.tickets.title' | translate }}</h3>
       </div>
       <div class="field-col col-4 mb-3" *ngIf="event.freeEntry">
-        <p-fieldset legend="Free Entry">
+        <p-fieldset legend="{{ 'forms.event.freeEntry' | translate }}">
           <p class="m-0">
             This event has free entry.
           </p>
         </p-fieldset>
       </div>
       <div class="field-col col-4 mb-3" *ngIf="!event.freeEntry">
-        <p-fieldset legend="Unit Price">
+        <p-fieldset legend="{{ 'forms.event.ticketUnitPrice' | translate }}">
           <p class="m-0">
             {{event.ticketUnitPrice | currency : 'BRL':'symbol':'1.2-2' }}
           </p>
         </p-fieldset>
       </div>
       <div class="field-col col-4 mb-3" *ngIf="!event.freeEntry">
-        <p-fieldset legend="Ticket Tax">
+        <p-fieldset legend="{{ 'forms.event.ticketTax' | translate }}">
           <p class="m-0">
             {{event.ticketTax | currency: 'BRL':'symbol':'1.2-2' }}
           </p>
@@ -87,7 +87,7 @@
     </div>
     <div class="grid my-3" *ngIf="event?.images?.length">
       <div class="field-col col-12 mb-2">
-        <h3 class="m-0">Images</h3>
+        <h3 class="m-0">{{ 'forms.event.images' | translate }}</h3>
       </div>
       <div class="field-col col-12">
         <div class="card flex justify-content-center">
@@ -107,8 +107,8 @@
   </ng-template>
   <ng-template pTemplate="footer">
     <div class="grid grid-nogutter justify-content-between">
-      <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left"></p-button>
-      <p-button label="Complete" (onClick)="complete()" icon="pi pi-angle-right" iconPos="right" styleClass="p-button-success"></p-button>
+      <p-button label="{{ 'forms.event.steps.backBtnLabel' | translate }}" (onClick)="prevPage()" icon="pi pi-angle-left"></p-button>
+      <p-button label="{{ 'forms.event.steps.completeBtnLabel' | translate }}" (onClick)="complete()" icon="pi pi-angle-right" iconPos="right" styleClass="p-button-success"></p-button>
     </div>
   </ng-template>
 </p-card>
