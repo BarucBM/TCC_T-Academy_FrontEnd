@@ -3,7 +3,7 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { EventService } from '../../../../core/services/event.service';
 import { SharedModule } from '../../../../shared/modules/shared.module';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { StepsModule } from 'primeng/steps';
 import { CardModule } from 'primeng/card';
 import { EventFormService } from '../../services/event-form.service';
@@ -25,7 +25,8 @@ export class FormComponent implements OnInit {
     private eventFormService: EventFormService, 
     private eventService: EventService, 
     private messageService: MessageService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,6 +39,7 @@ export class FormComponent implements OnInit {
         this.eventService.createEvent(formData).subscribe({
           next: () => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Event created successfully!' });
+            this.router.navigateByUrl('events');
           },
           error: (e) => console.error(e)
         });
