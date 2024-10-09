@@ -1,45 +1,6 @@
-<form [formGroup]="eventForm" class="formgrid grid">
-  <div class="field-col col-12 mb-5">
-    <p-floatLabel>
-      <input type="text" pInputText formControlName="title" />
-      <label for="title">Title</label>
-    </p-floatLabel>
-    <app-form-error [control]="eventForm.get('title')!"></app-form-error>
-  </div>
-  <div class="field-col col-12 mb-5">
-    <p-floatLabel>
-      <textarea type="text" pInputTextarea formControlName="description" rows="4" cols="30"></textarea>
-      <label for="description">Description</label>
-    </p-floatLabel>
-    <app-form-error [control]="eventForm.get('description')!"></app-form-error>
-  </div>
-  <div class="field-col col-12 mb-5">
-    <p-floatLabel>
-      <input type="text" pInputText formControlName="location" />
-      <label for="location">Location</label>
-    </p-floatLabel>
-    <app-form-error [control]="eventForm.get('location')!"></app-form-error>
-  </div>
-  <div class="field-col col-12 md:col-6 mb-5">
-    <p-floatLabel>
-      <p-calendar formControlName="startTime" [showTime]="true" hourFormat="24" />
-      <label for="startTime">Start date</label>
-    </p-floatLabel>
-    <app-form-error [control]="eventForm.get('startTime')!"></app-form-error>
-  </div>
-  <div class="field-col col-12 md:col-6 mb-5">
-    <p-floatLabel>
-      <p-calendar formControlName="endTime" [showTime]="true" hourFormat="24" />
-      <label for="endTime">End date</label>
-    </p-floatLabel>
-    <app-form-error [control]="eventForm.get('endTime')!"></app-form-error>
-  </div>
-  <div class="field-col col-12">
-    <app-file-uploader controlName="images" (filesSelected)="onSelectedFiles($event)"></app-file-uploader>
-  </div>
-
-  <div class="col-12 flex justify-content-end gap-3 mt-5">
-    <p-button label="Cancel" rounded="true" severity="secondary" />
-    <p-button type="submit" label="Save" rounded="true" severity="success" (onClick)="handleSubmit()" />
-  </div>
-</form>
+<div class="mb-4">
+  <p-card>
+    <p-steps [model]="items" [readonly]="true" />
+  </p-card>
+</div>
+<router-outlet></router-outlet>

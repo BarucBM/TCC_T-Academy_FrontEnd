@@ -27,6 +27,7 @@
 	"forms": {
 		"requiredMessage": "This field is required.",
 		"emailFormatMessage": "Invalid email format.",
+		"minValueMessage": "The min value is: ",
 		"passwordValidator": {
 			"label": "Pick a Password",
 			"suggestions": "Suggestions",

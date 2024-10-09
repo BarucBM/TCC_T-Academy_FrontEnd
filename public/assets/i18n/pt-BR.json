@@ -27,6 +27,7 @@
 	"forms": {
 		"requiredMessage": "Este campo é obrigatório.",
 		"emailFormatMessage": "Formato de e-mail inválido.",
+		"minValueMessage": "O valor mínimo é: ",
 		"passwordValidator": {
 			"label": "Escolha uma senha",
 			"suggestions": "Sugestões",

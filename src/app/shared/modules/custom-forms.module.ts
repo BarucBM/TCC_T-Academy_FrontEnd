@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormErrorComponent } from '../components/form-error/form-error.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [],
@@ -18,8 +19,8 @@ import { FormErrorComponent } from '../components/form-error/form-error.componen
     InputIconModule, 
     IconFieldModule, 
     InputTextModule, 
-    InputMaskModule, 
-    InputTextModule,
+    InputNumberModule,
+    InputMaskModule,
     FloatLabelModule,
     DropdownModule,
     FormsModule,
@@ -31,9 +32,9 @@ import { FormErrorComponent } from '../components/form-error/form-error.componen
     SharedModule, 
     InputIconModule, 
     IconFieldModule, 
-    InputTextModule, 
     InputMaskModule, 
     InputTextModule,
+    InputNumberModule,
     FloatLabelModule,
     DropdownModule,
     FormsModule,
