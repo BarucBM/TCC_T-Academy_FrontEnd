@@ -8,7 +8,6 @@ import { NotFoundComponent } from './features/error/pages/not-found/not-found.co
 import { LoginComponent } from './features/login/pages/login/login.component';
 import { EventAcquisitionComponent } from './features/event-acquisition/pages/event-acquisition.component';
 import { EventsComponent } from './features/events/pages/events/events.component';
-import { CartPageComponent } from './features/cart/pages/cart-page/cart-page.component';
 
 export const routes: Routes = [
     {
@@ -21,8 +20,8 @@ export const routes: Routes = [
         component: AuthLayoutComponent,
         children: [
             {
-              path: 'login',
-              component: LoginComponent
+                path: 'login',
+                component: LoginComponent
             },
             {
                 path: 'register',
@@ -44,8 +43,19 @@ export const routes: Routes = [
                 component: EventAcquisitionComponent
             },
             {
-                path:'events',
+                path: 'events',
                 component: EventsComponent
+            },
+            {
+                path: 'create-event',
+                component: CreateEventComponent,
+                children: [
+                    { path: 'information', component: FormStepBasicComponent },
+                    { path: 'address', component: FormStepAddressComponent },
+                    { path: 'tickets', component: FormStepTicketsComponent },
+                    { path: 'confirmation', component: FormStepConfirmationComponent },
+                    { path: '', redirectTo: 'information', pathMatch: 'full' }
+                ]
             },
             {
                 path:'cart',

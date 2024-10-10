@@ -5,6 +5,8 @@ import { LoginFormComponent } from '../../components/login-form/login-form.compo
 import { EventService } from '../../../../core/services/event.service';
 import { Event } from '../../../../core/models/event.model';
 
+declare var google: any;
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -12,7 +14,10 @@ import { Event } from '../../../../core/models/event.model';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
-  
+
+export class LoginComponent implements OnInit{
+  ngOnInit(): void {
+    
+  }
 }
 

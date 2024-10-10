@@ -22,7 +22,20 @@ export class EventsComponent implements OnInit {
     startTime:null,
     endTime:null,
     createdAt:null,
-    location:'',
+    freeEntry: false,
+    ticketUnitPrice: 0,
+    ticketTax: 0,
+    address: {
+      fullAddress: '',
+      city: '',
+      country: '',
+      latitude: '',
+      longitude: '',
+      postalCode: '',
+      state: '',
+      streetName: '',
+      streetNumber: ''
+    },
     description:'',
     weatherImpact:false
   };
@@ -45,7 +58,7 @@ export class EventsComponent implements OnInit {
 
   filterSubmit(event:any){
     this.params.title = event.title
-    this.params.location = event.location
+    // this.params.location = event.location
     this.params.description = event.description
     this.params.startTime = event.dates == null ?
       null :

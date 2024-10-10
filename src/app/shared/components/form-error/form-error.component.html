@@ -1,0 +1,5 @@
+<div *ngIf="control?.invalid && control?.touched" class="form-error">
+  <div *ngIf="control?.hasError('required')">{{ 'forms.requiredMessage' | translate}}</div>
+  <div *ngIf="control?.hasError('email')">{{ 'forms.emailFormatMessage' | translate}}</div>
+  <div *ngIf="control?.hasError('min')">{{ 'forms.minValueMessage' | translate}} {{ control?.getError('min')?.min }}</div>
+</div>
