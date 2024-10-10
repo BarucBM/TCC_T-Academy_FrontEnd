@@ -89,7 +89,7 @@ html[data-theme='dark'] {
     .page-bg {
         background-color: #18181b;
     }
-    
+
     .main-bg {
         background-color: #1e1e22;
     }
@@ -100,6 +100,7 @@ html[data-theme='dark'] {
     border-radius: 32px;
     width: 10rem;
     height: 3rem;
+    box-shadow: none;
 }
 
 .border-filter input:hover{

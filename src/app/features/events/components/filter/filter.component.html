@@ -1,7 +1,7 @@
 <div class=" text-color w-full h-full  align-items-center justify-content-around ">
     <div class="w-full h-full flex flex-column align-items-center justify-content-center gap-2">
         <form [formGroup]="formFilter" (ngSubmit)="onSubmit()" 
-        class="flex w-max flex-row align-items-center  w-full  surface-0 borda">
+        class="flex w-max flex-column lg:flex-row align-items-center w-full surface-0 borda shadow-2">
             <div class="border-filter">
                 <p-floatLabel >
                     <input pInputText class="w-10rem "  id="title" formControlName="title" />
@@ -14,7 +14,7 @@
                     formControlName="dates"
                     selectionMode="range" 
                     [iconDisplay]="'input'" 
-                    [showIcon]="true" 
+                    [showIcon]="true"
                     inputId="icondisplay" />
                     <label class="" for="title">{{'events.date'| translate }}</label>
                 </p-floatLabel>

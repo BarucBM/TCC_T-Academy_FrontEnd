@@ -9,13 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WeatherCardComponent } from "../../../shared/components/weather-card/weather-card.component";
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../../shared/modules/shared.module';
+import { CardModule } from 'primeng/card';
 
 
 
 @Component({
   selector: 'app-event-acquisition',
   standalone: true,
-  imports: [TicketSelectionComponent, SidebarModule, SideBarComponent, WeatherCardComponent, CommonModule, SharedModule],
+  imports: [TicketSelectionComponent, SidebarModule, SideBarComponent, WeatherCardComponent, CommonModule, SharedModule, CardModule],
   templateUrl: './event-acquisition.component.html',
   styleUrl: './event-acquisition.component.scss'
 })

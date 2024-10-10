@@ -1,12 +1,12 @@
 <section class=" w-full h-full padding border-round-lg ">
     <div class="w-full h-full gap-2 border-round-lg  "> 
-        <div class="sticky top-0 w-full h-7rem surface-100 border-round-lg border-2">
+        <p-card class="sticky top-0 w-full h-7rem surface-100 border-round-lg">               
             <filter-component class="" (emitter)="filterSubmit($event)" ></filter-component>
-        </div> 
+        </p-card>
         <div class=" hide-scrollbar  overflow-auto  h-full flex flex-column px-5 py-2 gap-3 ">  
-            <div  *ngFor="let event of events">
+            <p-card  *ngFor="let event of events">
                 <event-component class=" " [event]="event"></event-component>
-            </div>
+            </p-card>
         </div>
     </div>  
 </section>
