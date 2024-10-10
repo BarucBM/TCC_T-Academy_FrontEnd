@@ -4,11 +4,12 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
+import { SharedModule } from "../../../../shared/modules/shared.module";
 
 @Component({
   selector: 'filter-component',
   standalone: true,
-  imports: [FloatLabelModule, FormsModule, InputTextModule, ButtonModule, ReactiveFormsModule, CalendarModule ],
+  imports: [FloatLabelModule, FormsModule, InputTextModule, ButtonModule, ReactiveFormsModule, CalendarModule, SharedModule ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss'
 })

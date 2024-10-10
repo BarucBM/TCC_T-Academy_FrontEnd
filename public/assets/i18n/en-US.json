@@ -132,5 +132,13 @@
 		"notifications": {
 			"title": "Notifications"
 		}
+	},
+	"events":{
+		"search":"Search",
+		"date": "Date",
+		"submit":"Submit",
+		"buy": "Buy tickets",
+		"available": "tickets available",
+		"access":"Click to access!"
 	}
 }

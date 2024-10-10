@@ -94,3 +94,21 @@ html[data-theme='dark'] {
         background-color: #1e1e22;
     }
 }
+
+.border-filter input{
+    border: none;
+    border-radius: 32px;
+    width: 10rem;
+    height: 3rem;
+    box-shadow: none;
+}
+
+.border-filter input:hover{
+    background-color:#8f8f8f ;
+}
+
+.p-divider.p-divider-horizontal::before {
+    border-top: 2px;
+    border-color: var(--surface-600);
+    border-top-style: solid;
+}
