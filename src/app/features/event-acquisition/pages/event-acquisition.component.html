@@ -20,7 +20,8 @@
             <div class="w-min ">
                 <app-weather-card class="h-10rem"></app-weather-card>
                 <div class="w-full h-full">
-                    <p class="my-3 mx-0">{{event.location}}, {{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}  </p>
+                    <p class="my-3 mx-0">{{event.address.city}}, {{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}  </p>
+                    <p>event.time</p>
                 </div>
 
             </div>

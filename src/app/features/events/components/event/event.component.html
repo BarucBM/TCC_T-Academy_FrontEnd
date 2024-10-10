@@ -7,7 +7,7 @@
         <div class="pt-3 flex flex-column">
             <h2>{{event.title}}</h2>
             <p class="m-2">{{event.description}}</p>
-            <p class="m-2">{{event.location}}, {{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}  </p>
+            <p class="m-2">{{event.address.city}}, {{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}  </p>
         </div>
         <div class="pb-2 pr-3 absolute right-0 h-full align-content-center">
             <p class="mb-1"> 0 {{'events.available' | translate}}</p>

@@ -7,18 +7,14 @@
           <input type="text" pInputText formControlName="name" class="w-full" />
           <label for="name">{{ 'forms.company.name' | translate}}</label>
         </p-floatLabel>
-        <div class="form-error" *ngIf="companyForm.get('company.name')?.hasError('required') && companyForm.get('company.name')?.touched">
-          {{ 'forms.company.name' | translate}} {{ 'forms.requiredMessage' | translate}}
-        </div>
+        <app-form-error [control]="companyForm.get('company.name')!" />
       </div>
       <div class="col-6">
         <p-floatLabel>
           <input type="text" pInputText formControlName="phone" class="w-full" />
           <label for="phone">{{ 'forms.company.phone' | translate}}</label>
         </p-floatLabel>
-        <div class="form-error" *ngIf="companyForm.get('company.phone')?.hasError('required') && companyForm.get('company.phone')?.touched">
-          {{ 'forms.company.phone' | translate}} {{ 'forms.requiredMessage' | translate}}
-        </div>
+        <app-form-error [control]="companyForm.get('company.phone')!" />
       </div>
     </div>
     <div class="mt-4">
@@ -26,18 +22,14 @@
         <input type="text" pInputText formControlName="address" class="w-full" />
         <label for="address">{{ 'forms.company.address' | translate}}</label>
       </p-floatLabel>
-      <div class="form-error" *ngIf="companyForm.get('company.address')?.hasError('required') && companyForm.get('company.address')?.touched">
-        {{ 'forms.company.address' | translate}} {{ 'forms.requiredMessage' | translate}}
-      </div>
+      <app-form-error [control]="companyForm.get('company.address')!" />
     </div>
     <div class="mt-4">
       <p-floatLabel>
         <input type="text" pInputText formControlName="duns" class="w-full" />
         <label for="duns">D.U.N.S</label>
       </p-floatLabel>
-      <div class="form-error" *ngIf="companyForm.get('company.duns')?.hasError('required') && companyForm.get('company.duns')?.touched">
-        D.U.N.S {{ 'forms.requiredMessage' | translate}}
-      </div>
+      <app-form-error [control]="companyForm.get('company.duns')!" />
     </div>
   </div>
 
@@ -48,12 +40,7 @@
         <input type="text" pInputText formControlName="email" class="w-full" />
         <label for="email">{{ 'forms.user.email' | translate}}</label>
       </p-floatLabel>
-      <div class="form-error" *ngIf="companyForm.get('user.email')?.hasError('required') && companyForm.get('user.email')?.touched">
-        {{ 'forms.user.email' | translate}} {{ 'forms.requiredMessage' | translate}}
-      </div>
-      <div class="form-error" *ngIf="companyForm.get('user.email')?.hasError('email')">
-        {{ 'forms.emailFormatMessage' | translate}}
-      </div>
+      <app-form-error [control]="companyForm.get('user.email')!" />
     </div>
     <div class="mt-4">
       <p-floatLabel>
@@ -71,9 +58,7 @@
         </p-password>
         <label for="password">{{ 'forms.user.password' | translate}}</label>
       </p-floatLabel>
-      <div class="form-error" *ngIf="companyForm.get('user.password')?.hasError('required') && companyForm.get('user.password')?.touched">
-        {{ 'forms.user.password' | translate}} {{ 'forms.requiredMessage' | translate}}
-      </div>
+      <app-form-error [control]="companyForm.get('user.password')!" />
     </div>
     <div class="mt-4">
       <p-floatLabel>
