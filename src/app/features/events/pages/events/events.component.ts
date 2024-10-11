@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../../../core/services/event.service';
 import { Event } from '../../../../core/models/event.model';
 import { EventComponent } from "../../components/event/event.component";
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { FilterComponent } from "../../components/filter/filter.component";
 import { CardModule } from 'primeng/card';
+import { EventService } from '../../services/event.service';
 
 
 @Component({

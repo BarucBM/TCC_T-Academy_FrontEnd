@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { EventService } from '../../../../core/services/event.service';
 import { SharedModule } from '../../../../shared/modules/shared.module';
 import { Router, RouterOutlet } from '@angular/router';
 import { StepsModule } from 'primeng/steps';
 import { CardModule } from 'primeng/card';
 import { EventFormService } from '../../services/event-form.service';
 import { LanguageService } from '../../../../core/services/language.service';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-form',
