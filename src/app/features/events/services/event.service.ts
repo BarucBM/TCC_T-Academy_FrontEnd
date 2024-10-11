@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Event } from '../models/event.model';
 import { HttpParams } from "@angular/common/http";
+import { Event } from '../../../core/models/event.model';
 
 
 @Injectable({

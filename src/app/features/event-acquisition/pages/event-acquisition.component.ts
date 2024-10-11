@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Event } from '../../../core/models/event.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TicketSelectionComponent } from '../components/ticket-selection/ticket-selection.component';
-import { EventService } from '../../../core/services/event.service';
 import { SidebarModule } from 'primeng/sidebar';
 import { SideBarComponent } from "../components/side-bar/side-bar.component";
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,6 +9,7 @@ import { WeatherCardComponent } from "../../../shared/components/weather-card/we
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../../shared/modules/shared.module';
 import { CardModule } from 'primeng/card';
+import { EventService } from '../../events/services/event.service';
 
 
 
