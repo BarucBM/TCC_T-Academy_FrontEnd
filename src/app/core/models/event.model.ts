@@ -14,4 +14,5 @@ export interface Event {
     images?: Image[]
     createdAt?: Date | null
     weatherImpact: boolean
+    
 }
