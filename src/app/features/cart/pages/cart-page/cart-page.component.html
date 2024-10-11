@@ -1,5 +1,13 @@
-<section class="w-full h-screen bg-transparent border-round-lg pb-4 overflow-auto">
+<section class="w-full h-full bg-transparent border-round-lg py-4 overflow-auto">
 
+    <p-card *ngIf="events == null" class="w-full">
+        <span class="m-0 text">Your cart is Empty!</span>
+        <p>Looking for your next plan? Access the explore page.</p>
+    </p-card>
+    <p-card *ngIf="events != null" class="w-full">
+        <h1 class="m-0">Events in you cart:</h1>
+    </p-card>
 
+    
 
 </section>
