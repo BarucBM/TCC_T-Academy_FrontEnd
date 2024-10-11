@@ -5,12 +5,13 @@ import { EventComponent } from "../../components/event/event.component";
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { FilterComponent } from "../../components/filter/filter.component";
+import { CardModule } from 'primeng/card';
 
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [EventComponent, CommonModule, InputTextModule, FilterComponent],
+  imports: [EventComponent, CommonModule, InputTextModule, FilterComponent, CardModule],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss'
 })

@@ -137,6 +137,8 @@
 		"search":"Search",
 		"date": "Date",
 		"submit":"Submit",
-		"buy": "Buy tickets"
+		"buy": "Buy tickets",
+		"available": "tickets available",
+		"access":"Click to access!"
 	}
 }

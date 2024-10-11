@@ -137,7 +137,8 @@
 		"search":"Pesquisar",
 		"date": "Data",
 		"submit":"Buscar",
-		"buy": "Comprar"
-
+		"buy": "Comprar",
+		"available": "ingressos disponíveis",
+		"access":"Clique para acessar!"
 	}
 }

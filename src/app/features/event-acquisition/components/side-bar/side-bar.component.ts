@@ -3,11 +3,12 @@ import { Event } from '../../../../core/models/event.model';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'side-bar',
   standalone: true,
-  imports: [ButtonModule, DividerModule],
+  imports: [ButtonModule, DividerModule, CommonModule],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss'
 })
