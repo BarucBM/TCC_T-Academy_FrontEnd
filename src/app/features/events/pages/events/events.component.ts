@@ -20,8 +20,8 @@ export class EventsComponent implements OnInit {
   params:Event ={
     id : '',
     title :'',   
-    startTime:null,
-    endTime:null,
+    startTime: new Date(),
+    endTime:new Date(),
     createdAt:null,
     freeEntry: false,
     ticketUnitPrice: 0,
