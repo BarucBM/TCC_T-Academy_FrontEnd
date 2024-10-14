@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Event } from '../../../core/models/event.model';
+import { Image } from '../../../core/models/image.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,14 +27,16 @@ export class EventFormService {
     formData.append('title', this.event.title);
     formData.append('description', this.event.description);
     formData.append('freeEntry', this.event.freeEntry.toString());
-    formData.append('ticketUnitPrice', this.event.ticketUnitPrice.toString());
-    formData.append('ticketTax', this.event.ticketTax.toString());
+    formData.append('ticketUnitPrice', this.event.ticketUnitPrice?.toString());
+    formData.append('ticketTax', this.event.ticketTax?.toString());
     formData.append('startTime', this.formatDateToCustomFormat(this.event.startTime!) as string);
     formData.append('endTime', this.formatDateToCustomFormat(this.event.endTime!) as string);
 
     if (this.event.images) {
-      for (let i = 0; i < this.event.images.length; i++) {
-        formData.append('images', this.event.images[i].file);
+      let images = this.event.images as Image[];
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images', images[i].file);
       }
     }
 
@@ -51,7 +54,7 @@ export class EventFormService {
       formData.append('address.latitude', address.latitude);
       formData.append('address.longitude', address.longitude);
     }
-
+    
     this.formComplete.next(formData);
   }
 

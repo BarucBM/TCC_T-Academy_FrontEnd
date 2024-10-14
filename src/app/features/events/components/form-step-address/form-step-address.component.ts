@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { CustomFormsModule } from '../../../../shared/modules/custom-forms.module';
 import { EventFormService } from '../../services/event-form.service';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AddressFormComponent } from "../../../../shared/components/address-form/address-form.component";
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-form-step-address',
@@ -18,15 +18,15 @@ export class FormStepAddressComponent implements OnInit {
 
   constructor(
     public eventFormService: EventFormService,
-    private fb: FormBuilder,
-    private router: Router
+    private parentComponent: FormComponent,
+    private fb: FormBuilder
   ) {
     this.addressForm = this.fb.group({});
   }
 
   ngOnInit(): void {
     if (!this.eventFormService.getEvent()) {
-      this.router.navigateByUrl('create-event')
+      this.parentComponent.stepTo('information');
     }
   }
 
@@ -35,22 +35,22 @@ export class FormStepAddressComponent implements OnInit {
 
     let event = this.eventFormService.getEvent();
 
-    if (event) {     
+    if (event) {
       this.addressForm.patchValue(event.address);
     }
   }
 
   nextPage() {
-    this.addressForm.markAllAsTouched(); 
+    this.addressForm.markAllAsTouched();
     this.addressForm.updateValueAndValidity();
 
     if (this.addressForm.valid) {
       this.eventFormService.event.address = this.addressForm.getRawValue();
-      this.router.navigate(['create-event/tickets']);
+      this.parentComponent.stepTo('tickets');
     }
   }
 
   prevPage() {
-      this.router.navigate(['create-event/information']);
+    this.parentComponent.stepTo('information');
   }
 }

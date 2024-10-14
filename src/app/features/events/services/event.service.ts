@@ -45,6 +45,14 @@ export class EventService {
     return this.http.post<Event>(`${this.url}`, event);
   }
 
+  updateEvent(id: string, event: FormData): Observable<Event> {
+    return this.http.put<Event>(`${this.url}/${id}`, event);
+  }
+
+  deleteEvent(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`);
+  }
+
   dateFormat(date: Date): string[] {
     let month = date.getMonth() + 1 >= 10 ? `${date.getMonth() + 1}` : `0${date.getMonth() + 1}`
     let day = date.getDate() >= 10 ? `${date.getDate()}` : `0${date.getDate()}`
