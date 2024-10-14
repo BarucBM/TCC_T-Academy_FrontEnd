@@ -135,12 +135,25 @@
 			"title": "Notificações"
 		}
 	},
-	"events":{
-		"search":"Pesquisar",
+	"pages": {
+		"error": {
+			"notFound": {
+				"title": "Página Não Encontrada",
+				"text": "A página que você procura pode ter sido removida, ter o seu nome alterado ou estar temporariamente indisponível."
+			},
+			"unauthorized": {
+				"title": "Permissão Negada",
+				"text": "Você não possui permissão para acessar este conteúdo."
+			},
+			"backHomeBtn": "Voltar à Página Inicial"
+		}
+	},
+	"events": {
+		"search": "Pesquisar",
 		"date": "Data",
-		"submit":"Buscar",
+		"submit": "Buscar",
 		"buy": "Comprar",
 		"available": "ingressos disponíveis",
-		"access":"Clique para acessar!"
+		"access": "Clique para acessar!"
 	}
 }

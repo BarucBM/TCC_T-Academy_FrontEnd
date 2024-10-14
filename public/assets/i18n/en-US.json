@@ -61,7 +61,7 @@
 			"phone": "Phone",
 			"address": "Address"
 		},
-		"event" : {
+		"event": {
 			"createFormTitle": "Create new Event",
 			"updateFormTitle": "Update Event",
 			"steps": {
@@ -135,12 +135,25 @@
 			"title": "Notifications"
 		}
 	},
-	"events":{
-		"search":"Search",
+	"pages": {
+		"error": {
+			"notFound": {
+				"title": "Page Not Found",
+				"text": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+			},
+			"unauthorized": {
+				"title": "Permission Denied",
+				"text": "You are not authorized to access this content."
+			},
+			"backHomeBtn": "Back to Home"
+		}
+	},
+	"events": {
+		"search": "Search",
 		"date": "Date",
-		"submit":"Submit",
+		"submit": "Submit",
 		"buy": "Buy tickets",
 		"available": "tickets available",
-		"access":"Click to access!"
+		"access": "Click to access!"
 	}
 }

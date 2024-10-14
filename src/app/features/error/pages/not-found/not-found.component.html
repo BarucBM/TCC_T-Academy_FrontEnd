@@ -1,1 +1,20 @@
-<p>not-found works!</p>
+<div class="h-screen flex flex-column">
+  <nav class="p-4 flex justify-content-between align-items-center">
+    <a routerLink="/home">
+      <img src="assets/images/logo.png" alt="Breeze" width="170" class="show-light">
+      <img src="assets/images/logo-white.png" alt="Breeze" width="170" class="show-dark">
+    </a>
+    <div class="flex align-items-center gap-3">
+      <app-switch-theme></app-switch-theme>
+      <app-language-selector></app-language-selector>
+    </div>
+  </nav>
+  <main class="flex-1 flex flex-column align-items-center justify-content-center mb-8">
+    <img src="assets/images/error-illustration.png" class="w-12 md:w-11 lg:w-6" />
+    <div class="text-center my-4 md:w-8 lg:w-5 px-6">
+      <h1>{{ 'pages.error.notFound.title' | translate }}</h1>
+      <p>{{ 'pages.error.notFound.text' | translate }}</p>
+    </div>
+    <a routerLink="/home" class="p-button font-semibold py-3 px-6 no-underline">{{ 'pages.error.backHomeBtn' | translate }}</a>
+  </main>
+</div>
