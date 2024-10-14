@@ -62,6 +62,8 @@
 			"address": "Endereço"
 		},
 		"event": {
+			"createFormTitle": "Cadastrar novo Evento",
+			"updateFormTitle": "Atualizar Evento",
 			"steps": {
 				"info": {
 					"label": "Informações Básicas",

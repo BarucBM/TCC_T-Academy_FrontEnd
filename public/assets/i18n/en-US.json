@@ -62,6 +62,8 @@
 			"address": "Address"
 		},
 		"event" : {
+			"createFormTitle": "Create new Event",
+			"updateFormTitle": "Update Event",
 			"steps": {
 				"info": {
 					"label": "Basic Info",
