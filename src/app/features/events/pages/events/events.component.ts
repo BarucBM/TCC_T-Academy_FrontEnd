@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../../../core/services/event.service';
 import { Event } from '../../../../core/models/event.model';
 import { EventComponent } from "../../components/event/event.component";
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { FilterComponent } from "../../components/filter/filter.component";
+import { CardModule } from 'primeng/card';
+import { EventService } from '../../services/event.service';
 
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [EventComponent, CommonModule, InputTextModule, FilterComponent],
+  imports: [EventComponent, CommonModule, InputTextModule, FilterComponent, CardModule],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss'
 })
@@ -19,10 +20,23 @@ export class EventsComponent implements OnInit {
   params:Event ={
     id : '',
     title :'',   
-    startTime:null,
-    endTime:null,
+    startTime: new Date(),
+    endTime:new Date(),
     createdAt:null,
-    location:'',
+    freeEntry: false,
+    ticketUnitPrice: 0,
+    ticketTax: 0,
+    address: {
+      fullAddress: '',
+      city: '',
+      country: '',
+      latitude: '',
+      longitude: '',
+      postalCode: '',
+      state: '',
+      streetName: '',
+      streetNumber: ''
+    },
     description:'',
     weatherImpact:false
   };
@@ -45,7 +59,7 @@ export class EventsComponent implements OnInit {
 
   filterSubmit(event:any){
     this.params.title = event.title
-    this.params.location = event.location
+    // this.params.location = event.location
     this.params.description = event.description
     this.params.startTime = event.dates == null ?
       null :

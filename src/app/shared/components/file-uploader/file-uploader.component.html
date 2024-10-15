@@ -1,0 +1,49 @@
+<p-fileUpload name="{{controlName}}" maxFileSize="{{maxFileSize}}" (onSelect)="onSelectedFiles($event)" [multiple]="multiple" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" customUpload="true">
+  <ng-template pTemplate="header" let-chooseCallback="chooseCallback">
+    <div class="flex flex-wrap justify-content-between align-items-center flex-1 gap-2">
+      <div class="flex gap-2">
+        <p-button (onClick)="choose($event, chooseCallback)" icon="pi pi-images" [rounded]="true" [outlined]="true" />
+      </div>
+      <p-progressBar [value]="totalSizePercent" [showValue]="false" styleClass="md:w-20rem h-1rem w-full md:ml-auto" [ngClass]="{ 'exceeded-progress-bar': totalSizePercent > 100 }">
+        <span class="white-space-nowrap">{{ totalSize }}B / 1Mb</span>
+      </p-progressBar>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div *ngIf="images.length > 0">
+      <h5>Pending</h5>
+      <div class="flex flex-wrap p-0 sm:p-5 gap-5">
+        <div *ngFor="let image of images;" class="card m-0 px-6 py-2 flex flex-column border-1 surface-border align-items-center gap-3">
+          <div>
+            <img role="presentation" [alt]="image.file.name" [src]="image.url" width="100" height="50" />
+          </div>
+          <span class="font-semibold">{{ image.file.name }}</span>
+          <div>{{ formatSize(image.file.size) }}</div>
+          <p-badge value="{{ 'forms.imageUploader.statusPending' | translate }}" severity="warning" />
+          <p-button icon="pi pi-times" (onClick)="onRemoveImage(image)" [outlined]="true" [rounded]="true" severity="danger" />
+        </div>
+      </div>
+    </div>
+    <div *ngIf="uploadedImages.length > 0">
+      <h5>Completed</h5>
+      <div class="flex flex-wrap p-0 sm:p-5 gap-5">
+        <div *ngFor="let uploadedImage of uploadedImages;" class="card m-0 px-6 flex flex-column border-1 surface-border align-items-center gap-3">
+          <div>
+            <img role="presentation" [alt]="uploadedImage.file.name" [src]="uploadedImage.url" width="100" height="50" />
+          </div>
+          <span class="font-semibold">{{ uploadedImage.file.name }}</span>
+          <div>{{ formatSize(uploadedImage.file.size) }}</div>
+          <p-badge value="{{ 'forms.imageUploader.statusComplete' | translate }}" class="mt-3" severity="success" />
+          <p-button icon="pi pi-times" (onClick)="onRemoveUploadedImage(uploadedImage)" [outlined]="true" [rounded]="true" severity="danger" />
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="file"> </ng-template>
+  <ng-template pTemplate="empty" *ngIf="!images.length && !uploadedImages.length">
+    <div class="flex align-items-center justify-content-center flex-column">
+      <i class="pi pi-cloud-upload border-2 border-circle p-5 text-8xl text-400 border-400"></i>
+      <p class="mt-4 mb-0">{{ 'forms.imageUploader.info' | translate }}</p>
+    </div>
+  </ng-template>
+</p-fileUpload>

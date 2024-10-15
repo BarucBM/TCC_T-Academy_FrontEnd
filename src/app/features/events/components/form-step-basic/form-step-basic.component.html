@@ -1,0 +1,50 @@
+<p-card>
+  <ng-template pTemplate="title">
+    <div class="flex align-items-center gap-2">
+      <i class="material-symbols-rounded text-primary">info</i>
+      {{ 'forms.event.steps.info.title' | translate }}
+    </div>
+  </ng-template>
+  <ng-template pTemplate="subtitle">{{ 'forms.event.steps.info.subtitle' | translate }}</ng-template>
+  <ng-template pTemplate="content">
+    <form [formGroup]="eventForm" class="formgrid grid my-3">
+      <div class="field-col col-12 mb-5">
+        <p-floatLabel>
+          <input type="text" pInputText formControlName="title" />
+          <label for="title">{{ 'forms.event.title' | translate }}</label>
+        </p-floatLabel>
+        <app-form-error [control]="eventForm.get('title')!"></app-form-error>
+      </div>
+      <div class="field-col col-12 mb-5">
+        <p-floatLabel>
+          <textarea type="text" pInputTextarea formControlName="description" rows="4" cols="30"></textarea>
+          <label for="description">{{ 'forms.event.description' | translate }}</label>
+        </p-floatLabel>
+        <app-form-error [control]="eventForm.get('description')!"></app-form-error>
+      </div>
+      <div class="field-col col-12 md:col-6 mb-5">
+        <p-floatLabel>
+          <p-calendar formControlName="startTime" [showTime]="true" hourFormat="24" />
+          <label for="startTime">{{ 'forms.event.startDate' | translate }}</label>
+        </p-floatLabel>
+        <app-form-error [control]="eventForm.get('startTime')!"></app-form-error>
+      </div>
+      <div class="field-col col-12 md:col-6 mb-5">
+        <p-floatLabel>
+          <p-calendar formControlName="endTime" [showTime]="true" hourFormat="24" />
+          <label for="endTime">{{ 'forms.event.endDate' | translate }}</label>
+        </p-floatLabel>
+        <app-form-error [control]="eventForm.get('endTime')!"></app-form-error>
+      </div>
+
+      <div class="field-col col-12">
+        <app-file-uploader controlName="images" [uploadedImages]="selectedImages" (imagesSelected)="onSelectedFiles($event)"></app-file-uploader>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="grid grid-nogutter justify-content-end">
+      <p-button label="{{ 'forms.event.steps.nextBtnLabel' | translate }}" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+    </div>
+  </ng-template>
+</p-card>

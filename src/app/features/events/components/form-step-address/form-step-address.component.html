@@ -1,0 +1,20 @@
+<p-card>
+  <ng-template pTemplate="title">
+    <div class="flex align-items-center gap-2">
+      <i class="material-symbols-rounded text-primary">location_on</i>
+      {{ 'forms.event.steps.address.title' | translate }}
+    </div>
+  </ng-template>
+  <ng-template pTemplate="subtitle">{{ 'forms.event.steps.address.subtitle' | translate }}</ng-template>
+  <ng-template pTemplate="content">
+    <div class="mt-3">
+      <app-address-form (addressFormReady)="onAddressFormReady($event)"></app-address-form>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="grid grid-nogutter justify-content-between">
+      <p-button label="{{ 'forms.event.steps.backBtnLabel' | translate }}" (onClick)="prevPage()" icon="pi pi-angle-left"></p-button>
+      <p-button label="{{ 'forms.event.steps.nextBtnLabel' | translate }}" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+    </div>
+  </ng-template>
+</p-card>

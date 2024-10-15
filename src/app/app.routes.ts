@@ -8,6 +8,12 @@ import { NotFoundComponent } from './features/error/pages/not-found/not-found.co
 import { LoginComponent } from './features/login/pages/login/login.component';
 import { EventAcquisitionComponent } from './features/event-acquisition/pages/event-acquisition.component';
 import { EventsComponent } from './features/events/pages/events/events.component';
+import { CreateEventComponent } from './features/events/pages/create-event/create-event.component';
+import { FormStepBasicComponent } from './features/events/components/form-step-basic/form-step-basic.component';
+import { FormStepAddressComponent } from './features/events/components/form-step-address/form-step-address.component';
+import { FormStepConfirmationComponent } from './features/events/components/form-step-confirmation/form-step-confirmation.component';
+import { FormStepTicketsComponent } from './features/events/components/form-step-tickets/form-step-tickets.component';
+import { UpdateEventComponent } from './features/events/pages/update-event/update-event.component';
 
 export const routes: Routes = [
     {
@@ -20,8 +26,8 @@ export const routes: Routes = [
         component: AuthLayoutComponent,
         children: [
             {
-              path: 'login',
-              component: LoginComponent
+                path: 'login',
+                component: LoginComponent
             },
             {
                 path: 'register',
@@ -43,8 +49,30 @@ export const routes: Routes = [
                 component: EventAcquisitionComponent
             },
             {
-                path:'events',
+                path: 'events',
                 component: EventsComponent
+            },
+            {
+                path: 'events/create',
+                component: CreateEventComponent,
+                children: [
+                    { path: 'information', component: FormStepBasicComponent },
+                    { path: 'address', component: FormStepAddressComponent },
+                    { path: 'tickets', component: FormStepTicketsComponent },
+                    { path: 'confirmation', component: FormStepConfirmationComponent },
+                    { path: '', redirectTo: 'information', pathMatch: 'full' }
+                ]
+            },
+            {
+                path: 'events/update/:id',
+                component: UpdateEventComponent,
+                children: [
+                    { path: 'information', component: FormStepBasicComponent },
+                    { path: 'address', component: FormStepAddressComponent },
+                    { path: 'tickets', component: FormStepTicketsComponent },
+                    { path: 'confirmation', component: FormStepConfirmationComponent },
+                    { path: '', redirectTo: 'information', pathMatch: 'full' }
+                ]
             }
         ]
     },

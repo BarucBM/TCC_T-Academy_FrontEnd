@@ -25,8 +25,9 @@
 		"delete": "Remove"
 	},
 	"forms": {
-		"requiredMessage": " is required!",
-		"emailFormatMessage": "Invalid email format",
+		"requiredMessage": "This field is required.",
+		"emailFormatMessage": "Invalid email format.",
+		"minValueMessage": "The min value is: ",
 		"passwordValidator": {
 			"label": "Pick a Password",
 			"suggestions": "Suggestions",
@@ -59,6 +60,61 @@
 			"name": "Company name",
 			"phone": "Phone",
 			"address": "Address"
+		},
+		"event": {
+			"createFormTitle": "Create new Event",
+			"updateFormTitle": "Update Event",
+			"steps": {
+				"info": {
+					"label": "Basic Info",
+					"title": "Event Informations",
+					"subtitle": "Enter your event information"
+				},
+				"address": {
+					"label": "Address",
+					"title": "Address Information",
+					"subtitle": "Enter the address of the event"
+				},
+				"tickets": {
+					"label": "Tickets",
+					"title": "Ticket Information",
+					"subtitle": "Enter the event ticket information"
+				},
+				"confirmation": {
+					"label": "Confirmation",
+					"title": "Confirmation",
+					"subtitle": "Confirm your event information"
+				},
+				"nextBtnLabel": "Next",
+				"backBtnLabel": "Back",
+				"completeBtnLabel": "Complete"
+			},
+			"title": "Title",
+			"description": "Description",
+			"startDate": "Start Date",
+			"endDate": "End Date",
+			"images": "Images",
+			"freeEntry": "Free Entry",
+			"ticketUnitPrice": "Unit Price",
+			"ticketTax": "Tax"
+		},
+		"address": {
+			"address": "Address",
+			"fullAddress": "Full Address",
+			"addressPlaceholder": "Enter your full address",
+			"postalCode": "Postal Code",
+			"streetName": "Street Name",
+			"streetNumber": "Street Number",
+			"addressComplement": "Address Complement",
+			"neighborhood": "Neighborhood",
+			"city": "City",
+			"state": "State",
+			"country": "Country"
+		},
+		"imageUploader": {
+			"info": "Drag and drop files here to upload.",
+			"statusPending": "Pending",
+			"statusComplete": "Complete"
 		}
 	},
 	"navbar": {
@@ -78,5 +134,26 @@
 		"notifications": {
 			"title": "Notifications"
 		}
+	},
+	"pages": {
+		"error": {
+			"notFound": {
+				"title": "Page Not Found",
+				"text": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+			},
+			"unauthorized": {
+				"title": "Permission Denied",
+				"text": "You are not authorized to access this content."
+			},
+			"backHomeBtn": "Back to Home"
+		}
+	},
+	"events": {
+		"search": "Search",
+		"date": "Date",
+		"submit": "Submit",
+		"buy": "Buy tickets",
+		"available": "tickets available",
+		"access": "Click to access!"
 	}
 }

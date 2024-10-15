@@ -1,8 +1,8 @@
-<div class="h-screen flex overflow-hidden w-full page-bg">
+<div class="h-screen flex w-full page-bg">
   <app-sidebar></app-sidebar>
-  <main class="flex flex-column flex-grow-1">
+  <main class="flex flex-column flex-grow-1 overflow-scroll">
     <app-header></app-header>
-    <div class="h-full p-4 mr-3 mb-3 surface-100 border-round-2xl">
+    <div class="flex-1 py-4 px-6 lg:px-8 mr-3 main-bg border-round-2xl">
       <router-outlet></router-outlet>
     </div>
   </main>

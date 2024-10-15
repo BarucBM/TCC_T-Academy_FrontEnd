@@ -10,12 +10,20 @@
 .bg-primary-100 {
     background-color: #2cb2ba !important;
 }
+
 .p-inputnumber-input {
     flex: 1 1 auto;
     width: 2.6rem;
     padding: 0.5rem 0.9rem;
 }
 
+.p-element.p-inputwrapper {
+    width: 100%;
+
+    .p-inputnumber.p-component {
+        width: 100%;
+    }
+}
 
 .text-primary-200 {
     color: #009098 !important;
@@ -63,6 +71,10 @@ html[data-theme='light'] {
     .page-bg {
         background-color: var(--surface-200);
     }
+
+    .main-bg {
+        background-color: var(--surface-100);
+    }
 }
 
 html[data-theme='dark'] {
@@ -77,4 +89,30 @@ html[data-theme='dark'] {
     .page-bg {
         background-color: #18181b;
     }
+
+    .main-bg {
+        background-color: #1e1e22;
+    }
+}
+
+.border-filter input{
+    border: none;
+    border-radius: 32px;
+    width: 10rem;
+    height: 3rem;
+    box-shadow: none;
+}
+
+.border-filter input:hover{
+    background-color:#8f8f8f ;
+}
+
+.p-divider.p-divider-horizontal::before {
+    border-top: 2px;
+    border-color: var(--surface-600);
+    border-top-style: solid;
+}
+
+.search-bar{
+    background-color: var(--surface-ground);
 }

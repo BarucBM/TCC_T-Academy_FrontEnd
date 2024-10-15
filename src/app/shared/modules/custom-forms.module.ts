@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { DropdownModule } from 'primeng/dropdown';
+import { FormErrorComponent } from '../components/form-error/form-error.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [],
@@ -17,26 +19,28 @@ import { DropdownModule } from 'primeng/dropdown';
     InputIconModule, 
     IconFieldModule, 
     InputTextModule, 
-    InputMaskModule, 
-    InputTextModule,
+    InputNumberModule,
+    InputMaskModule,
     FloatLabelModule,
     DropdownModule,
     FormsModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    FormErrorComponent
   ],
   exports: [
     SharedModule, 
     InputIconModule, 
     IconFieldModule, 
-    InputTextModule, 
     InputMaskModule, 
     InputTextModule,
+    InputNumberModule,
     FloatLabelModule,
     DropdownModule,
     FormsModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    FormErrorComponent
   ]
 })
 export class CustomFormsModule { }

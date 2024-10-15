@@ -1,25 +1,18 @@
-export interface Event{
-    id:string | null,
+import { Address } from "./address.model"
+import { Image, ImageResponse } from "./image.model"
 
-    title:string | null,
-
-    startTime:Date | null,
-
-    //tickets:TicketType[],
-
-    endTime:Date | null, 
-
-    createdAt:Date | null,
-
-    location:string | null,
-
-    description:string | null,
-
-    weatherImpact:boolean
+export interface Event {
+    id?: string
+    title: string
+    description: string
+    address: Address
+    startTime: Date
+    endTime: Date
+    freeEntry: boolean
+    ticketUnitPrice: number
+    ticketTax: number
+    images?: Image[] | ImageResponse[]
+    createdAt?: Date | null
+    weatherImpact: boolean
+    
 }
-
-// export interface TicketType{
-//     name:string,
-//     price:number,
-//     descrption:string
-// }

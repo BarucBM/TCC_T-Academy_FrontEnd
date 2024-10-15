@@ -25,8 +25,9 @@
 		"delete": "Remover"
 	},
 	"forms": {
-		"requiredMessage": " é obrigatório!",
-		"emailFormatMessage": "Formato de e-mail inválido",
+		"requiredMessage": "Este campo é obrigatório.",
+		"emailFormatMessage": "Formato de e-mail inválido.",
+		"minValueMessage": "O valor mínimo é: ",
 		"passwordValidator": {
 			"label": "Escolha uma senha",
 			"suggestions": "Sugestões",
@@ -59,6 +60,61 @@
 			"name": "Nome da empresa",
 			"phone": "Telefone",
 			"address": "Endereço"
+		},
+		"event": {
+			"createFormTitle": "Cadastrar novo Evento",
+			"updateFormTitle": "Atualizar Evento",
+			"steps": {
+				"info": {
+					"label": "Informações Básicas",
+					"title": "Informações do Evento",
+					"subtitle": "Insira as informações do evento"
+				},
+				"address": {
+					"label": "Endereço",
+					"title": "Informações do Endereço",
+					"subtitle": "Insira os dados do endereço do evento"
+				},
+				"tickets": {
+					"label": "Ingressos",
+					"title": "Informações de Ingressos",
+					"subtitle": "Insira os dados para os ingressos do evento"
+				},
+				"confirmation": {
+					"label": "Confirmação",
+					"title": "Confirmação",
+					"subtitle": "Confirme os dados que serão cadastrados"
+				},
+				"nextBtnLabel": "Próximo",
+				"backBtnLabel": "Voltar",
+				"completeBtnLabel": "Concluir"
+			},
+			"title": "Título",
+			"description": "Descrição",
+			"startDate": "Data de Início",
+			"endDate": "Data de Término",
+			"images": "Imagens",
+			"freeEntry": "Entrada Gratuita",
+			"ticketUnitPrice": "Preço Unitário",
+			"ticketTax": "Taxa adicional"
+		},
+		"address": {
+			"address": "Endereço",
+			"fullAddress": "Endereço Completo",
+			"addressPlaceholder": "Insira seu endereço completo",
+			"postalCode": "Código Postal",
+			"streetName": "Logradouro",
+			"streetNumber": "Número",
+			"addressComplement": "Complemento adicional",
+			"neighborhood": "Bairro",
+			"city": "Cidade",
+			"state": "Estado",
+			"country": "País"
+		},
+		"imageUploader": {
+			"info": "Arraste e solte arquivos aqui para fazer o upload.",
+			"statusPending": "Pendente",
+			"statusComplete": "Concluído"
 		}
 	},
 	"navbar": {
@@ -78,5 +134,26 @@
 		"notifications": {
 			"title": "Notificações"
 		}
+	},
+	"pages": {
+		"error": {
+			"notFound": {
+				"title": "Página Não Encontrada",
+				"text": "A página que você procura pode ter sido removida, ter o seu nome alterado ou estar temporariamente indisponível."
+			},
+			"unauthorized": {
+				"title": "Permissão Negada",
+				"text": "Você não possui permissão para acessar este conteúdo."
+			},
+			"backHomeBtn": "Voltar à Página Inicial"
+		}
+	},
+	"events": {
+		"search": "Pesquisar",
+		"date": "Data",
+		"submit": "Buscar",
+		"buy": "Comprar",
+		"available": "ingressos disponíveis",
+		"access": "Clique para acessar!"
 	}
 }
