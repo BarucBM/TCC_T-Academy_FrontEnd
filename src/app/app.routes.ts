@@ -8,6 +8,7 @@ import { NotFoundComponent } from './features/error/pages/not-found/not-found.co
 import { LoginComponent } from './features/login/pages/login/login.component';
 import { EventAcquisitionComponent } from './features/event-acquisition/pages/event-acquisition.component';
 import { EventsComponent } from './features/events/pages/events/events.component';
+import { CartPageComponent } from './features/cart/pages/cart-page/cart-page.component';
 import { CreateEventComponent } from './features/events/pages/create-event/create-event.component';
 import { FormStepBasicComponent } from './features/events/components/form-step-basic/form-step-basic.component';
 import { FormStepAddressComponent } from './features/events/components/form-step-address/form-step-address.component';
@@ -64,6 +65,11 @@ export const routes: Routes = [
                 ]
             },
             {
+                path:'cart',
+                component:CartPageComponent
+            },
+            {
+
                 path: 'events/update/:id',
                 component: UpdateEventComponent,
                 children: [
