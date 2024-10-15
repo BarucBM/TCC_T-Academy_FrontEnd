@@ -1,4 +1,5 @@
-import { Customer } from "./customer.model";
+import { Customer } from "../auth/models/customer.model"
+
 
 export interface Cart{
     id?:Number,
