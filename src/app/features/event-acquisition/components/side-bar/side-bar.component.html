@@ -8,15 +8,15 @@
                 <p>{{ticketQt}} x {{event.title}}</p>
             </div>
             <div>
-                <p>Price:</p>
-                <P>ticket.price</P>
+                <p>Total Price:</p>
+                <P>R${{event.ticketUnitPrice * ticketQt}}</P>
             </div>
         </span>
         <div class="background w-full h-10rem ">
 
         </div>
         <div class="flex flex-row justify-content-between my-4">
-            <p>{{event.address.city}}</p>
+            <p>event.address.city</p>
         </div>
         <div class="flex flex-row justify-content-between mb-4">
             <p class="my-3 mx-0">{{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}  </p>

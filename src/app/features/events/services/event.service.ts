@@ -32,8 +32,7 @@ export class EventService {
     } else {
       params.set("endDate", "");
     }
-
-    console.log(params.toString())
+    console.log(params)
     return this.http.get<Event[]>(this.url, { params })
   }
 
@@ -43,6 +42,14 @@ export class EventService {
 
   createEvent(event: FormData): Observable<Event> {
     return this.http.post<Event>(`${this.url}`, event);
+  }
+
+  updateEvent(id: string, event: FormData): Observable<Event> {
+    return this.http.put<Event>(`${this.url}/${id}`, event);
+  }
+
+  deleteEvent(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`);
   }
 
   dateFormat(date: Date): string[] {

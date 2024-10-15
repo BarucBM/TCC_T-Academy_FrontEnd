@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Input,
   OnInit,
   Output,
   ViewChild,
@@ -10,9 +9,9 @@ import {
 import { CustomFormsModule } from '../../modules/custom-forms.module';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Address } from '../../../core/models/address.model';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-address-form',
@@ -52,10 +51,37 @@ export class AddressFormComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.initAutocomplete();
+    this.loadGoogleMapsScript().then(() => {
+      this.initAutocomplete();
+    });
   }
 
+  loadGoogleMapsScript(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`)) {
+        resolve();
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsApiKey}&libraries=places`;
+      script.async = true;
+      script.defer = true;
+      
+      script.onload = () => resolve();
+      script.onerror = (error) => reject(error);
+
+      document.head.appendChild(script);
+    });
+  }
+
+
   initAutocomplete(): void {
+    if (!google?.maps?.places) {
+      console.error('Google Maps API places not available');
+      return;
+    }
+    
     this.autocomplete = new google.maps.places.Autocomplete(
       this.inputField.nativeElement,
       {

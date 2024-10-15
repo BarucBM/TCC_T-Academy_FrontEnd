@@ -20,7 +20,7 @@ export class EventsComponent implements OnInit {
   params:Event ={
     id : '',
     title :'',   
-    startTime:null,
+    startTime: null,
     endTime:null,
     createdAt:null,
     freeEntry: false,
@@ -67,6 +67,8 @@ export class EventsComponent implements OnInit {
     this.params.endTime = event.dates == null ?
       null :
       event.dates[1];
+
+    console.log(event.dates)
     this.getAllEvents()
   }
 }

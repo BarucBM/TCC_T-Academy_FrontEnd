@@ -1,5 +1,5 @@
 import { Address } from "./address.model"
-import { Image } from "./image.model"
+import { Image, ImageResponse } from "./image.model"
 
 export interface Event {
     id?: string
@@ -11,7 +11,7 @@ export interface Event {
     freeEntry: boolean
     ticketUnitPrice: number
     ticketTax: number
-    images?: Image[]
+    images?: Image[] | ImageResponse[]
     createdAt?: Date | null
     weatherImpact: boolean
     
