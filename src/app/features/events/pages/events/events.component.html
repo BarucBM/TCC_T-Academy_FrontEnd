@@ -4,9 +4,9 @@
             <filter-component class="" (emitter)="filterSubmit($event)" ></filter-component>
         </p-card>
         <div class=" hide-scrollbar  overflow-auto  h-full flex flex-column px-5 py-2 gap-3 ">  
-            <p-card  *ngFor="let event of events">
+            <div  *ngFor="let event of events">
                 <event-component class=" " [event]="event"></event-component>
-            </p-card>
+            </div>
         </div>
     </div>  
 </section>

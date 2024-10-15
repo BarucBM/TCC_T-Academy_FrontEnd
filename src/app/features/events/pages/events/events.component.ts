@@ -20,8 +20,8 @@ export class EventsComponent implements OnInit {
   params:Event ={
     id : '',
     title :'',   
-    startTime: new Date(),
-    endTime:new Date(),
+    startTime: null,
+    endTime:null,
     createdAt:null,
     freeEntry: false,
     ticketUnitPrice: 0,
@@ -67,6 +67,8 @@ export class EventsComponent implements OnInit {
     this.params.endTime = event.dates == null ?
       null :
       event.dates[1];
+
+    console.log(event.dates)
     this.getAllEvents()
   }
 }

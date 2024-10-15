@@ -32,7 +32,7 @@ export class EventService {
     } else {
       params.set("endDate", "");
     }
-
+    console.log(params)
     return this.http.get<Event[]>(this.url, { params })
   }
 
