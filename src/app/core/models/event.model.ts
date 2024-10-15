@@ -6,8 +6,8 @@ export interface Event {
     title: string
     description: string
     address: Address
-    startTime: Date
-    endTime: Date
+    startTime: Date | null
+    endTime: Date | null
     freeEntry: boolean
     ticketUnitPrice: number
     ticketTax: number
