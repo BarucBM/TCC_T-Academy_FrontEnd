@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SwitchThemeComponent } from '../../../shared/components/switch-theme/switch-theme.component';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
@@ -7,6 +7,7 @@ import { SharedModule } from '../../../shared/modules/shared.module';
 import { BadgeModule } from 'primeng/badge';
 import { NotificationListComponent } from '../../../shared/components/notification-list/notification-list.component';
 import { UserDropdownComponent } from '../../../shared/components/user-dropdown/user-dropdown.component';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,14 @@ import { UserDropdownComponent } from '../../../shared/components/user-dropdown/
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+  name: string | null = ''
+
+  constructor(private localStorage: LocalStorageService ) {
+  }
+  ngOnInit(): void {
+    this.name = this.localStorage.getItem('username');
+  }
+
 
 }
