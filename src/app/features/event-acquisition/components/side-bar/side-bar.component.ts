@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../../cart/services/cart-service.service';
 
 @Component({
   selector: 'side-bar',
@@ -16,10 +17,12 @@ export class SideBarComponent {
  @Input() ticketQt = 0
  @Input() event!:Event;
 
- constructor(private router:Router){}
+ constructor(private router:Router, private cartService:CartService){}
 
   addToCart(){
-    //To Do: enviar info do evento para o carrinho
+    if (this.event.id != null) {
+      this.cartService.addCartItem(1234, this.event.id,this.ticketQt)
+    }
   }
 
   buyNow(){
