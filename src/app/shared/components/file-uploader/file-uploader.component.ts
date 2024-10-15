@@ -1,10 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { SharedModule } from '../../modules/shared.module';
 import { FileUploadModule } from 'primeng/fileupload';
 import { BadgeModule } from 'primeng/badge';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
+import { Image } from '../../../core/models/image.model';
+import { ImageProcessorService } from '../../../core/services/image-processor.service';
 
 @Component({
   selector: 'app-file-uploader',
@@ -13,33 +15,45 @@ import { ToastModule } from 'primeng/toast';
   templateUrl: './file-uploader.component.html',
   styleUrl: './file-uploader.component.scss'
 })
-export class FileUploaderComponent {
-  @Output() filesSelected = new EventEmitter<File[]>();
+export class FileUploaderComponent implements OnInit {
+  @Output() imagesSelected = new EventEmitter<Image[]>();
   @Input() maxFileSize: number = 1000000;
   @Input() controlName: string = 'images';
   @Input() multiple: boolean = true;
-  files: File[] = [];
+  @Input() uploadedImages: Image[] = [];
+  images: Image[] = [];
   totalSize: number = 0;
   totalSizePercent: number = 0;
 
-  constructor(private config: PrimeNGConfig, private messageService: MessageService) { }
+  constructor(private config: PrimeNGConfig, private imageProcessorService: ImageProcessorService, private messageService: MessageService) { }
+
+  ngOnInit(): void {
+    if (this.uploadedImages) {
+      this.uploadedImages.forEach((image) => {
+        this.totalSize += parseInt(this.formatSize(image.file.size));
+      });
+
+      this.totalSizePercent = this.totalSize / 10;
+    }
+  }
 
   onSelectedFiles(event: any) {
-    this.files = event.currentFiles;
-    
-    this.files.forEach((file) => {
-      this.totalSize += parseInt(this.formatSize(file.size));
+    const files: File[] = event.currentFiles;
+    this.images = this.imageProcessorService.createImagesFromFiles(files);
+
+    this.images.forEach((image) => {
+      this.totalSize += parseInt(this.formatSize(image.file.size));
     });
 
-    this.totalSizePercent = (this.totalSize / this.maxFileSize) * 100;
+    this.totalSizePercent = this.totalSize / 10;
 
     if (this.totalSize > this.maxFileSize) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'File size exceeds limit' });
-      this.files = [];
+      this.images = [];
       this.totalSize = 0;
       this.totalSizePercent = 0;
     } else {
-      this.filesSelected.emit(this.files);
+      this.imagesSelected.emit([...this.images, ...this.uploadedImages]);
     }
   }
 
@@ -59,19 +73,24 @@ export class FileUploaderComponent {
     callback();
   }
 
-  onRemoveTemplatingFile(event: any, file: any, removeFileCallback: any, index: any) {
-    removeFileCallback(event, index);
-    this.totalSize -= parseInt(this.formatSize(file.size));
-    this.totalSizePercent = (this.totalSize / this.maxFileSize) * 100;
+  onRemoveImage(image: Image) {
+    const updatedImages = this.images.filter(i => i !== image);
+    this.images = updatedImages;
+    this.imagesSelected.emit([...updatedImages, ...this.uploadedImages]);
+
+    this.removeSize(image.file.size);
   }
 
-  onClearTemplatingUpload(clear: any) {
-    clear();
-    this.totalSize = 0;
-    this.totalSizePercent = 0;
+  onRemoveUploadedImage(image: Image) {
+    const updatedImages = this.uploadedImages.filter(i => i !== image);
+    this.uploadedImages = updatedImages;
+    this.imagesSelected.emit([...updatedImages, ...this.images]);
+
+    this.removeSize(image.file.size);
   }
 
-  uploadEvent(callback: any) {
-    callback();
+  removeSize(size: number) {
+    this.totalSize -= parseInt(this.formatSize(size));
+    this.totalSizePercent = this.totalSize / 10;
   }
 }

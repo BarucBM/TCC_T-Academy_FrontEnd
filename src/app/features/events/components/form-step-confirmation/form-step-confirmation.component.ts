@@ -3,10 +3,10 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { SharedModule } from '../../../../shared/modules/shared.module';
 import { EventFormService } from '../../services/event-form.service';
-import { Router } from '@angular/router';
 import { Event } from '../../../../core/models/event.model';
 import { FieldsetModule } from 'primeng/fieldset';
 import { GalleriaModule } from 'primeng/galleria';
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-form-step-confirmation',
@@ -19,13 +19,13 @@ export class FormStepConfirmationComponent implements OnInit {
   event!: Event;
   responsiveImageOptions: any[] | undefined;
 
-  constructor(public eventFormService: EventFormService, private router: Router) { }
+  constructor(public eventFormService: EventFormService, private parentComponent: FormComponent) { }
 
   ngOnInit() {
     this.event = this.eventFormService.event;
 
     if (!this.event) {
-      this.router.navigateByUrl('create-event')
+      this.parentComponent.stepTo('information');
     }
 
     this.responsiveImageOptions = [
@@ -49,6 +49,6 @@ export class FormStepConfirmationComponent implements OnInit {
   }
 
   prevPage() {
-    this.router.navigate(['create-event/tickets']);
+    this.parentComponent.stepTo('tickets');
   }
 }

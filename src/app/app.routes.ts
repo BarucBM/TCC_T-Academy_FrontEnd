@@ -13,6 +13,7 @@ import { FormStepBasicComponent } from './features/events/components/form-step-b
 import { FormStepAddressComponent } from './features/events/components/form-step-address/form-step-address.component';
 import { FormStepConfirmationComponent } from './features/events/components/form-step-confirmation/form-step-confirmation.component';
 import { FormStepTicketsComponent } from './features/events/components/form-step-tickets/form-step-tickets.component';
+import { UpdateEventComponent } from './features/events/pages/update-event/update-event.component';
 
 export const routes: Routes = [
     {
@@ -52,8 +53,19 @@ export const routes: Routes = [
                 component: EventsComponent
             },
             {
-                path: 'create-event',
+                path: 'events/create',
                 component: CreateEventComponent,
+                children: [
+                    { path: 'information', component: FormStepBasicComponent },
+                    { path: 'address', component: FormStepAddressComponent },
+                    { path: 'tickets', component: FormStepTicketsComponent },
+                    { path: 'confirmation', component: FormStepConfirmationComponent },
+                    { path: '', redirectTo: 'information', pathMatch: 'full' }
+                ]
+            },
+            {
+                path: 'events/update/:id',
+                component: UpdateEventComponent,
                 children: [
                     { path: 'information', component: FormStepBasicComponent },
                     { path: 'address', component: FormStepAddressComponent },

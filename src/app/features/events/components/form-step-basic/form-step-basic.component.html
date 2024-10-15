@@ -38,7 +38,7 @@
       </div>
 
       <div class="field-col col-12">
-        <app-file-uploader controlName="images" (filesSelected)="onSelectedFiles($event)"></app-file-uploader>
+        <app-file-uploader controlName="images" [uploadedImages]="selectedImages" (imagesSelected)="onSelectedFiles($event)"></app-file-uploader>
       </div>
     </form>
   </ng-template>

@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { CustomFormsModule } from '../../../../shared/modules/custom-forms.module';
 import { EventFormService } from '../../services/event-form.service';
-import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
 import { FileUploaderComponent } from '../../../../shared/components/file-uploader/file-uploader.component';
-import { ImageProcessorService } from '../../../../core/services/image-processor.service';
+import { FormComponent } from '../form/form.component';
+import { Image } from '../../../../core/models/image.model';
 
 @Component({
   selector: 'app-form-step-basic',
@@ -20,12 +20,12 @@ import { ImageProcessorService } from '../../../../core/services/image-processor
 })
 export class FormStepBasicComponent implements OnInit {
   eventForm: FormGroup;
+  selectedImages: Image[] = [];
 
   constructor(
     public eventFormService: EventFormService,
-    private imageProcessorService: ImageProcessorService,
-    private fb: FormBuilder,
-    private router: Router
+    private parentComponent: FormComponent,
+    private fb: FormBuilder
   ) {
     this.eventForm = this.fb.group({
       title: new FormControl('', [Validators.required]),
@@ -39,24 +39,27 @@ export class FormStepBasicComponent implements OnInit {
   ngOnInit() {
     let event = this.eventFormService.getEvent();
 
-    if (event) {      
+    if (event) {
       this.eventForm.patchValue(event);
+
+      if (event.images) {
+        this.selectedImages = event.images as Image[];
+        this.eventForm.get('images')?.setValue(this.selectedImages);
+      }
     }
   }
 
-  onSelectedFiles(files: File[]) {   
-    const images = this.imageProcessorService.createImages(files);
-
+  onSelectedFiles(images: Image[]) {
     this.eventForm.patchValue({ images });
   }
 
   nextPage() {
-    this.eventForm.markAllAsTouched(); 
+    this.eventForm.markAllAsTouched();
     this.eventForm.updateValueAndValidity();
 
     if (this.eventForm.valid) {
-      this.eventFormService.event = this.eventForm.value;
-      this.router.navigate(['create-event/address']);
+      this.eventFormService.event = { ...this.eventFormService.event, ...this.eventForm.value };
+      this.parentComponent.stepTo('address');
     }
   }
 }
