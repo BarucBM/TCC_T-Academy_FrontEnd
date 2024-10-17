@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Company, NewCompany } from '../../models/company.model';
 import { NewCustomer } from '../models/new-customer.model';
-import { Customer } from '../models/customer.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createUserCustomer(userCustomerData: NewCustomer): Observable<NewCustomer> {
-    console.log(userCustomerData.customer.name);
-    console.log(userCustomerData.user.email);
+  createUserCustomer(userCustomerData: NewCustomer): Observable<any> {
     return this.httpClient.post<NewCustomer>(`${this.url}/register/customer`, userCustomerData);
   }
 

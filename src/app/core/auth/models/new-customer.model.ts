@@ -1,8 +1,8 @@
 
+import { User } from "../../models/user.model";
 import { Customer } from "./customer.model";
-import { Login } from "./login.model";
 
 export interface NewCustomer {
-    user: Login
+    user: User
     customer: Customer
 }

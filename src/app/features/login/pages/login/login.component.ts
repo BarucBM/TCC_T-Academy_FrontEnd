@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
   private newCustomer: NewCustomer = {
     user: {
       email: '',
-      password: ''
+      role: undefined,
+      googleApiToken: undefined
     },
     customer: {
       name: ''
@@ -42,20 +43,20 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.authState.subscribe((user) => {
       console.log(user)
       this.newCustomer.user.email = user.email;
-      this.newCustomer.user.password = '123';
+      this.newCustomer.user.role = UserRole.CUSTOMER;
+      this.newCustomer.user.googleApiToken = user.authToken;
       this.newCustomer.customer.name = user.name;
       this.register();
       this.localStorage.setItem("username", user.name);
-      this.login();
     });
   }
 
-  login() {
-    this.router.navigate(['/home']);
-  }
-
   register() {
-    this.authService.createUserCustomer(this.newCustomer);
+    this.authService.createUserCustomer(this.newCustomer).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      }
+    });
   }
 }
 
