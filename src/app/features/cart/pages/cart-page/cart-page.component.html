@@ -1,13 +1,24 @@
-<section class="w-full h-full bg-transparent border-round-lg py-4 overflow-auto">
+<section *ngIf="load == true " class="w-full h-full bg-transparent border-round-lg py-4 overflow-auto">
 
-    <p-card *ngIf="events == null" class="w-full">
+    <p-card *ngIf="flag == false" class="w-full">
         <span class="m-0 text">Your cart is Empty!</span>
         <p>Looking for your next plan? Access the explore page.</p>
     </p-card>
-    <p-card *ngIf="events != null" class="w-full">
-        <h1 class="m-0">Events in you cart:</h1>
-    </p-card>
 
+    <div *ngIf="flag == true"
+    class="w-full h-full">
+        <p-card  class="w-full">
+            <h1 class="m-0">Events in you cart:</h1>
+        </p-card>
+        <div *ngFor="let item of cart.cartEvents"
+        class=" my-2 ">
+                <app-cart-items [item]="item" (flag)="reloadPage()"></app-cart-items>
+        </div>
+
+    </div>
     
+ 
+</section>
+<section *ngIf="load == false ">
 
 </section>

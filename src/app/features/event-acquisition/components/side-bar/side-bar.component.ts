@@ -21,7 +21,12 @@ export class SideBarComponent {
 
   addToCart(){
     if (this.event.id != null) {
-      this.cartService.addCartItem(1234, this.event.id,this.ticketQt)
+      this.cartService.addCartItem("74dd6599-97a5-44d0-96b1-4a9eacbcdda8",this.event.id,this.ticketQt).subscribe({
+        next:(res)=>{
+          this.router.navigateByUrl("/cart")
+        },
+        error:(e)=> console.log(e)
+      })
     }
   }
 
