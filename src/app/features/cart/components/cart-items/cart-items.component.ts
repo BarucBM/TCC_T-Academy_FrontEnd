@@ -47,7 +47,7 @@ export class CartItemsComponent implements OnInit {
 
   deleteEvent(){
     if(this.item.id != undefined){
-      this.cartService.deleteCartItem(this.item.id, "74dd6599-97a5-44d0-96b1-4a9eacbcdda8").subscribe({
+      this.cartService.deleteCartItem(this.item.id, "ed8e3635-9889-4814-85e1-c0e4a01a60b8").subscribe({
         next:(res)=>{
           this.flag.emit();
         },

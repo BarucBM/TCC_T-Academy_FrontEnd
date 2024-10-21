@@ -27,7 +27,6 @@ export class CartService {
   }
 
   deleteCartItem(itemId:number, userId:string):Observable<string>{
-    console.log(this.url+"/item/"+itemId+"?customerId=ed8e3635-9889-4814-85e1-c0e4a01a60b8" )
-    return this.http.delete<string>(this.url+"/item/"+itemId+"?customerId=ed8e3635-9889-4814-85e1-c0e4a01a60b8" )
+    return this.http.delete<string>(this.url+"/item/"+itemId+"?customerId="+userId )
   }
 }
