@@ -22,7 +22,8 @@
 	"buttons": {
 		"register": "Register",
 		"save": "Submit",
-		"delete": "Remove"
+		"delete": "Remove",
+		"discoverEvents": "Discover Events"
 	},
 	"forms": {
 		"requiredMessage": "This field is required.",
@@ -115,6 +116,15 @@
 			"info": "Drag and drop files here to upload.",
 			"statusPending": "Pending",
 			"statusComplete": "Complete"
+		},
+		"settings": {
+			"title": "App Settings",
+			"subtitle": "Customize your experience.",
+			"language": "Language",
+			"theme": "Theme",
+			"themeLight": "Light",
+			"themeDark": "Dark",
+			"btnClose": "Close"
 		}
 	},
 	"navbar": {
@@ -146,7 +156,8 @@
 				"text": "You are not authorized to access this content."
 			},
 			"backHomeBtn": "Back to Home"
-		}
+		},
+		"emptyMessage": "No data found!"
 	},
 	"events": {
 		"search": "Search",
@@ -154,6 +165,23 @@
 		"submit": "Submit",
 		"buy": "Buy tickets",
 		"available": "tickets available",
-		"access": "Click to access!"
+		"access": "Click to access!",
+		"sortByDate": {
+			"placeholder": "Order by Date",
+			"ascending": "Ascending date",
+			"descending": "Descending date"
+		},
+		"btnCancel": "Cancel",
+		"btnSeeDetails": "See Details",
+		"btnReview": "Review Now!",
+		"cancelDialog": {
+			"message": "Are you sure that you want to cancel this event?",
+      "header": "Confirmation",
+			"acceptLabel": "Yes",
+      "rejectLabel": "No"
+		}
+	},
+	"messages": {
+		"exploreEvents": "Want to explore new events?"
 	}
 }

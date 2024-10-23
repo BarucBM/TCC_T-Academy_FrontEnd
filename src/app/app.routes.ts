@@ -15,6 +15,7 @@ import { FormStepAddressComponent } from './features/events/components/form-step
 import { FormStepConfirmationComponent } from './features/events/components/form-step-confirmation/form-step-confirmation.component';
 import { FormStepTicketsComponent } from './features/events/components/form-step-tickets/form-step-tickets.component';
 import { UpdateEventComponent } from './features/events/pages/update-event/update-event.component';
+import { CustomerEventsComponent } from './features/events/pages/customer-events/customer-events.component';
 
 export const routes: Routes = [
     {
@@ -52,6 +53,10 @@ export const routes: Routes = [
             {
                 path: 'events',
                 component: EventsComponent
+            },
+            {
+                path: 'customer-events',
+                component: CustomerEventsComponent
             },
             {
                 path: 'events/create',

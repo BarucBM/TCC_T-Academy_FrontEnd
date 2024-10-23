@@ -22,7 +22,8 @@
 	"buttons": {
 		"register": "Registrar",
 		"save": "Salvar",
-		"delete": "Remover"
+		"delete": "Remover",
+		"discoverEvents": "Explorar Eventos"
 	},
 	"forms": {
 		"requiredMessage": "Este campo é obrigatório.",
@@ -115,6 +116,15 @@
 			"info": "Arraste e solte arquivos aqui para fazer o upload.",
 			"statusPending": "Pendente",
 			"statusComplete": "Concluído"
+		},
+		"settings": {
+			"title": "Configurações do Sistema",
+			"subtitle": "Customize a sua experiência.",
+			"language": "Idioma",
+			"theme": "Tema",
+			"themeLight": "Claro",
+			"themeDark": "Escuro",
+			"btnClose": "Fechar"
 		}
 	},
 	"navbar": {
@@ -146,7 +156,8 @@
 				"text": "Você não possui permissão para acessar este conteúdo."
 			},
 			"backHomeBtn": "Voltar à Página Inicial"
-		}
+		},
+		"emptyMessage": "Nenhum registro encontrado!"
 	},
 	"events": {
 		"search": "Pesquisar",
@@ -154,6 +165,23 @@
 		"submit": "Buscar",
 		"buy": "Comprar",
 		"available": "ingressos disponíveis",
-		"access": "Clique para acessar!"
+		"access": "Clique para acessar!",
+		"sortByDate": {
+			"placeholder": "Ordenar pela data",
+			"ascending": "Data crescente",
+			"descending": "Data decrescente"
+		},
+		"btnCancel": "Cancelar",
+		"btnSeeDetails": "Visualizar",
+		"btnReview": "Avalie Agora!",
+		"cancelDialog": {
+			"message": "Você tem certeza que deseja cancelar este evento?",
+      "header": "Confirmação",
+			"acceptLabel": "Sim",
+      "rejectLabel": "Não"
+		}
+	},
+	"messages": {
+		"exploreEvents": "Que tal explorar novos eventos?"
 	}
 }

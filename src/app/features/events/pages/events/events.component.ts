@@ -37,8 +37,7 @@ export class EventsComponent implements OnInit {
       streetName: '',
       streetNumber: ''
     },
-    description:'',
-    weatherImpact:false
+    description:''
   };
 
   constructor(private eventService:EventService){}
