@@ -13,6 +13,9 @@ export interface Event {
     ticketTax: number
     images?: Image[] | ImageResponse[]
     createdAt?: Date | null
-    weatherImpact: boolean
-    
+}
+
+export interface CustomerEvent extends Event {
+    customerRating: number
+    acquisitionDate: Date
 }
