@@ -6,13 +6,13 @@ export interface Cart{
 
     customer:Customer,
 
-    item:Item[]
+    cartEvents:Item[]
 }
 
 export interface Item {
-    id?:Number,
+    id?:number,
 
-    eventId:String,
+    eventId:string,
 
     quantity:Number
 }   
