@@ -10,7 +10,11 @@ import { CommonModule } from '@angular/common';
 import { Message } from 'primeng/api';
 import { RippleModule } from 'primeng/ripple';
 import { NotificationService } from '../../../core/services/notification.service';
+import { SuggestionsService } from '../../../core/services/suggestions.service'; 
 import { HttpHeaders } from '@angular/common/http';
+import { LocationService } from '../../../core/services/location.service';
+import { Coordinates } from '../../../core/models/coordinates.model';
+import { EventService } from '../../'; 
 
 type NotificationType = 'suggestions' | 'reminders' | 'weatherChanges';
 
@@ -30,6 +34,7 @@ export class NotificationListComponent implements OnInit {
   };
 
   notifications: any[] = []; 
+  suggestions: string = ''; 
 
   @Input() messages: Message[] = [];
 
@@ -39,10 +44,16 @@ export class NotificationListComponent implements OnInit {
     weatherChanges: 'Atenção: Mudanças no clima previstas para hoje!',
   };
 
-  constructor(private messageService: MessageService, private notificationService: NotificationService) {}
+  constructor(
+    private messageService: MessageService, 
+    private notificationService: NotificationService,
+    private suggestionsService: SuggestionsService ,
+    private locationService: LocationService
+  ) {}
 
   ngOnInit() {
     this.loadNotifications();
+    this.loadSuggestions(); 
   }
 
   loadNotifications() {
@@ -54,6 +65,33 @@ export class NotificationListComponent implements OnInit {
       this.notifications = []; 
     }
   }
+  loadSuggestions() {
+    this.locationService.getCurrentLocation().subscribe(
+      (coordinates: Coordinates) => {
+        const prompt = `Me dê sugestões de eventos próximos para a localização: lat ${coordinates.lat}, lon ${coordinates.lon}`; 
+        
+        this.suggestionsService.getSuggestions(prompt).subscribe(
+          (data: any) => {
+            if (data && data.candidates) {
+              this.suggestions = data.candidates.map((candidate: any) => candidate.content.parts[0].text);
+              this.addMessage('suggestions');
+            } else {
+              console.error('Nenhuma sugestão disponível');
+            }
+          },
+          (error) => {
+            console.error('Erro ao carregar sugestões', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Erro ao obter localização do usuário', error);
+      }
+    );
+  }
+  
+  
+  
 
   toggleNotification(type: NotificationType) {
     this.notificationsEnabled[type] = !this.notificationsEnabled[type];
@@ -81,8 +119,9 @@ export class NotificationListComponent implements OnInit {
   }
 
   addMessage(type: NotificationType) {
+    const messageText = type === 'suggestions' ? this.suggestions : this.predefinedMessages[type]; 
     this.messages = [
-      { severity: this.getSeverity(type), summary: this.predefinedMessages[type] }
+      { severity: this.getSeverity(type), summary: messageText }
     ];
   }
 

@@ -11,7 +11,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-address-form',

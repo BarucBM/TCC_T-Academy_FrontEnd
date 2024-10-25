@@ -1,0 +1,74 @@
+.card {
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      input {
+        margin-right: 0.5rem;
+      }
+    }
+  
+    .message-buttons {
+      margin-top: 1.5rem;
+  
+      p-button {
+        margin-right: 1rem;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  
+    p-messages {
+      margin-top: 1.5rem;
+      .p-message {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  
+  .flex {
+    display: flex;
+    align-items: center;
+  
+    &.flex-column {
+      flex-direction: column;
+    }
+  
+    &.gap-3 {
+      gap: 1rem;
+    }
+  }
+  
+  .text-900 {
+    color: #212121;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .w-12rem {
+    width: 12rem;
+  }
+  
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mr-2 {
+    margin-right: 0.5rem;
+  }
+  

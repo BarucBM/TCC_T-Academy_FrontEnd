@@ -15,6 +15,8 @@ import { FormStepAddressComponent } from './features/events/components/form-step
 import { FormStepConfirmationComponent } from './features/events/components/form-step-confirmation/form-step-confirmation.component';
 import { FormStepTicketsComponent } from './features/events/components/form-step-tickets/form-step-tickets.component';
 import { UpdateEventComponent } from './features/events/pages/update-event/update-event.component';
+import { NotificationComponent } from '././features/notifications/notifications.component';
+
 
 export const routes: Routes = [
     {
@@ -22,6 +24,7 @@ export const routes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
     },
+    
     {
         path: '',
         component: AuthLayoutComponent,
@@ -45,6 +48,8 @@ export const routes: Routes = [
                 path: 'home',
                 component: HomeComponent
             },
+            {   path: 'notifications', 
+                component: NotificationComponent },
             {
                 path: 'event/:id',
                 component: EventAcquisitionComponent
