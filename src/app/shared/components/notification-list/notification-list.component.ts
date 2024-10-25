@@ -67,17 +67,17 @@ export class NotificationListComponent implements OnInit {
   }
   loadSuggestions() {
     this.locationService.getCurrentLocation().subscribe(
-      (coordinates: Coordinates) => {
-        const prompt = `Me dê sugestões de eventos próximos para a localização: lat ${coordinates.lat}, lon ${coordinates.lon}`; 
+      (coordinates) => {
+        const prompt = `Quais são os eventos acontecendo perto de mim nos próximos dias? 
+                        Estou localizado em ${coordinates.lat}, ${coordinates.lon} 
+                        e gostaria de sugestões de eventos atuais ou futuros na área. 
+                        Preferência para eventos culturais, shows, feiras ou exposições. 
+                        O que você recomenda?`;
         
         this.suggestionsService.getSuggestions(prompt).subscribe(
-          (data: any) => {
-            if (data && data.candidates) {
-              this.suggestions = data.candidates.map((candidate: any) => candidate.content.parts[0].text);
-              this.addMessage('suggestions');
-            } else {
-              console.error('Nenhuma sugestão disponível');
-            }
+          (data) => {
+            this.suggestions = data.candidates?.map((candidate: any) => candidate.content.parts[0].text) || [];
+            this.addMessage('suggestions');
           },
           (error) => {
             console.error('Erro ao carregar sugestões', error);
@@ -89,6 +89,7 @@ export class NotificationListComponent implements OnInit {
       }
     );
   }
+  
   
   
   
