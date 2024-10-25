@@ -1,40 +1,45 @@
 import { Component } from '@angular/core';
 import { CustomFormsModule } from '../../../../shared/modules/custom-forms.module';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../core/auth/services/auth.service';
 import { MessageService } from 'primeng/api';
+import { UserRole } from '../../../../core/models/user.model';
+import { SocialUser } from '@abacritt/angularx-social-login';
+import { AddressFormComponent } from '../../../../shared/components/address-form/address-form.component';
+import { NewCustomer } from '../../../../core/models/customer.model';
+import { GoogleAuthComponent } from '../../../../shared/components/google-auth/google-auth.component';
 
 @Component({
   selector: 'app-customer-form',
   standalone: true,
-  imports: [CustomFormsModule],
+  imports: [CustomFormsModule, AddressFormComponent, GoogleAuthComponent],
   templateUrl: './customer-form.component.html',
   styleUrl: './customer-form.component.scss',
 })
 export class CustomerFormComponent {
-  customerForm: FormGroup;
+  customerData: NewCustomer = {
+    customer: {
+      name: '',
+      phone: ''
+    },
+    user: {
+      email: '',
+      password: ''
+    }
+  };
+  addressForm: FormGroup;
+  showUserError: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private messageService: MessageService) {
-    this.customerForm = this.fb.group({
-      // TODO: implement registration with Google
-      // user: this.fb.group({
-      //   login: new FormControl('', [Validators.required]),
-      //   password: new FormControl('', [Validators.required]),
-      //   googleApiToken: new FormControl('', [Validators.required]),
-      //   role: new FormControl(UserRole.CUSTOMER)
-      // }),
-      customer: this.fb.group({
-        name: new FormControl('', [Validators.required]),
-        address: new FormControl('', [Validators.required]),
-        phone: new FormControl(''),
-      })
-    });
+    this.addressForm = this.fb.group({});
   }
 
   handleSubmit(): void {
-    if (this.customerForm.valid) {
-      this.authService.createUserCustomer(this.customerForm.value).subscribe({
+    if (this.customerData.user.hasGoogleAuth && this.addressForm.valid) {
+      this.customerData.customer.address = this.addressForm.getRawValue();
+
+      this.authService.createUserCustomer(this.customerData).subscribe({
         next: (res) => {
           this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User created successfully!' });
           this.router.navigate(["/login"]);
@@ -44,7 +49,21 @@ export class CustomerFormComponent {
         }
       })
     } else {
-      this.customerForm.markAllAsTouched();
+      this.addressForm.markAllAsTouched();
+      this.showUserError = !this.customerData.user.hasGoogleAuth;
     }
+  }
+
+  getUserData(userData: SocialUser) {
+    this.customerData.user.email = userData.email;
+    this.customerData.user.hasGoogleAuth = true;
+    this.customerData.user.role = UserRole.CUSTOMER;
+    this.customerData.customer.name = userData.name;
+
+    this.showUserError = false;
+  }
+
+  onAddressFormReady(addressForm: FormGroup) {
+    this.addressForm = addressForm;
   }
 }

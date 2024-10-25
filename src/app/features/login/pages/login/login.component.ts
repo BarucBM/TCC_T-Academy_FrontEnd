@@ -1,62 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { CustomFormsModule } from '../../../../shared/modules/custom-forms.module';
-import { LoginFormComponent } from '../../components/login-form/login-form.component';
-import { SocialAuthService, GoogleSigninButtonModule, GoogleLoginProvider, GoogleInitOptions } from '@abacritt/angularx-social-login';
-import { HttpClient } from '@angular/common/http';
-import { LocalStorageService } from '../../../../core/services/local-storage.service';
-import { NewCustomer } from '../../../../core/auth/models/new-customer.model';
 import { AuthService } from '../../../../core/auth/services/auth.service';
-import { UserRole } from '../../../../core/models/user.model';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { DividerModule } from 'primeng/divider';
+import { GoogleAuthComponent } from '../../../../shared/components/google-auth/google-auth.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, CustomFormsModule, LoginFormComponent, GoogleSigninButtonModule],
+  imports: [RouterLink, CustomFormsModule, GoogleAuthComponent, InputGroupModule, InputGroupAddonModule, DividerModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
 
-  googleLoginOptions: GoogleInitOptions = {
-    oneTapEnabled: false, // default is true
-    scopes: 'https://www.googleapis.com/auth/calendar.readonly'
-  }; 
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute, private messageService: MessageService) {
+    this.loginForm = this.fb.group({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    });
+  }
 
-  private accessToken = '';
-
-  private newCustomer: NewCustomer = {
-    user: {
-      email: '',
-      role: undefined,
-      googleApiToken: undefined
-    },
-    customer: {
-      name: ''
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/home');
     }
   }
 
-  constructor(private authService: AuthService, private socialAuthService: SocialAuthService, private router: Router, private httpClient: HttpClient, private localStorage: LocalStorageService) { }
-
-  ngOnInit(): void {
-    this.socialAuthService.authState.subscribe((user) => {
-      console.log(user)
-      this.newCustomer.user.email = user.email;
-      this.newCustomer.user.role = UserRole.CUSTOMER;
-      this.newCustomer.user.googleApiToken = user.authToken;
-      this.newCustomer.customer.name = user.name;
-      this.register();
-      this.localStorage.setItem("username", user.name);
-    });
-  }
-
-  register() {
-    this.authService.createUserCustomer(this.newCustomer).subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
-      }
-    });
+  handleLogin(): void {
+    if (this.loginForm.valid) {
+      // this.authService.login(this.loginForm.value).subscribe({
+      //   next: (res: LoginResponse) => {
+      //     this.authService.setAuthToken(res.token);
+      //     this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
+      //   },
+      //   error: () => {
+      //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to login, invalid credentials.' });
+      //   }
+      // })
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
   }
 }
 

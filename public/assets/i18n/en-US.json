@@ -4,11 +4,16 @@
 	},
 	"slogan": "Successful events start with accurate forecasts.",
 	"login": {
-		"title": "Welcome back",
+		"title": "Welcome Back!",
+		"subtitle": "Enter your data or sign in with Google",
 		"haveAccount": "Already have an account?",
 		"logIn": "Log in",
 		"dontHaveAccount": "Not a member yet?",
-		"signUp": "Sign up"
+		"signUp": "Sign up",
+		"form": {
+			"email": "Email",
+			"password": "Password"
+		}
 	},
 	"register": {
 		"title": "Create account",
@@ -17,6 +22,11 @@
 			"label": "Choose your account type",
 			"customer": "Personal",
 			"company": "Corporate"
+		},
+		"customer": {
+			"title": "Create your account via Google",
+			"googleInfo": "You need to get your data from Google",
+			"additionalInformations": "Additional Information"
 		}
 	},
 	"buttons": {

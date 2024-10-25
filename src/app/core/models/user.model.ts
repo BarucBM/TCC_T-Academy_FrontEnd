@@ -3,8 +3,10 @@ export enum UserRole {
   CUSTOMER = 'CUSTOMER',
   COMPANY = 'COMPANY'
 }
+
 export interface User {
   email: string
-  googleApiToken?: string
+  password?: string
+  hasGoogleAuth?: boolean
   role?: UserRole
 }

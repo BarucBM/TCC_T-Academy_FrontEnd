@@ -7,19 +7,34 @@ import { Router } from '@angular/router';
 import { UserRole } from '../../../../core/models/user.model';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
+import { AddressFormComponent } from '../../../../shared/components/address-form/address-form.component';
+import { NewCompany } from '../../../../core/models/company.model';
 
 @Component({
   selector: 'app-company-form',
   standalone: true,
-  imports: [CustomFormsModule, PasswordModule, DividerModule],
+  imports: [CustomFormsModule, PasswordModule, DividerModule, AddressFormComponent],
   templateUrl: './company-form.component.html',
   styleUrl: './company-form.component.scss'
 })
 export class CompanyFormComponent {
+  companyData: NewCompany = {
+    company: {
+      name: '',
+      phone: '',
+      duns: ''
+    },
+    user: {
+      email: ''
+    }
+  };
   companyForm: FormGroup;
+  addressForm: FormGroup;
   showPasswordError: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private messageService: MessageService) {
+    this.addressForm = this.fb.group({});
+
     this.companyForm = this.fb.group({
       user: this.fb.group({
         email: new FormControl('', [Validators.required, Validators.email]),
@@ -29,7 +44,6 @@ export class CompanyFormComponent {
       }),
       company: this.fb.group({
         name: new FormControl('', [Validators.required]),
-        address: new FormControl('', [Validators.required]),
         phone: new FormControl('', [Validators.required]),
         duns: new FormControl('', [Validators.required])
       })
@@ -37,9 +51,11 @@ export class CompanyFormComponent {
   }
 
   handleSubmit(): void {
-    this.checkPasswordMatch();
-    if (this.companyForm.valid && this.checkPasswordMatch()) {
-      this.authService.createUserCompany(this.companyForm.value).subscribe({
+    if (this.checkPasswordMatch() && this.companyForm.valid && this.addressForm.valid) {
+      this.companyData = this.companyForm.value;
+      this.companyData.company.address = this.addressForm.getRawValue();
+      
+      this.authService.createUserCompany(this.companyData).subscribe({
         next: (res) => {
           this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User created successfully!' });
           this.router.navigate(["/login"]);
@@ -50,6 +66,7 @@ export class CompanyFormComponent {
       })
     } else {
       this.companyForm.markAllAsTouched();
+      this.addressForm.markAllAsTouched();
     }
   }
 
@@ -63,5 +80,9 @@ export class CompanyFormComponent {
 
     this.showPasswordError = true;
     return false;
+  }
+
+  onAddressFormReady(addressForm: FormGroup) {
+    this.addressForm = addressForm;
   }
 }

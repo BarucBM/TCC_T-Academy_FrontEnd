@@ -1,2 +1,43 @@
-<asl-google-signin-button type='standard' size='medium'>
-</asl-google-signin-button>
+<div class="h-full flex flex-column justify-content-center md:px-4 lg:px-8">
+  <div class="mb-5">
+    <h1 class="my-1 text-4xl">{{ 'login.title' | translate }}</h1>
+    <p class="text-sm text-color-secondary">{{ 'login.subtitle' | translate }}</p>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+    <div class="grid">
+      <div class="col-12">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <i class="pi pi-user"></i>
+          </p-inputGroupAddon>
+          <input pInputText formControlName="email" placeholder="{{ 'login.form.email' | translate }}" class="w-full" />
+        </p-inputGroup>
+        <app-form-error [control]="loginForm.get('email')!" />
+      </div>
+      <div class="col-12 mt-3">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <i class="pi pi-lock"></i>
+          </p-inputGroupAddon>
+          <input pInputText formControlName="password" placeholder="{{ 'login.form.password' | translate }}" class="w-full" />
+        </p-inputGroup>
+        <app-form-error [control]="loginForm.get('password')!" />
+      </div>
+    </div>
+    <div class="mt-5">
+      <p-button label="Login" type="submit" severity="primary" styleClass="w-full" />
+    </div>
+    <div class="text-sm text-center mt-3">
+      {{ 'login.dontHaveAccount' | translate }}
+      <a class="text-primary hover:text-primary-700" routerLink="/register">{{ 'login.signUp' | translate }}</a>
+    </div>
+  </form>
+
+  <div class="flex flex-column align-items-center">
+    <p-divider align="center" class="my-3 w-full">
+      <span class="text-sm px-1">ou</span>
+    </p-divider>
+    <app-google-auth [btnText]="'signin_with'"></app-google-auth>
+  </div>
+</div>

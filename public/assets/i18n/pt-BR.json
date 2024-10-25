@@ -4,11 +4,16 @@
 	},
 	"slogan": "Eventos bem-sucedidos começam com previsões precisas.",
 	"login": {
-		"title": "Bem-vindo de volta",
+		"title": "Bem-vindo de Volta!",
+		"subtitle": "Insira seus dados ou conecte-se com o Google",
 		"haveAccount": "Já possui uma conta?",
 		"logIn": "Login",
 		"dontHaveAccount": "Ainda não possui uma conta?",
-		"signUp": "Registre-se"
+		"signUp": "Registre-se",
+		"form": {
+			"email": "E-mail",
+			"password": "Senha"
+		}
 	},
 	"register": {
 		"title": "Cadastrar conta",
@@ -17,6 +22,11 @@
 			"label": "Escolha o tipo da sua conta",
 			"customer": "Pessoal",
 			"company": "Empresarial"
+		},
+		"customer": {
+			"title": "Crie sua conta através do Google",
+			"googleInfo": "Você precisa obter seus dados através do Google",
+			"additionalInformations": "Informações Adicionais"
 		}
 	},
 	"buttons": {
