@@ -26,7 +26,8 @@
 		"customer": {
 			"title": "Create your account via Google",
 			"googleInfo": "You need to get your data from Google",
-			"additionalInformations": "Additional Information"
+			"additionalInformations": "Additional Information",
+			"connected": "Connected"
 		}
 	},
 	"buttons": {

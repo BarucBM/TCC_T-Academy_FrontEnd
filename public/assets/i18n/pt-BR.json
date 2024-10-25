@@ -26,7 +26,8 @@
 		"customer": {
 			"title": "Crie sua conta através do Google",
 			"googleInfo": "Você precisa obter seus dados através do Google",
-			"additionalInformations": "Informações Adicionais"
+			"additionalInformations": "Informações Adicionais",
+			"connected": "Conectado"
 		}
 	},
 	"buttons": {

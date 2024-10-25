@@ -9,11 +9,12 @@ import { SocialUser } from '@abacritt/angularx-social-login';
 import { AddressFormComponent } from '../../../../shared/components/address-form/address-form.component';
 import { NewCustomer } from '../../../../core/models/customer.model';
 import { GoogleAuthComponent } from '../../../../shared/components/google-auth/google-auth.component';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-customer-form',
   standalone: true,
-  imports: [CustomFormsModule, AddressFormComponent, GoogleAuthComponent],
+  imports: [CustomFormsModule, AddressFormComponent, GoogleAuthComponent, AvatarModule],
   templateUrl: './customer-form.component.html',
   styleUrl: './customer-form.component.scss',
 })
@@ -28,6 +29,7 @@ export class CustomerFormComponent {
       password: ''
     }
   };
+  userGoogleData?: SocialUser;
   addressForm: FormGroup;
   showUserError: boolean = false;
 
@@ -55,6 +57,7 @@ export class CustomerFormComponent {
   }
 
   getUserData(userData: SocialUser) {
+    this.userGoogleData = userData;
     this.customerData.user.email = userData.email;
     this.customerData.user.hasGoogleAuth = true;
     this.customerData.user.role = UserRole.CUSTOMER;
