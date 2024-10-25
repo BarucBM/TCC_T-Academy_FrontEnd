@@ -14,7 +14,7 @@ import { SuggestionsService } from '../../../core/services/suggestions.service';
 import { HttpHeaders } from '@angular/common/http';
 import { LocationService } from '../../../core/services/location.service';
 import { Coordinates } from '../../../core/models/coordinates.model';
-import { EventService } from '../../'; 
+import { EventService } from '../../../features/events/services/event.service'; 
 
 type NotificationType = 'suggestions' | 'reminders' | 'weatherChanges';
 
