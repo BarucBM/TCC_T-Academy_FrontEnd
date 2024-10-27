@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ImageProcessorService } from '../../../../core/services/image-processor.service';
+import { LanguageService } from '../../../../core/services/language.service';
+import { AuthService } from '../../../../core/auth/services/auth.service';
+import { ImageResponse } from '../../../../core/models/image.model';
+import { Event } from '../../../../core/models/event.model';
+import { Component } from '@angular/core';
 import { TabViewModule } from 'primeng/tabview';
 import { SharedModule } from '../../../../shared/modules/shared.module';
-import { CustomerEvent } from '../../../../core/models/event.model';
 import { EventService } from '../../services/event.service';
 import { MessageService, SelectItem } from 'primeng/api';
 import { EventComponent } from '../../components/event/event.component';
@@ -10,18 +14,14 @@ import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
-import { ImageResponse } from '../../../../core/models/image.model';
-import { ImageProcessorService } from '../../../../core/services/image-processor.service';
-import { LanguageService } from '../../../../core/services/language.service';
 import { DatePipe } from '@angular/common';
 import { RatingModule } from 'primeng/rating';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CustomerEventComponent } from '../../components/customer-event/customer-event.component';
-import { AuthService } from '../../../../core/auth/services/auth.service';
+import { CompanyEventComponent } from '../../components/company-event/company-event.component';
 
 @Component({
-  selector: 'app-customer-events',
+  selector: 'app-company-events',
   standalone: true,
   imports: [
     SharedModule,
@@ -35,14 +35,14 @@ import { AuthService } from '../../../../core/auth/services/auth.service';
     RatingModule,
     RouterLink,
     FormsModule,
-    CustomerEventComponent
+    CompanyEventComponent
   ],
-  templateUrl: './customer-events.component.html',
-  styleUrl: './customer-events.component.scss',
+  templateUrl: './company-events.component.html',
+  styleUrl: './company-events.component.scss',
   providers: [DatePipe]
 })
-export class CustomerEventsComponent implements OnInit {
-  customerEvents: CustomerEvent[] = [];
+export class CompanyEventsComponent {
+  events: Event[] = [];
   sortOptions!: SelectItem[];
 
   constructor(
@@ -50,7 +50,8 @@ export class CustomerEventsComponent implements OnInit {
     private messageService: MessageService,
     private imageProcessorService: ImageProcessorService,
     private languageService: LanguageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -68,7 +69,7 @@ export class CustomerEventsComponent implements OnInit {
   }
 
   getCustomerEvents() {
-    this.eventService.getAllCustomerEvents(this.authService.getUserId()).subscribe({
+    this.eventService.getEventsOfCompany(this.authService.getUserId()).subscribe({
       next: (response) => {
         let events = response;
 
@@ -78,7 +79,7 @@ export class CustomerEventsComponent implements OnInit {
           event.images = this.imageProcessorService.createImagesFromResponse(event.images as ImageResponse[]);
         });
 
-        this.customerEvents = events;
+        this.events = events;
       },
       error: () => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to load your events, please try again later.' })
@@ -88,13 +89,17 @@ export class CustomerEventsComponent implements OnInit {
 
   onSortChange(event: DropdownChangeEvent) {
     if (event.value === 0) {
-      this.customerEvents = [...this.customerEvents].sort((a, b) => a.startTime!.getTime() - b.startTime!.getTime());
+      this.events = [...this.events].sort((a, b) => a.startTime!.getTime() - b.startTime!.getTime());
     } else {
-      this.customerEvents = [...this.customerEvents].sort((a, b) => b.startTime!.getTime() - a.startTime!.getTime());
+      this.events = [...this.events].sort((a, b) => b.startTime!.getTime() - a.startTime!.getTime());
     }
   }
 
-  deleteEvent(eventId: string) {
-    this.customerEvents = this.customerEvents.filter(event => event.id !== eventId);
+  removeEvent(eventId: string) {
+    this.events = this.events.filter(event => event.id !== eventId);
+  }
+
+  openCreatePage() {
+    this.router.navigateByUrl('/events/create');
   }
 }

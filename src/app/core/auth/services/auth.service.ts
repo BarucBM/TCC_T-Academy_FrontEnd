@@ -34,7 +34,7 @@ export class AuthService {
   init() {
     if (this.isLoggedIn()) {
       this.userService.getProfile().subscribe({
-        next: (user) => {          
+        next: (user) => {
           this.userProfile.name = user.name;
           this.userProfile.email = user.email;
           this.userProfile.address = user.address;
@@ -46,7 +46,7 @@ export class AuthService {
           }
         }
       })
-    }    
+    }
   }
 
   createUserCustomer(userCustomerData: NewCustomer): Observable<Customer> {
@@ -71,6 +71,11 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.getAuthToken() != null;
+  }
+
+  getUserId(): string {
+    let token = this.getAuthToken();
+    return token ? jwtDecode<JwtPayload>(token).id : '';
   }
 
   getUserRole(): string {

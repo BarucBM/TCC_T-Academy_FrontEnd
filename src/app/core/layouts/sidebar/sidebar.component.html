@@ -17,11 +17,15 @@
         <i class="material-symbols-rounded">manage_search</i>
         {{ 'navbar.discover' | translate }}
       </a>
-      <a class="sidebar-link" routerLink="customer-events" routerLinkActive="is-active">
+      <a *appHasPermission="'COMPANY'" class="sidebar-link" routerLink="company-events" routerLinkActive="is-active">
+        <i class="material-symbols-rounded">calendar_month</i>
+        {{ 'navbar.manageEvents' | translate }}
+      </a>
+      <a *appHasPermission="'CUSTOMER'" class="sidebar-link" routerLink="customer-events" routerLinkActive="is-active">
         <i class="material-symbols-rounded">calendar_month</i>
         {{ 'navbar.events' | translate }}
       </a>
-      <a class="sidebar-link" routerLink="cart" routerLinkActive="is-active">
+      <a *appHasPermission="'CUSTOMER'" class="sidebar-link" routerLink="cart" routerLinkActive="is-active">
         <i class="material-symbols-rounded">shopping_cart</i>
         {{ 'navbar.cart' | translate }}
       </a>

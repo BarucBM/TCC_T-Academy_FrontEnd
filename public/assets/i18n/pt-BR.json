@@ -144,6 +144,7 @@
 		"home": "Início",
 		"discover": "Explorar",
 		"events": "Meus Eventos",
+		"manageEvents": "Gerenciar Eventos",
 		"cart": "Carrinho",
 		"notifications": "Notificações",
 		"settings": "Configurações",
@@ -184,6 +185,9 @@
 			"descending": "Data decrescente"
 		},
 		"btnCancel": "Cancelar",
+		"btnCreate": "Novo Registro",
+		"btnDelete": "Excluir",
+		"btnUpdate": "Editar",
 		"btnSeeDetails": "Visualizar",
 		"btnReview": "Avalie Agora!",
 		"cancelDialog": {
@@ -191,6 +195,16 @@
       "header": "Confirmação",
 			"acceptLabel": "Sim",
       "rejectLabel": "Não"
+		},
+		"customer": {
+			"title": "Meus Eventos",
+			"tab1": "Eventos Adquiridos",
+			"tab2": "Calendário"
+		},
+		"company": {
+			"title": "Eventos Cadastrados",
+			"tab1": "Gerenciar Eventos",
+			"tab2": "Calendário"
 		}
 	},
 	"messages": {

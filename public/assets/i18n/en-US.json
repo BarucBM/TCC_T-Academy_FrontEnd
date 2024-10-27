@@ -144,6 +144,7 @@
 		"home": "Home",
 		"discover": "Discover",
 		"events": "My Events",
+		"manageEvents": "Manage Events",
 		"cart": "Cart",
 		"notifications": "Notifications",
 		"settings": "Settings",
@@ -184,6 +185,9 @@
 			"descending": "Descending date"
 		},
 		"btnCancel": "Cancel",
+		"btnCreate": "New Event",
+		"btnDelete": "Delete",
+		"btnUpdate": "Update",
 		"btnSeeDetails": "See Details",
 		"btnReview": "Review Now!",
 		"cancelDialog": {
@@ -191,6 +195,16 @@
       "header": "Confirmation",
 			"acceptLabel": "Yes",
       "rejectLabel": "No"
+		},
+		"customer": {
+			"title": "My Events",
+			"tab1": "Purchased Events",
+			"tab2": "Calendar"
+		},
+		"company": {
+			"title": "Registered Events",
+			"tab1": "Manage Events",
+			"tab2": "Calendar"
 		}
 	},
 	"messages": {

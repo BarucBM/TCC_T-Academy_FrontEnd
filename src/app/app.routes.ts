@@ -19,6 +19,7 @@ import { CustomerEventsComponent } from './features/events/pages/customer-events
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 import { UserRole } from './core/models/user.model';
+import { CompanyEventsComponent } from './features/events/pages/company-events/company-events.component';
 
 export const routes: Routes = [
     {
@@ -63,6 +64,11 @@ export const routes: Routes = [
                 data: { roles: [UserRole.CUSTOMER] }
             },
             {
+                path: 'company-events',
+                component: CompanyEventsComponent,
+                data: { roles: [UserRole.COMPANY] }
+            },
+            {
                 path: 'events/create',
                 component: CreateEventComponent,
                 children: [
@@ -76,7 +82,8 @@ export const routes: Routes = [
             },
             {
                 path: 'cart',
-                component: CartPageComponent
+                component: CartPageComponent,
+                data: { roles: [UserRole.CUSTOMER] }
             },
             {
                 path: 'events/update/:id',

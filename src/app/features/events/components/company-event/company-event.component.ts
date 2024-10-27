@@ -1,21 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CustomerEvent, Event } from '../../../../core/models/event.model';
+import { Event } from '../../../../core/models/event.model';
+import { EventService } from '../../services/event.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { AuthService } from '../../../../core/auth/services/auth.service';
+import { LanguageService } from '../../../../core/services/language.service';
+import { DatePipe } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 import { SharedModule } from '../../../../shared/modules/shared.module';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import { RatingModule } from 'primeng/rating';
-import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
-import { EventService } from '../../services/event.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { LanguageService } from '../../../../core/services/language.service';
-import { AuthService } from '../../../../core/auth/services/auth.service';
 
 @Component({
-  selector: 'app-customer-event',
+  selector: 'app-company-event',
   standalone: true,
   imports: [
     SharedModule,
@@ -27,13 +27,13 @@ import { AuthService } from '../../../../core/auth/services/auth.service';
     RouterLink,
     FormsModule
   ],
-  templateUrl: './customer-event.component.html',
-  styleUrl: './customer-event.component.scss',
+  templateUrl: './company-event.component.html',
+  styleUrl: './company-event.component.scss',
   providers: [DatePipe]
 })
-export class CustomerEventComponent {
-  @Input() event!: CustomerEvent
-  @Output() deleteEvent = new EventEmitter<string>();
+export class CompanyEventComponent {
+  @Input() event!: Event;
+  @Output() removeEvent = new EventEmitter<string>();
 
   constructor(
     private eventService: EventService,
@@ -65,7 +65,11 @@ export class CustomerEventComponent {
     this.router.navigateByUrl('event/' + this.event.id)
   }
 
-  async cancelEvent(e: any) {
+  openUpdatePage() {
+    this.router.navigateByUrl('events/update/' + this.event.id)
+  }
+
+  async deleteEvent(e: any) {
     let translations = await this.languageService.getTranslations();
 
     this.confirmationService.confirm({
@@ -81,21 +85,18 @@ export class CustomerEventComponent {
       accept: () => {
         let userId = this.authService.getUserId();
 
-        this.eventService.cancelEvent(userId, this.event.id!).subscribe({
-          next: () => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Event successfully cancelled!' });
-            this.deleteEvent.emit(this.event.id!);
-          },
-          error: () => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to cancel event, please try again later.' });
-          }
-        });
+        // TODO: implement event removal
+        // this.eventService.cancelEvent(userId, this.event.id!).subscribe({
+        //   next: () => {
+        //     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Event successfully deleted!' });
+        //     this.removeEvent.emit(this.event.id!);
+        //   },
+        //   error: () => {
+        //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to delete event, please try again later.' });
+        //   }
+        // });
       }
     });
-  }
-
-  rateEvent(stars: number) {
-    this.eventService.rateEvent(this.event.id!, stars).subscribe();
   }
 
   getThumbnailImage(images: any): string {

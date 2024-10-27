@@ -5,7 +5,7 @@
   </div>
 
   <p-tabView>
-    <p-tabPanel header="Purchased Events">
+    <p-tabPanel header="{{ 'events.customer.tab1' | translate }}">
       <p-dataView #dv [value]="customerEvents" layout="list">
         <ng-template pTemplate="empty">
           <div class="flex flex-column gap-5">
@@ -28,7 +28,7 @@
         </ng-template>
       </p-dataView>
     </p-tabPanel>
-    <p-tabPanel header="Calendar">
+    <p-tabPanel header="{{ 'events.customer.tab2' | translate }}">
       <!-- TODO: add calendar view -->
     </p-tabPanel>
   </p-tabView>
