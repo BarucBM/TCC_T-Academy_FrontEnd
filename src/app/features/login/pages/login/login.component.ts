@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.value).subscribe({
         next: (res: LoginResponse) => {
           this.authService.setAuthToken(res.token);
+          this.authService.setRefreshToken(res.refreshToken);
           this.authService.init();
           this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
         },
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginGoogle(userData.email).subscribe({
       next: (res: LoginResponse) => {
         this.authService.setAuthToken(res.token);
+        this.authService.setRefreshToken(res.refreshToken);
         this.authService.init();
         this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
       },
