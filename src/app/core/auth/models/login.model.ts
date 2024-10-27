@@ -5,4 +5,5 @@ export interface Login {
 
 export interface LoginResponse {
   token: string
+  refreshToken: string
 }

@@ -33,6 +33,7 @@ export class SidebarComponent {
     this.authService.logout().subscribe({
       next: () => {
         this.authService.removeAuthToken();
+        this.authService.removeRefreshToken();
         this.router.navigateByUrl('login');
       }
     });

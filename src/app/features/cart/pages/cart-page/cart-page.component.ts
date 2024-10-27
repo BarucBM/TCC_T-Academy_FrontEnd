@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart-service.service';
 import { Cart } from '../../../../core/models/cart.model';
 import { CartItemsComponent } from '../../components/cart-items/cart-items.component';
+import { AuthService } from '../../../../core/auth/services/auth.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -19,10 +20,10 @@ export class CartPageComponent implements OnInit {
   flag:boolean = false
   load:boolean = false
 
-  constructor(private cartService:CartService){}
+  constructor(private cartService:CartService, private authService: AuthService){}
 
   ngOnInit(): void {
-    this.cartService.getCustomerCart("74dd6599-97a5-44d0-96b1-4a9eacbcdda8").subscribe({
+    this.cartService.getCustomerCart(this.authService.getUserId()).subscribe({
       next:(response)=>{
         this.cart = response;
         if (this.cart.cartEvents.length > 0){

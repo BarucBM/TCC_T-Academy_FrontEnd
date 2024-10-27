@@ -19,6 +19,7 @@ import { UserService } from '../../../features/user/services/user.service';
 export class AuthService {
   private url: string = "http://localhost:8080/auth";
   private authTokenKey: string = "auth-token";
+  private refreshTokenKey: string = "refresh-token";
   userProfile: UserProfile = {
     name: '',
     email: ''
@@ -69,6 +70,10 @@ export class AuthService {
     return this.httpClient.post<string>(`${this.url}/logout`, null);
   }
 
+  refreshToken(refreshToken: string): Observable<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(`${this.url}/refresh-token`, { refreshToken });
+  }
+
   isLoggedIn(): boolean {
     return this.getAuthToken() != null;
   }
@@ -93,5 +98,17 @@ export class AuthService {
 
   removeAuthToken() {
     this.localStorage.removeItem(this.authTokenKey);
+  }
+
+  getRefreshToken(): string | null {
+    return this.localStorage.getItem(this.refreshTokenKey);
+  }
+
+  setRefreshToken(token: string): void {
+    this.localStorage.setItem(this.refreshTokenKey, token);
+  }
+
+  removeRefreshToken() {
+    this.localStorage.removeItem(this.refreshTokenKey);
   }
 }
