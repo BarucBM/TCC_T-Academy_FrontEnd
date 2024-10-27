@@ -1,15 +1,16 @@
+import { Address } from "./address.model"
 import { User } from "./user.model"
 
 export interface Company {
   id?: string
-  user?: User
+  user?: User<Company>
   name: string
-  address: string
+  address?: Address
   phone: string
   duns: string
 }
 
 export interface NewCompany {
-  user: User
+  user: User<Company>
   company: Company
 }

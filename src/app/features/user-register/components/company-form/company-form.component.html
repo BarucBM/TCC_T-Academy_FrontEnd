@@ -1,6 +1,6 @@
 <form [formGroup]="companyForm" (ngSubmit)="handleSubmit()">
   <div formGroupName="company" class="mb-6">
-    <h2 class="text-lg mb-4">{{ 'forms.company.label' | translate }}</h2>
+    <h2 class="text-lg mb-5">{{ 'forms.company.label' | translate }}</h2>
     <div class="grid">
       <div class="col-6">
         <p-floatLabel>
@@ -19,22 +19,18 @@
     </div>
     <div class="mt-4">
       <p-floatLabel>
-        <input type="text" pInputText formControlName="address" class="w-full" />
-        <label for="address">{{ 'forms.company.address' | translate}}</label>
-      </p-floatLabel>
-      <app-form-error [control]="companyForm.get('company.address')!" />
-    </div>
-    <div class="mt-4">
-      <p-floatLabel>
         <input type="text" pInputText formControlName="duns" class="w-full" />
         <label for="duns">D.U.N.S</label>
       </p-floatLabel>
       <app-form-error [control]="companyForm.get('company.duns')!" />
     </div>
+    <div class="mt-5">
+      <app-address-form (addressFormReady)="onAddressFormReady($event)"></app-address-form>
+    </div>
   </div>
 
   <div formGroupName="user" class="mb-6">
-    <h2 class="text-lg mb-4">{{ 'forms.user.label' | translate }}</h2>
+    <h2 class="text-lg mb-5">{{ 'forms.user.label' | translate }}</h2>
     <div class="mt-4">
       <p-floatLabel>
         <input type="text" pInputText formControlName="email" class="w-full" />

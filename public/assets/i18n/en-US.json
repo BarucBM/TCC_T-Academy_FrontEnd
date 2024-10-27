@@ -4,11 +4,16 @@
 	},
 	"slogan": "Successful events start with accurate forecasts.",
 	"login": {
-		"title": "Welcome back",
+		"title": "Welcome Back!",
+		"subtitle": "Enter your data or sign in with Google",
 		"haveAccount": "Already have an account?",
 		"logIn": "Log in",
 		"dontHaveAccount": "Not a member yet?",
-		"signUp": "Sign up"
+		"signUp": "Sign up",
+		"form": {
+			"email": "Email",
+			"password": "Password"
+		}
 	},
 	"register": {
 		"title": "Create account",
@@ -17,6 +22,12 @@
 			"label": "Choose your account type",
 			"customer": "Personal",
 			"company": "Corporate"
+		},
+		"customer": {
+			"title": "Create your account via Google",
+			"googleInfo": "You need to get your data from Google",
+			"additionalInformations": "Additional Information",
+			"connected": "Connected"
 		}
 	},
 	"buttons": {
@@ -133,6 +144,7 @@
 		"home": "Home",
 		"discover": "Discover",
 		"events": "My Events",
+		"manageEvents": "Manage Events",
 		"cart": "Cart",
 		"notifications": "Notifications",
 		"settings": "Settings",
@@ -141,6 +153,7 @@
 	"header": {
 		"hello": "Hello",
 		"customerAccount": "Customer Account",
+		"companyAccount": "Company Account",
 		"notifications": {
 			"title": "Notifications"
 		}
@@ -172,6 +185,9 @@
 			"descending": "Descending date"
 		},
 		"btnCancel": "Cancel",
+		"btnCreate": "New Event",
+		"btnDelete": "Delete",
+		"btnUpdate": "Update",
 		"btnSeeDetails": "See Details",
 		"btnReview": "Review Now!",
 		"cancelDialog": {
@@ -179,6 +195,16 @@
       "header": "Confirmation",
 			"acceptLabel": "Yes",
       "rejectLabel": "No"
+		},
+		"customer": {
+			"title": "My Events",
+			"tab1": "Purchased Events",
+			"tab2": "Calendar"
+		},
+		"company": {
+			"title": "Registered Events",
+			"tab1": "Manage Events",
+			"tab2": "Calendar"
 		}
 	},
 	"messages": {

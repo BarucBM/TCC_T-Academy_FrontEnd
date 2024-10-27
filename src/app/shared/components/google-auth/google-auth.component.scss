@@ -1,0 +1,13 @@
+.social-login-button {
+  /* Oculta o texto padrão */
+  color: transparent;
+  position: relative;
+}
+
+.social-login-button::before {
+  content: 'Custom Text';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff; /* Ou qualquer cor de sua escolha */
+}

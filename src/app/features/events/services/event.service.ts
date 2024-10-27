@@ -40,7 +40,11 @@ export class EventService {
   }
 
   getAllCustomerEvents(userId: string): Observable<CustomerEvent[]> {
-    return this.http.get<CustomerEvent[]>(`${this.url}/user/${userId}`);
+    return this.http.get<CustomerEvent[]>(`${this.url}/customer/${userId}`);
+  }
+
+  getEventsOfCompany(companyId: string): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.url}/company/${companyId}`);
   }
 
   createEvent(event: FormData): Observable<Event> {

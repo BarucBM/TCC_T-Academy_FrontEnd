@@ -4,11 +4,16 @@
 	},
 	"slogan": "Eventos bem-sucedidos começam com previsões precisas.",
 	"login": {
-		"title": "Bem-vindo de volta",
+		"title": "Bem-vindo de Volta!",
+		"subtitle": "Insira seus dados ou conecte-se com o Google",
 		"haveAccount": "Já possui uma conta?",
 		"logIn": "Login",
 		"dontHaveAccount": "Ainda não possui uma conta?",
-		"signUp": "Registre-se"
+		"signUp": "Registre-se",
+		"form": {
+			"email": "E-mail",
+			"password": "Senha"
+		}
 	},
 	"register": {
 		"title": "Cadastrar conta",
@@ -17,6 +22,12 @@
 			"label": "Escolha o tipo da sua conta",
 			"customer": "Pessoal",
 			"company": "Empresarial"
+		},
+		"customer": {
+			"title": "Crie sua conta através do Google",
+			"googleInfo": "Você precisa obter seus dados através do Google",
+			"additionalInformations": "Informações Adicionais",
+			"connected": "Conectado"
 		}
 	},
 	"buttons": {
@@ -133,6 +144,7 @@
 		"home": "Início",
 		"discover": "Explorar",
 		"events": "Meus Eventos",
+		"manageEvents": "Gerenciar Eventos",
 		"cart": "Carrinho",
 		"notifications": "Notificações",
 		"settings": "Configurações",
@@ -141,6 +153,7 @@
 	"header": {
 		"hello": "Olá",
 		"customerAccount": "Conta de cliente",
+		"companyAccount": "Conta de empresa",
 		"notifications": {
 			"title": "Notificações"
 		}
@@ -172,6 +185,9 @@
 			"descending": "Data decrescente"
 		},
 		"btnCancel": "Cancelar",
+		"btnCreate": "Novo Registro",
+		"btnDelete": "Excluir",
+		"btnUpdate": "Editar",
 		"btnSeeDetails": "Visualizar",
 		"btnReview": "Avalie Agora!",
 		"cancelDialog": {
@@ -179,6 +195,16 @@
       "header": "Confirmação",
 			"acceptLabel": "Sim",
       "rejectLabel": "Não"
+		},
+		"customer": {
+			"title": "Meus Eventos",
+			"tab1": "Eventos Adquiridos",
+			"tab2": "Calendário"
+		},
+		"company": {
+			"title": "Eventos Cadastrados",
+			"tab1": "Gerenciar Eventos",
+			"tab2": "Calendário"
 		}
 	},
 	"messages": {

@@ -1,4 +1,4 @@
-import { Customer } from "../auth/models/customer.model"
+import { Customer } from "./customer.model"
 
 
 export interface Cart{
