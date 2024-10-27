@@ -4,7 +4,7 @@
     <p class="text-sm text-color-secondary">{{ 'login.subtitle' | translate }}</p>
   </div>
 
-  <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+  <form [formGroup]="loginForm" (ngSubmit)="loginDefault()">
     <div class="grid">
       <div class="col-12">
         <p-inputGroup>
@@ -20,7 +20,7 @@
           <p-inputGroupAddon>
             <i class="pi pi-lock"></i>
           </p-inputGroupAddon>
-          <input pInputText formControlName="password" placeholder="{{ 'login.form.password' | translate }}" class="w-full" />
+          <input pInputText type="password" formControlName="password" placeholder="{{ 'login.form.password' | translate }}" class="w-full" />
         </p-inputGroup>
         <app-form-error [control]="loginForm.get('password')!" />
       </div>
@@ -38,6 +38,6 @@
     <p-divider align="center" class="my-3 w-full">
       <span class="text-sm px-1">ou</span>
     </p-divider>
-    <app-google-auth [btnText]="'signin_with'"></app-google-auth>
+    <app-google-auth [btnText]="'signin_with'" (userData)="loginWithGoogle($event)"></app-google-auth>
   </div>
 </div>

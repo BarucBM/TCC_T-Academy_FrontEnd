@@ -22,19 +22,20 @@ export class ImageProcessorService {
     const images: Image[] = [];
 
     for (let i = 0; i < imagesResponse.length; i++) {
-      const imageFileData = imagesResponse[i];
-      const imageBlob = this.dataURItoBlob(imageFileData.picByte, imageFileData.type);
-      const imageFile = new File([imageBlob], imageFileData.name, { type: imageFileData.type });
-
-      const finalImage: Image = {
-        file: imageFile,
-        url: this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(imageFile))
-      };
-
-      images.push(finalImage);
+      images.push(this.createImage(imagesResponse[i]));
     }
 
     return images;
+  }
+
+  createImage(imageResponse: ImageResponse): Image {
+    const imageBlob = this.dataURItoBlob(imageResponse.picByte, imageResponse.type);
+    const imageFile = new File([imageBlob], imageResponse.name, { type: imageResponse.type });
+
+    return {
+      file: imageFile,
+      url: this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(imageFile))
+    };
   }
 
   dataURItoBlob(picBytes: string, imageType: string) {

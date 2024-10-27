@@ -29,10 +29,7 @@ export class GoogleAuthComponent {
     this.socialAuthService.authState.subscribe({
       next: (user: SocialUser) => {
         this.userData.emit(user);
-      },
-      error: (err) => {
-        console.log(err);
-      },
+      }
     });
   }
 }

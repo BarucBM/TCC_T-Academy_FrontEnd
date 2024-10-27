@@ -3,7 +3,7 @@ import { User } from "./user.model"
 
 export interface Company {
   id?: string
-  user?: User
+  user?: User<Company>
   name: string
   address?: Address
   phone: string
@@ -11,6 +11,6 @@ export interface Company {
 }
 
 export interface NewCompany {
-  user: User
+  user: User<Company>
   company: Company
 }

@@ -10,6 +10,7 @@ import { AddressFormComponent } from '../../../../shared/components/address-form
 import { NewCustomer } from '../../../../core/models/customer.model';
 import { GoogleAuthComponent } from '../../../../shared/components/google-auth/google-auth.component';
 import { AvatarModule } from 'primeng/avatar';
+import { UserService } from '../../../user/services/user.service';
 
 @Component({
   selector: 'app-customer-form',
@@ -33,7 +34,7 @@ export class CustomerFormComponent {
   addressForm: FormGroup;
   showUserError: boolean = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private messageService: MessageService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private userService: UserService, private router: Router, private messageService: MessageService) {
     this.addressForm = this.fb.group({});
   }
 
@@ -43,6 +44,7 @@ export class CustomerFormComponent {
 
       this.authService.createUserCustomer(this.customerData).subscribe({
         next: (res) => {
+          this.uploadUserPhoto(res.user?.id!);
           this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User created successfully!' });
           this.router.navigate(["/login"]);
         },
@@ -61,6 +63,7 @@ export class CustomerFormComponent {
     this.customerData.user.email = userData.email;
     this.customerData.user.hasGoogleAuth = true;
     this.customerData.user.role = UserRole.CUSTOMER;
+    this.customerData.user.image = userData.photoUrl;
     this.customerData.customer.name = userData.name;
 
     this.showUserError = false;
@@ -68,5 +71,16 @@ export class CustomerFormComponent {
 
   onAddressFormReady(addressForm: FormGroup) {
     this.addressForm = addressForm;
+  }
+
+  async uploadUserPhoto(userId: string) {
+    const response = await fetch(this.customerData.user.image);
+    const blob = await response.blob();
+
+    const file = new File([blob], "profile-image.jpg", { type: blob.type });
+
+    const formData = new FormData();
+    formData.append("file", file);
+    this.userService.uploadPhoto(userId, formData).subscribe();
   }
 }

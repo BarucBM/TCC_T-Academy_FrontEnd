@@ -152,6 +152,7 @@
 	"header": {
 		"hello": "Hello",
 		"customerAccount": "Customer Account",
+		"companyAccount": "Company Account",
 		"notifications": {
 			"title": "Notifications"
 		}

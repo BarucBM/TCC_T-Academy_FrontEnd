@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CustomFormsModule } from '../../../../shared/modules/custom-forms.module';
 import { AuthService } from '../../../../core/auth/services/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,6 +8,8 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { DividerModule } from 'primeng/divider';
 import { GoogleAuthComponent } from '../../../../shared/components/google-auth/google-auth.component';
+import { LoginResponse } from '../../../../core/auth/models/login.model';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -32,20 +34,34 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  handleLogin(): void {
+  loginDefault(): void {
     if (this.loginForm.valid) {
-      // this.authService.login(this.loginForm.value).subscribe({
-      //   next: (res: LoginResponse) => {
-      //     this.authService.setAuthToken(res.token);
-      //     this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
-      //   },
-      //   error: () => {
-      //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to login, invalid credentials.' });
-      //   }
-      // })
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (res: LoginResponse) => {
+          this.authService.setAuthToken(res.token);
+          this.authService.init();
+          this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
+        },
+        error: () => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to login, invalid credentials.' });
+        }
+      });
     } else {
       this.loginForm.markAllAsTouched();
     }
+  }
+
+  loginWithGoogle(userData: SocialUser) {
+    this.authService.loginGoogle(userData.email).subscribe({
+      next: (res: LoginResponse) => {
+        this.authService.setAuthToken(res.token);
+        this.authService.init();
+        this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
+      },
+      error: (e) => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to login, user not registered.' });
+      }
+    });
   }
 }
 
