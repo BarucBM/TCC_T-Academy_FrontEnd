@@ -10,6 +10,7 @@
 		"logIn": "Login",
 		"dontHaveAccount": "Ainda não possui uma conta?",
 		"signUp": "Registre-se",
+		"or": "ou",
 		"form": {
 			"email": "E-mail",
 			"password": "Senha"
