@@ -20,7 +20,7 @@ import { UserRole } from './core/models/user.model';
 import { CompanyEventsComponent } from './features/events/pages/company-events/company-events.component';
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
-import { NotificationListComponent } from './shared/components/notification-list/notification-list.component';
+import { NotificationListComponent } from './features/preferences/pages/notification-list/notification-list.component';
 
 
 export const routes: Routes = [
