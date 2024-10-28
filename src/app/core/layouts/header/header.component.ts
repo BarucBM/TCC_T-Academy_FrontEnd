@@ -5,7 +5,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { SharedModule } from '../../../shared/modules/shared.module';
 import { BadgeModule } from 'primeng/badge';
-import { NotificationListComponent } from '../../../shared/components/notification-list/notification-list.component';
+import { NotificationListComponent } from '../../../features/preferences/pages/notification-list/notification-list.component';
 import { UserDropdownComponent } from '../../../shared/components/user-dropdown/user-dropdown.component';
 import { LocalStorageService } from '../../services/local-storage.service';
 

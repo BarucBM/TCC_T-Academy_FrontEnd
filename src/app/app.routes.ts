@@ -16,6 +16,7 @@ import { FormStepConfirmationComponent } from './features/events/components/form
 import { FormStepTicketsComponent } from './features/events/components/form-step-tickets/form-step-tickets.component';
 import { UpdateEventComponent } from './features/events/pages/update-event/update-event.component';
 import { CustomerEventsComponent } from './features/events/pages/customer-events/customer-events.component';
+import { NotificationListComponent } from './features/preferences/pages/notification-list/notification-list.component';
 
 export const routes: Routes = [
     {
@@ -45,6 +46,11 @@ export const routes: Routes = [
             {
                 path: 'home',
                 component: HomeComponent
+            },
+            {
+                path:'notifications',
+                component: NotificationListComponent
+
             },
             {
                 path: 'event/:id',
