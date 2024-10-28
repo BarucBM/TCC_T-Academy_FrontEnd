@@ -108,8 +108,7 @@ html[data-theme='dark'] {
 }
 
 .p-divider.p-divider-horizontal::before {
-    border-top: 2px;
-    border-color: var(--surface-600);
+    border-color: var(--surface-300);
     border-top-style: solid;
 }
 

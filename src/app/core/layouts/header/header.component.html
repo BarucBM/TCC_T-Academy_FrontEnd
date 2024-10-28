@@ -2,15 +2,19 @@
   <div class="flex align-items-center gap-3">
     <div class="cursor-pointer">
       <div (click)="userSettings.toggle($event)">
-        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png" size="large" shape="circle" />
+        <p-avatar *ngIf="this.userProfile.image?.url; else imgNotFound" [image]="this.userProfile.image?.url" size="large" shape="circle" />
+        <ng-template #imgNotFound>
+          <p-avatar [image]="'/assets/images/img-not-found.jpg'" size="large" shape="circle" />
+        </ng-template>
       </div>
       <p-overlayPanel #userSettings>
         <app-user-dropdown />
       </p-overlayPanel>
     </div>
     <div class="hidden md:block">
-      <p class="font-bold text-xl m-0">{{ 'header.hello' | translate}}, {{this.name}}</p>
-      <span class="text-xs font-medium">{{ 'header.customerAccount' | translate}}</span>
+      <p class="font-bold text-xl m-0">{{ 'header.hello' | translate}}, {{this.userProfile.name}}</p>
+      <span class="text-xs font-medium" *ngIf="this.userProfile.role == 'CUSTOMER'">{{ 'header.customerAccount' | translate}}</span>
+      <span class="text-xs font-medium" *ngIf="this.userProfile.role == 'COMPANY'">{{ 'header.companyAccount' | translate}}</span>
     </div>
   </div>
 

@@ -1,60 +1,67 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CustomFormsModule } from '../../../../shared/modules/custom-forms.module';
-import { LoginFormComponent } from '../../components/login-form/login-form.component';
-import { SocialAuthService, GoogleSigninButtonModule, GoogleLoginProvider, GoogleInitOptions } from '@abacritt/angularx-social-login';
-import { HttpClient } from '@angular/common/http';
-import { LocalStorageService } from '../../../../core/services/local-storage.service';
-import { NewCustomer } from '../../../../core/auth/models/new-customer.model';
 import { AuthService } from '../../../../core/auth/services/auth.service';
-import { UserRole } from '../../../../core/models/user.model';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { DividerModule } from 'primeng/divider';
+import { GoogleAuthComponent } from '../../../../shared/components/google-auth/google-auth.component';
+import { LoginResponse } from '../../../../core/auth/models/login.model';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, CustomFormsModule, LoginFormComponent, GoogleSigninButtonModule],
+  imports: [RouterLink, CustomFormsModule, GoogleAuthComponent, InputGroupModule, InputGroupAddonModule, DividerModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
 
-  googleLoginOptions: GoogleInitOptions = {
-    oneTapEnabled: false, // default is true
-    scopes: 'https://www.googleapis.com/auth/calendar.readonly'
-  }; 
-
-  private accessToken = '';
-
-  private newCustomer: NewCustomer = {
-    user: {
-      email: '',
-      role: undefined,
-      googleApiToken: undefined
-    },
-    customer: {
-      name: ''
-    }
-  }
-
-  constructor(private authService: AuthService, private socialAuthService: SocialAuthService, private router: Router, private httpClient: HttpClient, private localStorage: LocalStorageService) { }
-
-  ngOnInit(): void {
-    this.socialAuthService.authState.subscribe((user) => {
-      console.log(user)
-      this.newCustomer.user.email = user.email;
-      this.newCustomer.user.role = UserRole.CUSTOMER;
-      this.newCustomer.user.googleApiToken = user.authToken;
-      this.newCustomer.customer.name = user.name;
-      this.register();
-      this.localStorage.setItem("username", user.name);
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private route: ActivatedRoute, private messageService: MessageService) {
+    this.loginForm = this.fb.group({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     });
   }
 
-  register() {
-    this.authService.createUserCustomer(this.newCustomer).subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/home');
+    }
+  }
+
+  loginDefault(): void {
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (res: LoginResponse) => {
+          this.authService.setAuthToken(res.token);
+          this.authService.setRefreshToken(res.refreshToken);
+          this.authService.init();
+          this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
+        },
+        error: () => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to login, invalid credentials.' });
+        }
+      });
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
+  }
+
+  loginWithGoogle(userData: SocialUser) {
+    this.authService.loginGoogle(userData.email).subscribe({
+      next: (res: LoginResponse) => {
+        this.authService.setAuthToken(res.token);
+        this.authService.setRefreshToken(res.refreshToken);
+        this.authService.init();
+        this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
+      },
+      error: (e) => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to login, user not registered.' });
       }
     });
   }

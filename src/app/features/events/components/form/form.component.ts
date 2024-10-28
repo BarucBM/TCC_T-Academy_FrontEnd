@@ -39,10 +39,6 @@ export class FormComponent implements OnInit {
     this.getSteps();
     this.getEvent();
 
-    if (this.event) {
-      this.eventFormService.setEvent(this.event);
-    }
-
     this.subscription = this.eventFormService.formComplete$.subscribe((formData: FormData) => {
       if (this.event) {
         this.eventService.updateEvent(this.event.id!, formData).subscribe({
@@ -70,6 +66,7 @@ export class FormComponent implements OnInit {
     if (id) {
       this.eventService.getEventById(id).subscribe({
         next: (response: Event) => {
+          this.eventFormService.setEvent(response);
           this.event = response;
           this.event.startTime = new Date(this.event.startTime!);
           this.event.endTime = new Date(this.event.endTime!);

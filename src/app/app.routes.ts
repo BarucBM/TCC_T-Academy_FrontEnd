@@ -16,6 +16,10 @@ import { FormStepConfirmationComponent } from './features/events/components/form
 import { FormStepTicketsComponent } from './features/events/components/form-step-tickets/form-step-tickets.component';
 import { UpdateEventComponent } from './features/events/pages/update-event/update-event.component';
 import { CustomerEventsComponent } from './features/events/pages/customer-events/customer-events.component';
+import { authGuard } from './core/guards/auth.guard';
+import { roleGuard } from './core/guards/role.guard';
+import { UserRole } from './core/models/user.model';
+import { CompanyEventsComponent } from './features/events/pages/company-events/company-events.component';
 import { NotificationListComponent } from './features/preferences/pages/notification-list/notification-list.component';
 
 export const routes: Routes = [
@@ -41,7 +45,7 @@ export const routes: Routes = [
     {
         path: '',
         component: MainLayoutComponent,
-        // canActivateChild: [authGuard, roleGuard],
+        canActivateChild: [authGuard, roleGuard],
         children: [
             {
                 path: 'home',
@@ -62,7 +66,13 @@ export const routes: Routes = [
             },
             {
                 path: 'customer-events',
-                component: CustomerEventsComponent
+                component: CustomerEventsComponent,
+                data: { roles: [UserRole.CUSTOMER] }
+            },
+            {
+                path: 'company-events',
+                component: CompanyEventsComponent,
+                data: { roles: [UserRole.COMPANY] }
             },
             {
                 path: 'events/create',
@@ -73,14 +83,15 @@ export const routes: Routes = [
                     { path: 'tickets', component: FormStepTicketsComponent },
                     { path: 'confirmation', component: FormStepConfirmationComponent },
                     { path: '', redirectTo: 'information', pathMatch: 'full' }
-                ]
+                ],
+                data: { roles: [UserRole.COMPANY] }
             },
             {
-                path:'cart',
-                component:CartPageComponent
+                path: 'cart',
+                component: CartPageComponent,
+                data: { roles: [UserRole.CUSTOMER] }
             },
             {
-
                 path: 'events/update/:id',
                 component: UpdateEventComponent,
                 children: [
@@ -89,7 +100,8 @@ export const routes: Routes = [
                     { path: 'tickets', component: FormStepTicketsComponent },
                     { path: 'confirmation', component: FormStepConfirmationComponent },
                     { path: '', redirectTo: 'information', pathMatch: 'full' }
-                ]
+                ],
+                data: { roles: [UserRole.COMPANY] }
             }
         ]
     },

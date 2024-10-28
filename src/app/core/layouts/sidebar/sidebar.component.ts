@@ -5,21 +5,38 @@ import { Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { SwitchThemeComponent } from '../../../shared/components/switch-theme/switch-theme.component';
 import { LanguageSelectorComponent } from '../../../shared/components/language-selector/language-selector.component';
+import { AuthService } from '../../auth/services/auth.service';
+import { HasPermissionDirective } from '../../directives/has-permission.directive';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [ButtonModule, SharedModule, RouterModule, RouterLinkActive, DialogModule, SwitchThemeComponent, LanguageSelectorComponent],
+  imports: [
+    ButtonModule, 
+    SharedModule, 
+    RouterModule, 
+    RouterLinkActive, 
+    DialogModule, 
+    SwitchThemeComponent, 
+    LanguageSelectorComponent,
+    HasPermissionDirective
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
   settingsOpen: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   handleLogout() {
-    this.router.navigateByUrl('login');
+    this.authService.logout().subscribe({
+      next: () => {
+        this.authService.removeAuthToken();
+        this.authService.removeRefreshToken();
+        this.router.navigateByUrl('login');
+      }
+    });
   }
 
   openSettings() {
