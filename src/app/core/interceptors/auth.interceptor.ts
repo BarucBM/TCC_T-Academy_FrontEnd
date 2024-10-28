@@ -12,7 +12,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(clonedReq).pipe(
     catchError(error => {
-      if (error.status === 401 && authService.getRefreshToken()) {
+      if (error.status === 403 && authService.getRefreshToken()) {
         return authService.refreshToken(authService.getRefreshToken()!).pipe(
           switchMap((response: LoginResponse) => {
             authService.setAuthToken(response.token);
@@ -28,7 +28,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
             authService.removeAuthToken();
             authService.removeRefreshToken();
 
-            return next(req);
+            return throwError(() => refreshError);
           })
         );
       }

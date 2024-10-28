@@ -20,6 +20,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 import { UserRole } from './core/models/user.model';
 import { CompanyEventsComponent } from './features/events/pages/company-events/company-events.component';
+import { ProfileComponent } from './features/user/pages/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -49,6 +50,10 @@ export const routes: Routes = [
             {
                 path: 'home',
                 component: HomeComponent
+            },
+            {
+                path: 'user-profile',
+                component: ProfileComponent
             },
             {
                 path: 'event/:id',
