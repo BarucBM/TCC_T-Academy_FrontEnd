@@ -11,13 +11,14 @@ import { Message } from 'primeng/api';
 import { RippleModule } from 'primeng/ripple';
 import { NotificationService } from '../../../core/services/notification.service';
 import { HttpHeaders } from '@angular/common/http';
+import { CardModule } from 'primeng/card';
 
 type NotificationType = 'suggestions' | 'reminders' | 'weatherChanges';
 
 @Component({
   selector: 'app-notification-list',
   standalone: true,
-  imports: [SharedModule, BadgeModule, FormsModule, ButtonModule, MessagesModule, ToastModule, CommonModule, RippleModule],
+  imports: [SharedModule, BadgeModule, FormsModule, ButtonModule, MessagesModule, ToastModule, CommonModule, RippleModule, CardModule],
   templateUrl: './notification-list.component.html',
   styleUrls: ['./notification-list.component.scss'],
   providers: [MessageService]
