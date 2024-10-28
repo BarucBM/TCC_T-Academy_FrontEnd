@@ -1,29 +1,29 @@
-<form [formGroup]="customerForm" (ngSubmit)="handleSubmit()">
-  <div formGroupName="customer" class="mb-6">
-    <div class="grid">
-      <div class="col-6">
-        <p-floatLabel>
-          <input type="text" pInputText formControlName="name" class="w-full" />
-          <label for="name">{{ 'forms.customer.name' | translate}}</label>
-        </p-floatLabel>
-        <app-form-error [control]="customerForm.get('customer.name')!" />
+<form (ngSubmit)="handleSubmit()">
+  <h2 class="text-lg mb-5">{{ 'register.customer.title' | translate }}</h2>
+  <div class="mb-6 flex flex-column align-items-center gap-3">
+    <app-google-auth (userData)="getUserData($event)" [btnText]="'continue_with'"></app-google-auth>
+    <div class="flex align-items-center gap-3 mt-3" *ngIf="userGoogleData">
+      <p-avatar image="{{userGoogleData.photoUrl}}" shape="circle" size="large" />
+      <div>
+        <div class="font-semibold">{{ userGoogleData.name }}</div>
+        <div class="text-xs mb-1">{{ userGoogleData.email }}</div>
+        <span class="text-xs text-green-400">{{ 'register.customer.connected' | translate }}</span>
       </div>
-      <div class="col-6">
+    </div>
+    <span *ngIf="showUserError" class="form-error">{{ 'register.customer.googleInfo' | translate }}</span>
+  </div>
+  <div class="mb-4">
+    <h2 class="text-lg mb-5">{{ 'register.customer.additionalInformations' | translate }}</h2>
+    <div class="grid">
+      <div class="col-12 mb-4">
         <p-floatLabel>
-          <input type="text" pInputText formControlName="phone" class="w-full" />
+          <input type="text" pInputText [(ngModel)]="customerData.customer.phone" name="phone" class="w-full" />
           <label for="phone">{{ 'forms.customer.phone' | translate}}</label>
         </p-floatLabel>
       </div>
     </div>
-    <div class="mt-4">
-      <p-floatLabel>
-        <input type="text" pInputText formControlName="address" class="w-full" />
-        <label for="address">{{ 'forms.customer.address' | translate}}</label>
-      </p-floatLabel>
-      <app-form-error [control]="customerForm.get('customer.address')!" />
-    </div>
+    <app-address-form (addressFormReady)="onAddressFormReady($event)"></app-address-form>
   </div>
-
   <div class="my-3">
     <p-button label="{{'buttons.register' | translate}}" type="submit" severity="primary" styleClass="w-full" />
   </div>

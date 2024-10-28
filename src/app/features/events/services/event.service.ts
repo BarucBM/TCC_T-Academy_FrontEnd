@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpParams } from "@angular/common/http";
-import { Event } from '../../../core/models/event.model';
-
+import { CustomerEvent, Event } from '../../../core/models/event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +39,14 @@ export class EventService {
     return this.http.get<Event>(this.url + '/' + id)
   }
 
+  getAllCustomerEvents(userId: string): Observable<CustomerEvent[]> {
+    return this.http.get<CustomerEvent[]>(`${this.url}/customer/${userId}`);
+  }
+
+  getEventsOfCompany(companyId: string): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.url}/company/${companyId}`);
+  }
+
   createEvent(event: FormData): Observable<Event> {
     return this.http.post<Event>(`${this.url}`, event);
   }
@@ -50,6 +57,14 @@ export class EventService {
 
   deleteEvent(id: string): Observable<any> {
     return this.http.delete<any>(`${this.url}/${id}`);
+  }
+
+  rateEvent(id: string, stars: number): Observable<string> {
+    return this.http.post<string>(`${this.url}/rate/${id}`, stars);
+  }
+
+  cancelEvent(userId: string, eventId: string): Observable<string> {
+    return this.http.post<string>(`${this.url}/cancel`, { userId, eventId });
   }
 
   dateFormat(date: Date): string[] {

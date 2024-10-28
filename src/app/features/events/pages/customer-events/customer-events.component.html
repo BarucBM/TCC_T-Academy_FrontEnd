@@ -1,0 +1,35 @@
+<div>
+  <div class="flex align-items-center gap-3 text-color mb-4">
+    <i class="material-symbols-rounded text-3xl">event</i>
+    <h1 class="text-3xl">{{ 'navbar.events' | translate }}</h1>
+  </div>
+
+  <p-tabView>
+    <p-tabPanel header="{{ 'events.customer.tab1' | translate }}">
+      <p-dataView #dv [value]="customerEvents" layout="list">
+        <ng-template pTemplate="empty">
+          <div class="flex flex-column gap-5">
+            <div>
+              <p class="font-semibold text-lg mb-3">{{'pages.emptyMessage' | translate }}</p>
+              <span class="text-sm">{{'messages.exploreEvents' | translate }}</span>
+            </div>
+            <a routerLink="/events" class="p-button font-semibold no-underline w-max">{{ 'buttons.discoverEvents' | translate }}</a>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <p-dropdown [options]="sortOptions" placeholder="{{ 'events.sortByDate.placeholder' | translate }}" (onChange)="onSortChange($event)" styleClass="mb-2 md:mb-0" />
+        </ng-template>
+        <ng-template pTemplate="list">
+          <div class="grid grid-nogutter">
+            <div class="col-12" *ngFor="let event of customerEvents; let first = first" [ngClass]="{ 'border-top-1 surface-border': !first }">
+              <app-customer-event [event]="event" (deleteEvent)="deleteEvent(event.id!)"></app-customer-event>
+            </div>
+          </div>
+        </ng-template>
+      </p-dataView>
+    </p-tabPanel>
+    <p-tabPanel header="{{ 'events.customer.tab2' | translate }}">
+      <!-- TODO: add calendar view -->
+    </p-tabPanel>
+  </p-tabView>
+</div>

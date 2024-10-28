@@ -4,11 +4,16 @@
 	},
 	"slogan": "Successful events start with accurate forecasts.",
 	"login": {
-		"title": "Welcome back",
+		"title": "Welcome Back!",
+		"subtitle": "Enter your data or sign in with Google",
 		"haveAccount": "Already have an account?",
 		"logIn": "Log in",
 		"dontHaveAccount": "Not a member yet?",
-		"signUp": "Sign up"
+		"signUp": "Sign up",
+		"form": {
+			"email": "Email",
+			"password": "Password"
+		}
 	},
 	"register": {
 		"title": "Create account",
@@ -17,12 +22,19 @@
 			"label": "Choose your account type",
 			"customer": "Personal",
 			"company": "Corporate"
+		},
+		"customer": {
+			"title": "Create your account via Google",
+			"googleInfo": "You need to get your data from Google",
+			"additionalInformations": "Additional Information",
+			"connected": "Connected"
 		}
 	},
 	"buttons": {
 		"register": "Register",
 		"save": "Submit",
-		"delete": "Remove"
+		"delete": "Remove",
+		"discoverEvents": "Discover Events"
 	},
 	"forms": {
 		"requiredMessage": "This field is required.",
@@ -115,6 +127,15 @@
 			"info": "Drag and drop files here to upload.",
 			"statusPending": "Pending",
 			"statusComplete": "Complete"
+		},
+		"settings": {
+			"title": "App Settings",
+			"subtitle": "Customize your experience.",
+			"language": "Language",
+			"theme": "Theme",
+			"themeLight": "Light",
+			"themeDark": "Dark",
+			"btnClose": "Close"
 		}
 	},
 	"navbar": {
@@ -123,6 +144,7 @@
 		"home": "Home",
 		"discover": "Discover",
 		"events": "My Events",
+		"manageEvents": "Manage Events",
 		"cart": "Cart",
 		"notifications": "Notifications",
 		"settings": "Settings",
@@ -131,6 +153,7 @@
 	"header": {
 		"hello": "Hello",
 		"customerAccount": "Customer Account",
+		"companyAccount": "Company Account",
 		"notifications": {
 			"title": "Notifications"
 		}
@@ -146,7 +169,8 @@
 				"text": "You are not authorized to access this content."
 			},
 			"backHomeBtn": "Back to Home"
-		}
+		},
+		"emptyMessage": "No data found!"
 	},
 	"events": {
 		"search": "Search",
@@ -154,6 +178,36 @@
 		"submit": "Submit",
 		"buy": "Buy tickets",
 		"available": "tickets available",
-		"access": "Click to access!"
+		"access": "Click to access!",
+		"sortByDate": {
+			"placeholder": "Order by Date",
+			"ascending": "Ascending date",
+			"descending": "Descending date"
+		},
+		"btnCancel": "Cancel",
+		"btnCreate": "New Event",
+		"btnDelete": "Delete",
+		"btnUpdate": "Update",
+		"btnSeeDetails": "See Details",
+		"btnReview": "Review Now!",
+		"cancelDialog": {
+			"message": "Are you sure that you want to cancel this event?",
+      "header": "Confirmation",
+			"acceptLabel": "Yes",
+      "rejectLabel": "No"
+		},
+		"customer": {
+			"title": "My Events",
+			"tab1": "Purchased Events",
+			"tab2": "Calendar"
+		},
+		"company": {
+			"title": "Registered Events",
+			"tab1": "Manage Events",
+			"tab2": "Calendar"
+		}
+	},
+	"messages": {
+		"exploreEvents": "Want to explore new events?"
 	}
 }
