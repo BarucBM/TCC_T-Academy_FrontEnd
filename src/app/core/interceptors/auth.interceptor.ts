@@ -4,15 +4,21 @@ import { AuthService } from '../auth/services/auth.service';
 import { LoginResponse } from '../auth/models/login.model';
 import { catchError, switchMap, throwError } from 'rxjs';
 
+const EXCLUDED_URLS = ['https://api.openweathermap.org'];
+
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const token = authService.getAuthToken();
+
+  if (EXCLUDED_URLS.some(url => req.url.includes(url))) {
+    return next(req);
+  }
 
   const clonedReq = token ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } }) : req;
 
   return next(clonedReq).pipe(
     catchError(error => {
-      if (error.status === 403 && authService.getRefreshToken()) {
+      if (token && authService.isTokenExpired() && authService.getRefreshToken()) {
         return authService.refreshToken(authService.getRefreshToken()!).pipe(
           switchMap((response: LoginResponse) => {
             authService.setAuthToken(response.token);

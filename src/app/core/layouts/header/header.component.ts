@@ -5,7 +5,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { SharedModule } from '../../../shared/modules/shared.module';
 import { BadgeModule } from 'primeng/badge';
-import { NotificationListComponent } from '../../../shared/components/notification-list/notification-list.component';
+import { NotificationListComponent } from '../../../features/preferences/pages/notification-list/notification-list.component';
 import { UserProfile } from '../../models/user.model';
 import { AuthService } from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
