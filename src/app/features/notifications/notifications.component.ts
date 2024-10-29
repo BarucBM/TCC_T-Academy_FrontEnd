@@ -79,8 +79,8 @@ export class NotificationComponent implements OnInit {
       this.fallbackStorage.notificationsEnabled = this.notificationsEnabled;
     }
 
-    const userId = 'userId1'; // Exemplo de ID de usuário
-    const eventId = 'eventId1'; // Exemplo de ID de evento
+    const userId = 'userId1'; 
+    const eventId = 'eventId1'; 
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
@@ -88,10 +88,10 @@ export class NotificationComponent implements OnInit {
 
     this.notificationService.toggleNotification(userId, eventId, type, this.notificationsEnabled[type], headers).subscribe(
       response => {
-        console.log(`Notificação ${type} atualizada: ${this.notificationsEnabled[type]}`);
+        console.log(`Notification ${type} updated: ${this.notificationsEnabled[type]}`);
       },
       error => {
-        console.error(`Erro ao atualizar notificação ${type}`, error);
+        console.error(`Error in Notification's Update ${type}`, error);
       }
     );
   }
