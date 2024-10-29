@@ -64,6 +64,7 @@
 			"passwordDontMatch": "As senhas não combinam"
 		},
 		"customer": {
+			"label": "Informações do Cliente",
 			"name": "Nome",
 			"phone": "Telefone",
 			"address": "Endereço"

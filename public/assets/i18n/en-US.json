@@ -64,6 +64,7 @@
 			"passwordDontMatch": "Password don't Match"
 		},
 		"customer": {
+			"label": "Customer Information",
 			"name": "Name",
 			"phone": "Phone",
 			"address": "Address"
