@@ -48,7 +48,7 @@ export class EventAcquisitionComponent implements OnInit {
             "https://www.google.com/maps/embed/v1/place?key=AIzaSyC_umb2xQn6m9e1OD_xI5XWZTPhgGqfwe4&q=" + this.event.address.fullAddress
           );
         } else {
-          console.error('Endereço não encontrado para o evento.');
+          console.error('Address not found.');
         }
       },
       error: (error) => {
