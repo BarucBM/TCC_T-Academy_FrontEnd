@@ -34,7 +34,8 @@ export class SidebarComponent {
       next: () => {
         this.authService.removeAuthToken();
         this.authService.removeRefreshToken();
-        this.router.navigateByUrl('login');
+        
+        window.location.reload();
       }
     });
   }

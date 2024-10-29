@@ -88,6 +88,19 @@ export class AuthService {
     return token ? jwtDecode<JwtPayload>(token).role : '';
   }
 
+  isTokenExpired(): boolean {
+    let token = this.getAuthToken();
+
+    if (token) {
+      const currentTime = Math.floor(Date.now() / 1000);
+      const expiration = jwtDecode<JwtPayload>(token).exp;
+
+      return expiration ? expiration < currentTime : true;
+    }
+
+    return true;
+  }
+
   getAuthToken(): string | null {
     return this.localStorage.getItem(this.authTokenKey);
   }
