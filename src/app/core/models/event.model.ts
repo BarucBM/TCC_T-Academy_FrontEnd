@@ -3,9 +3,10 @@ import { Image, ImageResponse } from "./image.model"
 
 export interface Event {
     id?: string
+
     title: string
     description: string
-    address: Address
+    address: Address;
     startTime: Date | null
     endTime: Date | null
     freeEntry: boolean

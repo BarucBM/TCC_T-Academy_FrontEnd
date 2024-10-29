@@ -7,68 +7,64 @@ import { FilterComponent } from "../../components/filter/filter.component";
 import { CardModule } from 'primeng/card';
 import { EventService } from '../../services/event.service';
 
-
 @Component({
   selector: 'app-events',
   standalone: true,
   imports: [EventComponent, CommonModule, InputTextModule, FilterComponent, CardModule],
   templateUrl: './events.component.html',
-  styleUrl: './events.component.scss'
+  styleUrls: ['./events.component.scss'] 
 })
 export class EventsComponent implements OnInit {
-  events!:Event[];
-  params:Event ={
-    id : '',
-    title :'',   
-    startTime: null,
-    endTime:null,
-    createdAt:null,
+  events!: Event[];
+  params: Event = {
+    id: '',
+    title: '',
+    startTime: null, // Tipo Date
+    endTime: null, // Tipo Date
+    createdAt: null, // Ajuste o tipo conforme necessário
     freeEntry: false,
     ticketUnitPrice: 0,
     ticketTax: 0,
     address: {
       fullAddress: '',
+      postalCode: '',
+      streetName: '',
+      streetNumber: '',
+      // Assegure-se de que essas propriedades sejam compatíveis com a interface Address
       city: '',
+      state: '',
       country: '',
       latitude: '',
       longitude: '',
-      postalCode: '',
-      state: '',
-      streetName: '',
-      streetNumber: ''
     },
-    description:'',
-    weatherImpact:false
+    description: '',
+    weatherImpact: false
   };
 
-  constructor(private eventService:EventService){}
+  constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.getAllEvents()
+    this.getAllEvents();
   }
 
-  getAllEvents(){
+  getAllEvents() {
     this.eventService.getAllEvents(this.params).subscribe({
-      next:(res) =>{
-        this.events = res
-        console.log(this.events)
+      next: (res) => {
+        this.events = res;
+        console.log(this.events);
       },
-      error:(e) => console.log(e)
-    })
+      error: (e) => console.log(e)
+    });
   }
 
-  filterSubmit(event:any){
-    this.params.title = event.title
-    // this.params.location = event.location
-    this.params.description = event.description
-    this.params.startTime = event.dates == null ?
-      null :
-      event.dates[0];
-    this.params.endTime = event.dates == null ?
-      null :
-      event.dates[1];
+  filterSubmit(event: any) {
+    this.params.title = event.title;
+    this.params.description = event.description;
 
-    console.log(event.dates)
-    this.getAllEvents()
+    this.params.startTime = event.dates == null ? null : new Date(event.dates[0]);
+    this.params.endTime = event.dates == null ? null : new Date(event.dates[1]);
+
+    console.log(event.dates);
+    this.getAllEvents();
   }
 }

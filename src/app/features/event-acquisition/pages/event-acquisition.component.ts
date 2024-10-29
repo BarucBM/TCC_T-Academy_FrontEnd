@@ -11,47 +11,55 @@ import { SharedModule } from '../../../shared/modules/shared.module';
 import { CardModule } from 'primeng/card';
 import { EventService } from '../../events/services/event.service';
 
-
-
 @Component({
   selector: 'app-event-acquisition',
   standalone: true,
   imports: [TicketSelectionComponent, SidebarModule, SideBarComponent, WeatherCardComponent, CommonModule, SharedModule, CardModule],
   templateUrl: './event-acquisition.component.html',
-  styleUrl: './event-acquisition.component.scss'
+  styleUrls: ['./event-acquisition.component.scss'] 
 })
 export class EventAcquisitionComponent implements OnInit {
-  event!:Event;
-  sideBarVisible :boolean = false
-  ticketQt:number = 0
-  private id:string | null = null;
-  url:any = "";
-  
+  event!: Event;
+  sideBarVisible: boolean = false;
+  ticketQt: number = 0;
+  private id: string | null = null;
+  url: any = "";
 
-  constructor(private eventService:EventService, private sanitizer:DomSanitizer, private route:ActivatedRoute, private router:Router){}
+  constructor(
+    private eventService: EventService,
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id')
-    if(this.id != null){
-      this.getEventById(this.id)
-    } 
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id != null) {
+      this.getEventById(this.id);
+    }
   }
 
-  getEventById(id:string){
+  getEventById(id: string) {
     this.eventService.getEventById(id).subscribe({
-      next:(res) => {
-         this.event = res;
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyC_umb2xQn6m9e1OD_xI5XWZTPhgGqfwe4&q=" + this.event.address.fullAddress)
+      next: (res) => {
+        this.event = res;
+        if (this.event.address) {
+          this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
+            "https://www.google.com/maps/embed/v1/place?key=AIzaSyC_umb2xQn6m9e1OD_xI5XWZTPhgGqfwe4&q=" + this.event.address.fullAddress
+          );
+        } else {
+          console.error('Endereço não encontrado para o evento.');
+        }
       },
-      error:(error) => {
-        console.log(error) 
-        this.router.navigateByUrl("/notfound")
+      error: (error) => {
+        console.log(error);
+        this.router.navigateByUrl("/notfound");
       }
-    })
+    });
   }
 
-  sideBarIsVisible(tickets:number){
-    this.ticketQt = tickets
-    this.sideBarVisible = !this.sideBarVisible
-  } 
+  sideBarIsVisible(tickets: number) {
+    this.ticketQt = tickets;
+    this.sideBarVisible = !this.sideBarVisible;
+  }
 }

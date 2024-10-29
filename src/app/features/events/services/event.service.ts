@@ -36,6 +36,16 @@ export class EventService {
     return this.http.get<Event[]>(this.url, { params })
   }
 
+  getNearbyEvents(latitude: number, longitude: number, radius: number): Observable<Event[]> {
+    let params = new HttpParams()
+        .set('latitude', latitude)
+        .set('longitude', longitude)
+        .set('radius', radius);
+    
+    return this.http.get<Event[]>(this.url, { params });
+}
+
+
   getEventById(id: string): Observable<Event> {
     return this.http.get<Event>(this.url + '/' + id)
   }

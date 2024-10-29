@@ -5,13 +5,15 @@
 
   <div class="message-buttons">
       <p-button 
-          *ngIf="notificationsEnabled.suggestions" 
-          type="button" 
-          pRipple 
-          (onClick)="addMessage('suggestions')" 
-          label="Mostrar Sugestões" 
-          styleClass="mr-2" />
-      
+      *ngIf="notificationsEnabled.suggestions" 
+      type="button" 
+      pRipple 
+      (click)="loadSuggestions(lat, lon)" 
+      label="Mostrar Sugestões" 
+      styleClass="mr-2">
+    </p-button>
+    
+    
       <p-button 
           *ngIf="notificationsEnabled.reminders" 
           type="button" 

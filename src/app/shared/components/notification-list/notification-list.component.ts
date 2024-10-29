@@ -15,6 +15,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { LocationService } from '../../../core/services/location.service';
 import { Coordinates } from '../../../core/models/coordinates.model';
 import { EventService } from '../../../features/events/services/event.service'; 
+import { Event as AppEvent } from '../../../core/models/event.model'; 
+
 
 type NotificationType = 'suggestions' | 'reminders' | 'weatherChanges';
 
@@ -32,9 +34,11 @@ export class NotificationListComponent implements OnInit {
     reminders: true,
     weatherChanges: true,
   };
+  lat: number | null = null;
+  lon: number | null = null;
 
   notifications: any[] = []; 
-  suggestions: string = ''; 
+  suggestions: string[] = []; 
 
   @Input() messages: Message[] = [];
 
@@ -47,51 +51,51 @@ export class NotificationListComponent implements OnInit {
   constructor(
     private messageService: MessageService, 
     private notificationService: NotificationService,
-    private suggestionsService: SuggestionsService ,
-    private locationService: LocationService
+    private suggestionsService: SuggestionsService,
+    private locationService: LocationService,
+    private eventService: EventService
   ) {}
 
   ngOnInit() {
     this.loadNotifications();
-    this.loadSuggestions(); 
+    this.locationService.getCurrentLocation(); 
+
   }
 
   loadNotifications() {
-    if (typeof localStorage !== 'undefined') {
-      const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
-      this.notifications = notifications; 
+    const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+    this.notifications = notifications; 
+  }
+
+  
+
+  loadSuggestions(lat: number | null, lon: number | null) {
+    if (lat !== null && lon !== null) {
+      // Chame o serviço para obter sugestões
+      const prompt = `Quais são os eventos acontecendo perto de mim nos próximos dias? Estou localizado em ${lat}, ${lon}.`;
+      this.suggestionsService.getSuggestions(prompt).subscribe(
+        (data) => {
+          console.log(data); // Processar dados recebidos
+        },
+        (error) => {
+          console.error('Erro ao carregar sugestões', error);
+        }
+      );
     } else {
-      console.warn('localStorage is not available.');
-      this.notifications = []; 
+      console.warn('Localização não disponível.');
     }
   }
-  loadSuggestions() {
-    this.locationService.getCurrentLocation().subscribe(
-      (coordinates) => {
-        const prompt = `Quais são os eventos acontecendo perto de mim nos próximos dias? 
-                        Estou localizado em ${coordinates.lat}, ${coordinates.lon} 
-                        e gostaria de sugestões de eventos atuais ou futuros na área. 
-                        Preferência para eventos culturais, shows, feiras ou exposições. 
-                        O que você recomenda?`;
-        
-        this.suggestionsService.getSuggestions(prompt).subscribe(
-          (data) => {
-            this.suggestions = data.candidates?.map((candidate: any) => candidate.content.parts[0].text) || [];
-            this.addMessage('suggestions');
-          },
-          (error) => {
-            console.error('Erro ao carregar sugestões', error);
-          }
-        );
-      },
-      (error) => {
-        console.error('Erro ao obter localização do usuário', error);
-      }
-    );
+
+
+  addMessage(type: string) {
+    const messageText = type === 'suggestions' ? this.suggestions.join(', ') : 'Outro tipo de mensagem.';
+    const message = {
+      severity: 'info',
+      summary: messageText
+    };
+    this.messageService.add(message);
   }
-  
-  
-  
+
   
 
   toggleNotification(type: NotificationType) {
@@ -119,11 +123,10 @@ export class NotificationListComponent implements OnInit {
     this.messageService.clear();
   }
 
-  addMessage(type: NotificationType) {
-    const messageText = type === 'suggestions' ? this.suggestions : this.predefinedMessages[type]; 
-    this.messages = [
-      { severity: this.getSeverity(type), summary: messageText }
-    ];
+
+
+  private addMessageToMessages(message: Message) {
+    this.messages.push(message);
   }
 
   private getSeverity(type: NotificationType): string {

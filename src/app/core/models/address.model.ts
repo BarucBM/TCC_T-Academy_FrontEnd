@@ -11,4 +11,6 @@ export interface Address {
   country: string
   latitude: string
   longitude: string
+
+  
 }
