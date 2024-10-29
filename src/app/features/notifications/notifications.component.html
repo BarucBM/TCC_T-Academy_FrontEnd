@@ -3,7 +3,6 @@
     <div class="card">
         <h3 class="font-bold">Configurações de Notificação</h3>
         
-        <!-- Opções de ativação de notificações -->
         <div class="notification-options">
             <label>
                 <input type="checkbox" [(ngModel)]="notificationsEnabled.suggestions" />
@@ -19,7 +18,6 @@
             </label>
         </div>
     
-        <!-- Botões de ações -->
         <div class="message-buttons">
             <p-button 
                 *ngIf="notificationsEnabled.suggestions" 
