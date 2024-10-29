@@ -14,7 +14,6 @@ import { HttpHeaders } from '@angular/common/http';
 import { CardModule } from 'primeng/card';
 import { PreferenceserviceService } from '../../../../core/services/preferenceservice.service';
 import { SendActive } from '../../../../core/models/preference.model';
-import { response } from 'express';
 
 type NotificationType = 'suggestions' | 'reminders' | 'weatherChanges';
 
