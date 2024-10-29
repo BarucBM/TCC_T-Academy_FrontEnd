@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpParams } from "@angular/common/http";
 import { CustomerEvent, Event } from '../../../core/models/event.model';
+import { AuthService } from '../../../core/auth/services/auth.service';
+import { SourceTextModule } from 'vm';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class EventService {
 
   private url: string = 'http://localhost:8080/event';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService:AuthService) { }
 
   getAllEvents(param?: Event): Observable<Event[]> {
     let params = new HttpParams();
@@ -75,6 +77,7 @@ export class EventService {
   }
 
   createUserevent(eventId:string){
-    this.http.post
+    this.http.post(`${this.url}/buy/`+this.authService.getUserId()+`/${eventId}`,"")
+    console.log(`${this.url}/buy/`+this.authService.getUserId()+`/${eventId}`)
   }
 }
