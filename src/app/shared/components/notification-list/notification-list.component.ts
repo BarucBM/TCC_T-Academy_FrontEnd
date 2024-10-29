@@ -71,11 +71,10 @@ export class NotificationListComponent implements OnInit {
 
   loadSuggestions(lat: number | null, lon: number | null) {
     if (lat !== null && lon !== null) {
-      // Chame o serviço para obter sugestões
       const prompt = `Quais são os eventos acontecendo perto de mim nos próximos dias? Estou localizado em ${lat}, ${lon}.`;
       this.suggestionsService.getSuggestions(prompt).subscribe(
         (data) => {
-          console.log(data); // Processar dados recebidos
+          console.log(data); 
         },
         (error) => {
           console.error('Erro ao carregar sugestões', error);
