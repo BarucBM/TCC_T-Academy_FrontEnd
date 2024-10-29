@@ -1,17 +1,19 @@
 <section *ngIf="load == true"
-class=" relative bg-white border-round-lg text-color flex w-full h-12rem gap-2 p-1 card shadow-3 ">
-    <div  class="w-3 h-full ">
+class=" relative surface-0 border-round-lg text-color flex w-full h-12rem gap-2 p-1 card shadow-3 ">
+    <div  class="w-16rem h-full ">
         <img class="w-full h-full border-round-lg" src="{{this.urlImage}}" alt="event image">
     </div>
-    <div class="pt-3 flex flex-column w-7">
+    <div class="pt-1 flex flex-column w-7">
         <h2>{{event.title}}</h2>
         <p class="m-2">{{event.description}}</p>
-        <p class="m-2">event.address.city, {{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}  </p>
+        <p class="m-2">{{event.address.fullAddress}}      </p>
+        <p class="m-2"> {{event.startTime | date: 'dd/MM/yyyy - HH:mm'}} </p>
     </div>
     <div class="flex flex-column pb-2 pr-3 absolute right-0 h-full align-items-end justify-content-center">
         <p class="mb-1"> {{item.quantity}} {{'events.available' | translate}}</p>
-        <div class="w-min">
-            <p-button icon="pi pi-trash"  severity="danger" (onClick)="deleteEvent()" />
+        <div class="flex gap-3 w-min">
+            <p-button icon="pi pi-trash "  severity="danger" (onClick)="deleteEvent()" />
+            
         </div>
     </div>
 </section>

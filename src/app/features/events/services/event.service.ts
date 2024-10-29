@@ -73,4 +73,8 @@ export class EventService {
 
     return [`${date.getFullYear()}`, month, day]
   }
+
+  createUserevent(eventId:string){
+    this.http.post
+  }
 }

@@ -7,11 +7,13 @@ import { CartService } from '../../services/cart-service.service';
 import { Cart } from '../../../../core/models/cart.model';
 import { CartItemsComponent } from '../../components/cart-items/cart-items.component';
 import { AuthService } from '../../../../core/auth/services/auth.service';
+import { ButtonModule } from 'primeng/button';
+import { EventService } from '../../../events/services/event.service';
 
 @Component({
   selector: 'app-cart-page',
   standalone: true,
-  imports: [CardModule, SharedModule, CommonModule, CartItemsComponent],
+  imports: [CardModule, SharedModule, CommonModule, CartItemsComponent, ButtonModule],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.scss'
 })
@@ -19,8 +21,9 @@ export class CartPageComponent implements OnInit {
   cart!:Cart;
   flag:boolean = false
   load:boolean = false
+  events!:Event[];
 
-  constructor(private cartService:CartService, private authService: AuthService){}
+  constructor(private cartService:CartService, private authService: AuthService, private eventService:EventService){}
 
   ngOnInit(): void {
     this.cartService.getCustomerCart(this.authService.getUserId()).subscribe({
@@ -42,6 +45,22 @@ export class CartPageComponent implements OnInit {
 
   reloadPage(){
     this.ngOnInit();
+  }
+
+  buyAll(){
+    for (let i = 0; i < this.cart.cartEvents.length; i++) {
+      this.eventService.getEventById(this.cart.cartEvents[i].eventId).subscribe({
+        next:(res)=>{
+          if (res.id != undefined) {
+            this.eventService.createUserevent(res.id)
+          }
+        },
+        error:(e)=>{
+          console.log(e);          
+        }
+      })
+      
+    }
   }
 
 }
