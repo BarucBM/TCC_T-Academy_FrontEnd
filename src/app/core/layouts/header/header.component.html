@@ -1,15 +1,12 @@
 <header class="flex align-items-center py-4 px-6 gap-5 justify-content-end">
   <div class="flex align-items-center gap-3">
     <div class="cursor-pointer">
-      <div (click)="userSettings.toggle($event)">
+      <div (click)="openUserProfile()">
         <p-avatar *ngIf="this.userProfile.image?.url; else imgNotFound" [image]="this.userProfile.image?.url" size="large" shape="circle" />
         <ng-template #imgNotFound>
           <p-avatar [image]="'/assets/images/img-not-found.jpg'" size="large" shape="circle" />
         </ng-template>
       </div>
-      <p-overlayPanel #userSettings>
-        <app-user-dropdown />
-      </p-overlayPanel>
     </div>
     <div class="hidden md:block">
       <p class="font-bold text-xl m-0">{{ 'header.hello' | translate}}, {{this.userProfile.name}}</p>

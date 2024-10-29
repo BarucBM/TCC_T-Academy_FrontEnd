@@ -36,7 +36,7 @@
 
   <div class="flex flex-column align-items-center">
     <p-divider align="center" class="my-3 w-full">
-      <span class="text-sm px-1">ou</span>
+      <span class="text-sm px-1">{{ 'login.or' | translate }}</span>
     </p-divider>
     <app-google-auth [btnText]="'signin_with'" (userData)="loginWithGoogle($event)"></app-google-auth>
   </div>

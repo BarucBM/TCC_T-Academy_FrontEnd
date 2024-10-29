@@ -3,13 +3,13 @@ import { User } from "./user.model"
 
 export interface Customer {
     id?: string
-    user?: User<Customer>
+    user?: User
     name: string
     address?: Address
     phone: string
 }
 
 export interface NewCustomer {
-    user: User<Customer>
+    user: User
     customer: Customer
 }

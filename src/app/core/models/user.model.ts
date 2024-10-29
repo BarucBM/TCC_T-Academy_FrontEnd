@@ -6,14 +6,13 @@ export enum UserRole {
   COMPANY = 'COMPANY'
 }
 
-export interface User<T> {
+export interface User {
   id?: string
   email: string
   password?: string
   hasGoogleAuth?: boolean
   role?: UserRole
   image?: any
-  association?: T
 }
 
 export interface UserProfile {
