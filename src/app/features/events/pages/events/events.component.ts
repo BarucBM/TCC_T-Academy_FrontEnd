@@ -19,9 +19,9 @@ export class EventsComponent implements OnInit {
   params: Event = {
     id: '',
     title: '',
-    startTime: null, // Tipo Date
-    endTime: null, // Tipo Date
-    createdAt: null, // Ajuste o tipo conforme necessário
+    startTime: null,
+    endTime: null, 
+    createdAt: null, 
     freeEntry: false,
     ticketUnitPrice: 0,
     ticketTax: 0,
@@ -30,7 +30,6 @@ export class EventsComponent implements OnInit {
       postalCode: '',
       streetName: '',
       streetNumber: '',
-      // Assegure-se de que essas propriedades sejam compatíveis com a interface Address
       city: '',
       state: '',
       country: '',
