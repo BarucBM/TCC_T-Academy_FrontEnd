@@ -30,7 +30,8 @@ export class CartPageComponent implements OnInit {
     subject: "",
     emailTo: "teste",
     emailFrom: "teste",
-    ownerRef: "teste"
+    ownerRef: "teste",
+    eventId:""
   }
 
 
@@ -73,7 +74,8 @@ export class CartPageComponent implements OnInit {
           You can see yours events on "My events page". \n
           See you on the next event
           `;
-          this.emailService.sendEmail("942e687e-a7bc-47ab-aeca-b73aa4e0255f",this.email )
+          res.id !=null?  this.email.eventId = res.id: null
+          this.emailService.sendEmail("942e687e-a7bc-47ab-aeca-b73aa4e0255f",this.email)
           if(this.cart.cartEvents[i].id != undefined){
             this.cartService.deleteCartItem(this.cart.cartEvents[i].id, this.authService.getUserId()).subscribe({
               next:(res)=>{

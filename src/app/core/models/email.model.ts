@@ -7,5 +7,7 @@ export interface sendEmail{
 
     emailFrom: string,
 
-    ownerRef: string
+    ownerRef: string,
+
+    eventId: string
 }

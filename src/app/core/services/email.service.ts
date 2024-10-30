@@ -7,21 +7,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmailService {
   private url: string = "http://localhost:8080/notifications";
-  email:sendEmail={
-    text: "",
 
-    subject: "",
-
-    emailTo: "teste",
-
-    emailFrom: "teste",
-
-    ownerRef: "teste"
-  }
 
   constructor(private http: HttpClient) { }
 
-  sendEmail(userId:string,email:sendEmail ){
-    this.http.post(this.url+`/${userId}`, email)
+  sendEmail(userId:string,email:sendEmail) {
+    this.http.post(this.url+`/email/${userId}`, email).subscribe({
+      next:(res) => console.log("email enviado"),
+      error:(e)=> console.log(e)
+    })
   }
 }
