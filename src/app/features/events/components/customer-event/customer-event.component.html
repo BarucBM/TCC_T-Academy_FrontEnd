@@ -1,12 +1,16 @@
-<div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3">
-  <div class="md:w-10rem relative">
-    <img class="block xl:block mx-auto border-round w-full" [src]="getThumbnailImage(event.images)" [alt]="event.title" />
+<div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3 h-full">
+  <div class="md:w-12rem relative h-full">
+    <img class="block xl:block mx-auto border-round w-full h-full" [src]="getThumbnailImage(event.images)" [alt]="event.title" />
     <p-tag value="{{ 'events.btnReview' | translate }}" [rounded]="true" severity="warning" *ngIf="!event.customerRating" class="absolute" [style.left.px]="4" [style.top.px]="4" />
   </div>
   <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
     <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
       <div class="flex flex-column gap-2 mb-2">
         <div class="text-lg font-bold text-900 mb-2">{{ event.title }}</div>
+        <div class="flex align-items-center gap-2">
+          <span class="material-symbols-rounded text-lg">apartment</span>
+          <span class="font-medium text-secondary text-sm">{{ event.company?.name}}</span>
+        </div>
         <div class="flex align-items-center gap-2">
           <span class="material-symbols-rounded text-lg">calendar_month</span>
           <span class="font-medium text-secondary text-sm">{{ dateFormat(event.startTime!) }} - {{dateFormat(event.endTime!)}}</span>

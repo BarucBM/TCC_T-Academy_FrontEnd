@@ -1,7 +1,7 @@
 <div class=" text-color w-full h-full  align-items-center justify-content-around ">
-    <div class="w-full h-full flex flex-column align-items-center justify-content-center gap-2">
+    <div class="w-full h-full flex align-items-center justify-content-center gap-2">
         <form [formGroup]="formFilter" (ngSubmit)="onSubmit()" 
-        class="flex w-max flex-column lg:flex-row align-items-center w-full borda shadow-2 search-bar ">
+        class="flex w-max flex-column lg:flex-row align-items-center w-full borda shadow-2 search-bar mr-3">
             <div class="border-filter">
                 <p-floatLabel >
                     <input pInputText class="w-10rem "  id="title" formControlName="title" />
@@ -20,11 +20,6 @@
                 </p-floatLabel>
             </div>
         </form>
-        <div class="flex align-items-center justify-content-around w-full">
-
-        </div>
-    </div>
-    <div class="absolute bottom-0 right-0 p-2">
-        <p-button label="{{'events.submit' | translate }}" severity="info" (onClick)="onSubmit()"  />
+        <p-button label="{{'events.submit' | translate }}" icon="pi pi-search" severity="info" (onClick)="onSubmit()" />
     </div>
 </div>

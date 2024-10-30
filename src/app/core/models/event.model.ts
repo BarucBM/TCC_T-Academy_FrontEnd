@@ -1,4 +1,5 @@
 import { Address } from "./address.model"
+import { Company } from "./company.model"
 import { Image, ImageResponse } from "./image.model"
 
 export interface Event {
@@ -13,6 +14,7 @@ export interface Event {
     ticketTax: number
     images?: Image[] | ImageResponse[]
     createdAt?: Date | null
+    company?: Company
 }
 
 export interface CustomerEvent extends Event {
