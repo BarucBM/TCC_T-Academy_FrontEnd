@@ -10,6 +10,7 @@
 		"logIn": "Login",
 		"dontHaveAccount": "Ainda não possui uma conta?",
 		"signUp": "Registre-se",
+		"or": "ou",
 		"form": {
 			"email": "E-mail",
 			"password": "Senha"
@@ -63,6 +64,7 @@
 			"passwordDontMatch": "As senhas não combinam"
 		},
 		"customer": {
+			"label": "Informações do Cliente",
 			"name": "Nome",
 			"phone": "Telefone",
 			"address": "Endereço"
