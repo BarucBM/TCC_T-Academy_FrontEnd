@@ -1,45 +1,52 @@
-<section class="flex justify-content-center align-items-center w-full h-full border-round-lg  ">
-    <div class="w-full h-max px-5 ">
+<section class="flex justify-content-center align-items-center w-full h-full border-round-lg">
+    <div class="w-full h-max px-5">
         <p-divider />
-        <div class="flex flex-column lg:flex-row justify-content-around align-items-center w-full">       
-            <div class="flex justify-content-center align-items-center w-6 gap-3 mb-3 md:mb-0">
+        <div class="flex flex-column lg:flex-row align-items-center w-full px-5">       
+            <div class="flex flex-1 gap-3 mb-3 md:mb-0">
                 <div class="flex flex-column p-1">
                     <p class=" text-4xl text-secondary font-bold w-max h-min mb-2 mt-0">
                         {{event.title}}
                     </p>
-                    <span class="text-secondary">
+                    <p class="text-secondary">
                         {{event.description}}
-                    </span>
+                    </p>
                 </div>
             </div>
-            <div class=" flex justify-content-center align-items-center w-6 gap-3">
-
-                <p-inputNumber class="surface-700 text-color number-selector border-round-lg"
-                    [(ngModel)]="ticketsQtt"
-                    (ngModelChange)="buttonIsDisable()"
-                    min="0"
-                    maxlength="1"
-                    [showButtons]="true" 
-                    buttonLayout="horizontal" 
-                    inputId="horizontal" 
-                    spinnerMode="horizontal" 
-                    [step]="1"
-                    decrementButtonClass="p-button-danger"
-                    incrementButtonClass="p-button-success"
-                    incrementButtonIcon="pi pi-plus" 
-                    decrementButtonIcon="pi pi-minus"  
+            <div class="flex flex-column justify-content-end gap-3">
+                <div class="flex flex-column gap-2">
+                    <span class="text-xl font-semibold text-900" *ngIf="event.ticketUnitPrice > 0">{{ event.ticketUnitPrice | currency }}</span>
+                    <div *ngIf="event.ticketTax > 0" class="flex align-items-center">
+                      <span class="mr-2">{{'forms.event.ticketTax' | translate}}:</span>
+                      <span class="text-900">{{ event.ticketTax| currency }}</span>
+                    </div>
+                    <span class="text-lg font-semibold text-green-600" *ngIf="!event.ticketUnitPrice">Free Entry</span>
+                </div>
+                <div class="flex gap-5">
+                    <p-inputNumber class="surface-700 text-color number-selector border-round-lg"
+                        [(ngModel)]="ticketsQtt"
+                        (ngModelChange)="buttonIsDisable()"
+                        min="0"
+                        maxlength="1"
+                        [showButtons]="true" 
+                        buttonLayout="horizontal" 
+                        inputId="horizontal" 
+                        spinnerMode="horizontal" 
+                        [step]="1"
+                        decrementButtonClass="p-button-danger"
+                        incrementButtonClass="p-button-success"
+                        incrementButtonIcon="pi pi-plus" 
+                        decrementButtonIcon="pi pi-minus"  
+                        />
+                    <p-button 
+                    (onClick)="sideBarIsVisible()"
+                    disabled="{{buttonDisable}}"
+                    icon="pi pi-shopping-bag" 
+                    label="{{'events.buy' | translate}}"
+                    severity="contrast"
+                    [raised]="true"
                     />
-
-                <p-button 
-                (onClick)="sideBarIsVisible()"
-                disabled="{{buttonDisable}}"
-                icon="pi pi-shopping-bag" 
-                label="{{'events.buy' | translate}}"
-                severity="contrast"
-                [raised]="true"
-                />
+                </div>
             </div>
-            
         </div>
         <p-divider />
     </div>
