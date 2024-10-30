@@ -12,6 +12,7 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { ImageResponse } from '../../models/image.model';
 import { ImageProcessorService } from '../../services/image-processor.service';
 import { UserService } from '../../../features/user/services/user.service';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,11 @@ export class AuthService {
   private url: string = "http://localhost:8080/auth";
   private authTokenKey: string = "auth-token";
   private refreshTokenKey: string = "refresh-token";
+  private urlGoogleAuth: string = "https://accounts.google.com/o/oauth2/v2/auth";
+  private redirectUri = 'http://localhost:4200/home';
+  private scope = 'https://www.googleapis.com/auth/calendar';
+  private includeGrantedScopes = 'true';
+  private state = 'pass-through value';
   userProfile: UserProfile = {
     name: '',
     email: ''
@@ -123,5 +129,22 @@ export class AuthService {
 
   removeRefreshToken() {
     this.localStorage.removeItem(this.refreshTokenKey);
+  }
+
+  authenticate() {
+    const authUrl = `${this.urlGoogleAuth}?scope=${this.scope}&include_granted_scopes=${this.includeGrantedScopes}&response_type=token&state=${this.state}&redirect_uri=${this.redirectUri}&client_id=${environment.googleLoginClientId}`;
+    window.location.href = authUrl;
+  }
+
+  getAccessToken() {
+    const hash = window.location.hash;
+    const params = new URLSearchParams(hash.substring(1));
+    const accessToken = params.get('access_token');
+    if (accessToken) {
+        console.log('Access Token:', accessToken);
+        localStorage.setItem('access_token', accessToken);
+    } else {
+        console.error('Access token not found in URL');
+    }
   }
 }

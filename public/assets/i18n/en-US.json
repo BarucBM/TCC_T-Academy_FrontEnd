@@ -35,7 +35,17 @@
 		"register": "Register",
 		"save": "Submit",
 		"delete": "Remove",
-		"discoverEvents": "Discover Events"
+		"discoverEvents": "Discover Events",
+		"showSuggestions": "Show Suggestions",
+		"showReminders": "Show Reminders",
+		"showWeatherChanges": "Show Weather Changes",
+		"clear": "Clear"
+	},
+	"checkbox": {
+		"activateSug": "Activate Suggestions",
+		"activateRem": "Activate Reminders",
+		"activateWea": "Activate Weather Changes"
+
 	},
 	"forms": {
 		"requiredMessage": "This field is required.",
