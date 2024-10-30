@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { CartService } from '../../services/cart-service.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../core/auth/services/auth.service';
 
 @Component({
   selector: 'app-cart-items',
@@ -24,7 +25,7 @@ export class CartItemsComponent implements OnInit {
   image!:ImageResponse;
   load:boolean = false
 
-  constructor(private eventService:EventService, private cartService:CartService, private router:Router){}
+  constructor(private eventService:EventService, private cartService:CartService, private router:Router, private authservice: AuthService){}
 
   ngOnInit(): void {
     this.item == null?null:
@@ -47,7 +48,7 @@ export class CartItemsComponent implements OnInit {
 
   deleteEvent(){
     if(this.item.id != undefined){
-      this.cartService.deleteCartItem(this.item.id, "74dd6599-97a5-44d0-96b1-4a9eacbcdda8").subscribe({
+      this.cartService.deleteCartItem(this.item.id, this.authservice.getUserId()).subscribe({
         next:(res)=>{
           this.flag.emit();
         },

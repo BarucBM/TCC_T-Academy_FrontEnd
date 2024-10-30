@@ -35,7 +35,17 @@
 		"register": "Registrar",
 		"save": "Salvar",
 		"delete": "Remover",
-		"discoverEvents": "Explorar Eventos"
+		"discoverEvents": "Explorar Eventos",
+		"showSuggestions": "Mostrar Sugestões",
+		"showReminders": "Mostrar Lembretes",
+		"showWeatherChanges": "Mostrar Mudanças Climáticas",
+		"clear": "Limpar"
+	},
+	"checkbox": {
+		"activateSug": "Ativar Sugestões",
+		"activateRem": "Ativar Lembretes",
+		"activateWea": "Ativar Mudanças Climáticas"
+
 	},
 	"forms": {
 		"requiredMessage": "Este campo é obrigatório.",

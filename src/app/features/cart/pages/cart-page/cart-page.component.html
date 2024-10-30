@@ -7,8 +7,11 @@
 
     <div *ngIf="flag == true"
     class="w-full h-full">
-        <p-card  class="w-full">
-            <h1 class="m-0">Events in you cart:</h1>
+        <p-card  class=" w-full">
+            <div class="flex justify-content-between w-full">
+                <h1 class="m-0">Events in you cart:</h1>
+                <p-button label="Comprar tudo" icon="pi pi-credit-card " (onClick)="buyAll()" severity="info" />
+            </div>
         </p-card>
         <div *ngFor="let item of cart.cartEvents"
         class=" my-2 ">
@@ -17,7 +20,7 @@
 
     </div>
     
- 
+    
 </section>
 <section *ngIf="load == false ">
 
