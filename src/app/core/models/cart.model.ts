@@ -10,9 +10,15 @@ export interface Cart{
 }
 
 export interface Item {
-    id?:number,
+    id:number,
 
     eventId:string,
 
     quantity:Number
 }   
+
+export interface addItem{
+    eventId:string,
+
+    quantity:Number
+}

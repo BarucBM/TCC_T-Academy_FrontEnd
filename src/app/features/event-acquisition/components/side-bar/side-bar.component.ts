@@ -5,6 +5,7 @@ import { DividerModule } from 'primeng/divider';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../cart/services/cart-service.service';
+import { AuthService } from '../../../../core/auth/services/auth.service';
 
 @Component({
   selector: 'side-bar',
@@ -17,11 +18,11 @@ export class SideBarComponent {
  @Input() ticketQt = 0
  @Input() event!:Event;
 
- constructor(private router:Router, private cartService:CartService){}
+ constructor(private router:Router, private cartService:CartService, private authService:AuthService){}
 
   addToCart(){
     if (this.event.id != null) {
-      this.cartService.addCartItem("74dd6599-97a5-44d0-96b1-4a9eacbcdda8",this.event.id,this.ticketQt).subscribe({
+      this.cartService.addCartItem(this.authService.getUserId(),this.event.id,this.ticketQt).subscribe({
         next:(res)=>{
           this.router.navigateByUrl("/cart")
         },
