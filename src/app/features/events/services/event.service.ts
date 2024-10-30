@@ -76,8 +76,9 @@ export class EventService {
     return [`${date.getFullYear()}`, month, day]
   }
 
-  createUserevent(eventId:string){
-    this.http.post(`${this.url}/buy/`+this.authService.getUserId()+`/${eventId}`,"")
-    console.log(`${this.url}/buy/`+this.authService.getUserId()+`/${eventId}`)
+  createUserevent(eventId:string): Observable<string>{
+    let userId = this.authService.getUserId()
+    
+    return this.http.post<string>(`${this.url}/buy`,{userId, eventId})
   }
 }

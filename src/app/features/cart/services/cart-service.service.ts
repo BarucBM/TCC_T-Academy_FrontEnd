@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cart, Item } from '../../../core/models/cart.model';
+import { addItem, Cart, Item } from '../../../core/models/cart.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   private url: string = 'http://localhost:8080/cart';
-  item:Item = {
+  item:addItem = {
     eventId:"",
     quantity:0
   };
@@ -20,7 +20,6 @@ export class CartService {
   }
 
   addCartItem(customerID:string, eventID:string, quantity:number):Observable<Item>{
-    
     this.item.eventId = eventID;
     this.item.quantity = quantity;
     return this.http.put<Item>(this.url+"/item/"+customerID, this.item)

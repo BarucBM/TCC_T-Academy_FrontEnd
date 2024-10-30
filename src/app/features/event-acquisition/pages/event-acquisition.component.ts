@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../../shared/modules/shared.module';
 import { CardModule } from 'primeng/card';
 import { EventService } from '../../events/services/event.service';
+import { ImageResponse } from '../../../core/models/image.model';
 
 
 
@@ -26,6 +27,9 @@ export class EventAcquisitionComponent implements OnInit {
   ticketQt:number = 0
   private id:string | null = null;
   url:any = "";
+
+  urlImage:string = "";
+  image!:ImageResponse;
   
 
   constructor(private eventService:EventService, private sanitizer:DomSanitizer, private route:ActivatedRoute, private router:Router){}
@@ -42,6 +46,11 @@ export class EventAcquisitionComponent implements OnInit {
       next:(res) => {
          this.event = res;
         this.url = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyC_umb2xQn6m9e1OD_xI5XWZTPhgGqfwe4&q=" + this.event.address.fullAddress)
+        this.event.images != undefined && this.event.images.length > 0?
+        this.image = this.event.images[0] as ImageResponse:null
+    
+        this.event.images != undefined && this.event.images.length > 0?
+        this.urlImage = 'data:' + this.image.type + ';base64,' + this.image.picByte:null
       },
       error:(error) => {
         console.log(error) 
