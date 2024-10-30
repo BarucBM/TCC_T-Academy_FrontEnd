@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
           this.authService.setRefreshToken(res.refreshToken);
           this.authService.init();
           this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
+          this.authService.authenticate();
         },
         error: () => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to login, invalid credentials.' });
@@ -59,11 +60,15 @@ export class LoginComponent implements OnInit {
         this.authService.setRefreshToken(res.refreshToken);
         this.authService.init();
         this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('stateUrl') || '');
+        console.log('oi');
+        this.authService.authenticate();
+
       },
       error: (e) => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to login, user not registered.' });
       }
     });
+    
   }
 }
 
