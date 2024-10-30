@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { EventService } from '../../../events/services/event.service';
 import { Router } from '@angular/router';
 import { sendEmail } from '../../../../core/models/email.model';
+import { EmailService } from '../../../../core/services/email.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -24,9 +25,21 @@ export class CartPageComponent implements OnInit {
   flag:boolean = false
   load:boolean = false
   events!:Event[];
-  email!:sendEmail;
+  email:sendEmail={
+    text: "",
+    subject: "",
+    emailTo: "teste",
+    emailFrom: "teste",
+    ownerRef: "teste"
+  }
 
-  constructor(private cartService:CartService, private authService: AuthService, private eventService:EventService, private router: Router){}
+
+  constructor(private cartService:CartService, 
+    private authService: AuthService, 
+    private eventService:EventService, 
+    private router: Router,
+    private emailService:EmailService
+  ){}
 
   ngOnInit(): void {
     this.cartService.getCustomerCart(this.authService.getUserId()).subscribe({
@@ -54,9 +67,17 @@ export class CartPageComponent implements OnInit {
     for (let i = 0; i < this.cart.cartEvents.length; i++) {
       this.eventService.getEventById(this.cart.cartEvents[i].eventId).subscribe({
         next:(res)=>{
+          this.email.subject =`Thank you for buying ${res.title}!`;
+          this.email.text =`
+          Your event will start at ${res.startTime}, but don't worry we will remember you. \n
+          You can see yours events on "My events page". \n
+          See you on the next event
+          `;
+          this.emailService.sendEmail("942e687e-a7bc-47ab-aeca-b73aa4e0255f",this.email )
           if(this.cart.cartEvents[i].id != undefined){
             this.cartService.deleteCartItem(this.cart.cartEvents[i].id, this.authService.getUserId()).subscribe({
               next:(res)=>{
+
                 this.reloadPage();
               },
               error:(e)=> console.log(e)
