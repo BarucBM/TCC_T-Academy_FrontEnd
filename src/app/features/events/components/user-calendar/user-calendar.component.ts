@@ -25,8 +25,8 @@ export class UserCalendarComponent implements OnInit{
     },
     initialView: 'dayGridMonth',
     displayEventTime: false,
-    googleCalendarApiKey: 'AIzaSyC-iL79NS4g3MQbVzsM5lr1cKzu2WnfXzs',
-    events: { googleCalendarId: 'williambollner@gmail.com' },
+    googleCalendarApiKey: '',
+    events: { googleCalendarId: '' },
     eventClick: this.handleEventClick.bind(this)
   };
 
