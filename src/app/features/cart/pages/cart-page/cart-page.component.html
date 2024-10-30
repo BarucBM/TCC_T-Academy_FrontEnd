@@ -1,25 +1,21 @@
-<section *ngIf="load == true " class="w-full h-full bg-transparent border-round-lg py-4 overflow-auto">
+<section *ngIf="load == true " class="w-full h-full bg-transparent border-round-lg py-4">
 
     <p-card *ngIf="flag == false" class="w-full">
         <span class="m-0 text">Your cart is Empty!</span>
         <p>Looking for your next plan? Access the explore page.</p>
     </p-card>
 
-    <div *ngIf="flag == true"
-    class="w-full h-full">
+    <div *ngIf="flag == true" class="w-full h-full">
         <p-card  class=" w-full">
             <div class="flex justify-content-between w-full">
                 <h1 class="m-0">Events in you cart:</h1>
                 <p-button label="Comprar tudo" icon="pi pi-credit-card " (onClick)="buyAll()" severity="info" />
             </div>
         </p-card>
-        <div *ngFor="let item of cart.cartEvents"
-        class=" my-2 ">
-                <app-cart-items [item]="item" (flag)="reloadPage()"></app-cart-items>
+        <div class="hide-scrollbar h-full flex flex-column px-5 py-2 gap-3 mt-4">  
+            <app-cart-items *ngFor="let item of cart.cartEvents" [item]="item" (flag)="reloadPage()"></app-cart-items>
         </div>
-
     </div>
-    
     
 </section>
 <section *ngIf="load == false ">
