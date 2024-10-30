@@ -42,9 +42,9 @@ export class NotificationListComponent implements OnInit {
   @Input() messages: Message[] = [];
 
   predefinedMessages: Record<NotificationType, string> = {
-    suggestions: 'Descubra os melhores eventos acontecendo em Blumenau e nas proximidades! Não perca as festividades, shows e feiras que estão agitando a região!' + \n + '1 - Festa da Cerveja de Blumenau' + \n + '2 - Oktoberfest Blumenau' + \n + '3 - Feira da Música',
+    suggestions: 'Descubra os melhores eventos acontecendo em Blumenau e nas proximidades! Não perca as festividades, shows e feiras que estão agitando a região!' + '\n' + '1 - Festa da Cerveja de Blumenau' + '\n' + '2 - Oktoberfest Blumenau' + '\n' + '3 - Feira da Música',
     reminders: 'Lembrete:  Não esqueça! O evento Oktoberfest Blumenau está se aproximando e promete ser incrível! Prepare-se para aproveitar ',
-    weatherChanges: 'Atenção: O serviço meteorológico emitiu um alerta para condições climáticas adversas nas próximas horas.' + \n + 'Esperam-se: tempestades, chuvas intensas e interrupções no transporte'};
+    weatherChanges: 'Atenção: O serviço meteorológico emitiu um alerta para condições climáticas adversas nas próximas horas.' + '\n' + 'Esperam-se: tempestades, chuvas intensas e interrupções no transporte'};
 
   constructor(private messageService: MessageService, private preferenceService: PreferenceserviceService) {}
 
