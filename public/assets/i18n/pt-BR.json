@@ -181,6 +181,9 @@
 			},
 			"backHomeBtn": "Voltar à Página Inicial"
 		},
+		"home": {
+			"adText": "Adquira os Tickets Agora ou Nunca!"
+		},
 		"emptyMessage": "Nenhum registro encontrado!"
 	},
 	"events": {
@@ -219,7 +222,8 @@
 		}
 	},
 	"messages": {
-		"exploreEvents": "Que tal explorar novos eventos?"
+		"exploreEvents": "Que tal explorar novos eventos?",
+		"currentWeather": "Temperatura Atual"
 	},
 	"notifications": {
 		"preferences": {

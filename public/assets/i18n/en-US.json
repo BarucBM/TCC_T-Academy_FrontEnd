@@ -181,6 +181,9 @@
 			},
 			"backHomeBtn": "Back to Home"
 		},
+		"home": {
+			"adText": "Get the Tickets Now or Never!"
+		},
 		"emptyMessage": "No data found!"
 	},
 	"events": {
@@ -219,7 +222,8 @@
 		}
 	},
 	"messages": {
-		"exploreEvents": "Want to explore new events?"
+		"exploreEvents": "Want to explore new events?",
+		"currentWeather": "Current Temperature"
 	},
 	"notifications": {
 		"preferences": {
