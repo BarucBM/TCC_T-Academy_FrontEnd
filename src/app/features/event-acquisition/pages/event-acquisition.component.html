@@ -16,7 +16,7 @@
                 [src]="url">
             </iframe>
             <div class="w-min">
-                <app-weather-card class="h-10rem"></app-weather-card>
+                <app-weather-card-event [lat]="event.address.latitude" [lon]="event.address.longitude" class="h-10rem"></app-weather-card-event>
                 <div class="w-full h-full flex flex-column gap-4 mt-6">
                     <div class="flex align-items-center gap-2">
                         <span class="material-symbols-rounded text-lg">apartment</span>

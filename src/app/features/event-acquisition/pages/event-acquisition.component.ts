@@ -11,13 +11,14 @@ import { SharedModule } from '../../../shared/modules/shared.module';
 import { CardModule } from 'primeng/card';
 import { EventService } from '../../events/services/event.service';
 import { ImageResponse } from '../../../core/models/image.model';
+import { WeatherCardEventComponent } from "../../events/components/weather-card-event/weather-card-event.component";
 
 
 
 @Component({
   selector: 'app-event-acquisition',
   standalone: true,
-  imports: [TicketSelectionComponent, SidebarModule, SideBarComponent, WeatherCardComponent, CommonModule, SharedModule, CardModule],
+  imports: [TicketSelectionComponent, SidebarModule, SideBarComponent, WeatherCardComponent, CommonModule, SharedModule, CardModule, WeatherCardEventComponent],
   templateUrl: './event-acquisition.component.html',
   styleUrl: './event-acquisition.component.scss'
 })

@@ -76,9 +76,20 @@ export class EventService {
     return [`${date.getFullYear()}`, month, day]
   }
 
-  createUserevent(eventId:string): Observable<string>{
-    let userId = this.authService.getUserId()
-    
-    return this.http.post<string>(`${this.url}/buy`,{userId, eventId})
+  createUserevent(event:string, calendar:string): Observable<string>{
+    let user = this.authService.getUserId()
+    const accessToken = localStorage.getItem('access_token');
+
+    const body = { requestDTO: {
+      userId: user,
+      eventId: event
+    },
+      tokenRequest: accessToken,
+      calendarId: calendar
+     };
+     
+     console.log(body);
+
+    return this.http.post<string>(`${this.url}/buy`,body);
   }
 }

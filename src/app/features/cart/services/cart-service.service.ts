@@ -17,7 +17,6 @@ export class CartService {
 
   getCustomerCart(customerID:string):Observable<Cart>{ 
     return this.http.get<Cart>(this.url+"/customer/"+customerID)
-    console.log(this.url+"/customer/"+customerID)
   }
 
   addCartItem(customerID:string, eventID:string, quantity:number):Observable<Item>{
