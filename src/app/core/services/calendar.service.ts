@@ -1,5 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +9,19 @@ export class CalendarService {
 
   constructor(private http: HttpClient) {}
 
-  getCalendarId() {
+  getCalendarId(): Observable<string> {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
-      console.error('Access token is missing!');
+        console.error('Access token is missing!');
+        return new Observable();
     }
-    console.log(accessToken);
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${accessToken}`
-    });
-    console.log(headers);
 
-    const calendarApiUrl = 'https://www.googleapis.com/calendar/v3/users/me/calendarList';
+    const backendUrl = 'http://localhost:8080/calendar';
+    
+    const body = { token: accessToken };
 
-    return this.http.get(calendarApiUrl, { headers }).subscribe({
-      next: (response) => {
-        console.log('Calendar events:', response);
-      },
-      error: (err) => {
-        console.error('Failed to fetch calendar events:', err);
-      }
-    });
+    return this.http.post<{ primaryCalendarId: string }>(backendUrl, body).pipe(
+      map(response => response.primaryCalendarId)
+    );
   }
 }

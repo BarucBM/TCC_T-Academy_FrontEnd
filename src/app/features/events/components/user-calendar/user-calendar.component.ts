@@ -6,18 +6,19 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/core/index.js';
 import listPlugin from '@fullcalendar/list';
 import { CalendarService } from '../../../../core/services/calendar.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-user-calendar',
   standalone: true,
   imports: [FullCalendarModule],
   templateUrl: './user-calendar.component.html',
-  styleUrl: './user-calendar.component.scss'
+  styleUrls: ['./user-calendar.component.scss']
 })
-export class UserCalendarComponent implements OnInit{
+export class UserCalendarComponent implements OnInit {
   googleCalendarId: string = '';
   calendarOptions: CalendarOptions = {
-    plugins: [dayGridPlugin, listPlugin, interactionPlugin, googleCalendarPlugin, ],
+    plugins: [dayGridPlugin, listPlugin, interactionPlugin, googleCalendarPlugin],
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
@@ -25,16 +26,28 @@ export class UserCalendarComponent implements OnInit{
     },
     initialView: 'dayGridMonth',
     displayEventTime: false,
-    googleCalendarApiKey: '',
-    events: { googleCalendarId: '' },
+    googleCalendarApiKey: environment.googleCalendarKey,
+    events: { googleCalendarId: this.googleCalendarId },
     eventClick: this.handleEventClick.bind(this)
   };
 
   constructor(private calendarService: CalendarService) {}
 
   ngOnInit(): void {
-    this.calendarService.getCalendarId();
+    this.calendarService.getCalendarId().subscribe({
+      next: (calendarId) => {
+        this.googleCalendarId = calendarId;
+        this.updateCalendarOptions();
+        console.log(this.googleCalendarId);
+      },
+      error: (err) => {
+        console.error('Failed to fetch calendar ID:', err);
+      }
+    });
+  }
 
+  updateCalendarOptions(): void {
+    this.calendarOptions.events = { googleCalendarId: this.googleCalendarId };
   }
 
   handleEventClick(arg: EventClickArg): void {

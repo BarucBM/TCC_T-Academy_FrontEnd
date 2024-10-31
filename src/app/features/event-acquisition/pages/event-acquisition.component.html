@@ -19,7 +19,7 @@
                 [src]="url">
             </iframe>
             <div class="w-min ">
-                <app-weather-card class="h-10rem"></app-weather-card>
+                <app-weather-card-event [lat]="event.address.latitude" [lon]="event.address.longitude" class="h-10rem"></app-weather-card-event>
                 <div class="w-full h-full">
                     <p class="my-3 mx-0"><span class="material-symbols-rounded text-lg">location_on</span>{{event.address.fullAddress}}</p>
                     <p class="my-3 mx-0"><span class="material-symbols-rounded text-lg">calendar_month</span>{{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}</p>

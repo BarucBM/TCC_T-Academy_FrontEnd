@@ -62,8 +62,8 @@ export class WeatherCardComponent {
     cod: 0
   };
 
-  lat = 0;
-  lon = 0;
+  lat = '';
+  lon = '';
 
   constructor(private weatherService: WeatherService) { }
 
@@ -74,8 +74,8 @@ export class WeatherCardComponent {
   getCurrentLocation(): void {
     if (typeof navigator !== 'undefined') {
       navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lon = position.coords.longitude;
+        this.lat = position.coords.latitude.toString();
+        this.lon = position.coords.longitude.toString();
         this.weatherService.getCurrentWeather(this.lat, this.lon).subscribe(
           (response) => {
             this.currentWeather = response;
@@ -91,17 +91,4 @@ export class WeatherCardComponent {
     }
   }
 
-  getWeather(lat: number, lon: number) {
-    this.weatherService.getCurrentWeather(this.lat, this.lon).subscribe(
-      (response) => {
-        this.currentWeather = response;
-        this.currentWeather.main.temp = Math.round(this.currentWeather.main.temp - 273.15);
-        this.currentWeather.main.temp_max = Math.round(this.currentWeather.main.temp_max - 273.15);
-        this.currentWeather.main.temp_min = Math.round(this.currentWeather.main.temp_min - 273.15);
-      },
-      (error) => {
-        console.error('Erro ao carregar os dados: ', error);
-      }
-    );
-  }
 }
