@@ -14,23 +14,25 @@ import { HttpHeaders } from '@angular/common/http';
 import { CardModule } from 'primeng/card';
 import { PreferenceserviceService } from '../../../../core/services/preferenceservice.service';
 import { SendActive } from '../../../../core/models/preference.model';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { CheckboxModule } from 'primeng/checkbox';
+import { AuthService } from '../../../../core/auth/services/auth.service';
+import { LanguageService } from '../../../../core/services/language.service';
 
 type NotificationType = 'suggestions' | 'reminders' | 'weatherChanges';
 
 @Component({
-  selector: 'notification-list',
+  selector: 'notifications',
   standalone: true,
-  imports: [SharedModule, BadgeModule, FormsModule, ButtonModule, MessagesModule, ToastModule, CommonModule, RippleModule, CardModule],
-  templateUrl: './notification-list.component.html',
-  styleUrls: ['./notification-list.component.scss'],
+  imports: [SharedModule, BadgeModule, FormsModule, ButtonModule, MessagesModule, ToastModule, CommonModule, RippleModule, CardModule, InputSwitchModule],
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.scss'],
   providers: [MessageService]
 })
-export class NotificationListComponent implements OnInit {
-  notificationsEnabled: Map<string, Boolean> = new Map([
-    ['WEATHER', true],
-    ['SUGGESTIONS', true],
-    ['REMINDERS', true]
-  ]);
+export class NotificationsComponent implements OnInit {
+  typeWeather = true;
+  typeSuggestions = true;
+  typeReminders = true;
 
   preference: SendActive = {
     notificationType: null,
@@ -41,12 +43,22 @@ export class NotificationListComponent implements OnInit {
 
   @Input() messages: Message[] = [];
 
-  predefinedMessages: Record<NotificationType, string> = {
-    suggestions: 'Descubra os melhores eventos acontecendo em Blumenau e nas proximidades! Não perca as festividades, shows e feiras que estão agitando a região!' + '\n' + '1 - Festa da Cerveja de Blumenau' + '\n' + '2 - Oktoberfest Blumenau' + '\n' + '3 - Feira da Música',
-    reminders: 'Lembrete:  Não esqueça! O evento Oktoberfest Blumenau está se aproximando e promete ser incrível! Prepare-se para aproveitar ',
-    weatherChanges: 'Atenção: O serviço meteorológico emitiu um alerta para condições climáticas adversas nas próximas horas.' + '\n' + 'Esperam-se: tempestades, chuvas intensas e interrupções no transporte'};
+  predefinedMessages = {
+    suggestions: {
+      title: "Sugestão:",
+      description: "Descubra os melhores eventos acontecendo em Blumenau e nas proximidades. Não perca as festividades, shows e feiras que estão agitando a região!"
+    },
+    reminders: {
+      title: "Lembrete:",
+      description: "O evento Oktoberfest Blumenau está se aproximando e promete ser incrível! Prepare-se para aproveitar."
+    },
+    weatherChanges: {
+      title: "Atenção!",
+      description: "O serviço meteorológico emitiu um alerta para condições climáticas adversas nas próximas horas. Esperam-se: tempestades, chuvas intensas e interrupções no transporte."
+    }
+  }
 
-  constructor(private messageService: MessageService, private preferenceService: PreferenceserviceService) {}
+  constructor(private messageService: MessageService, private preferenceService: PreferenceserviceService, private authService: AuthService, private languageService: LanguageService) {}
 
   ngOnInit() {
     this.loadNotifications();
@@ -85,28 +97,38 @@ export class NotificationListComponent implements OnInit {
   clearMessages() {
     this.messages = [];
     this.messageService.clear();
-    console.log(this.notificationsEnabled)
   }
 
-  addMessage(type: NotificationType) {
+  async addMessage(type: NotificationType) {
+    const translations = await this.languageService.getTranslations();
+
     this.messages = [
-      { severity: this.getSeverity(type), summary: this.predefinedMessages[type] }
+      { severity: this.getSeverity(type), summary: translations.notifications.examples[type].title, detail: translations.notifications.examples[type].description }
     ];
   }
 
-  onCheckboxChange(key: string, event: Event): void {
-    const checkbox = event.target as HTMLInputElement;
-    this.notificationsEnabled.set(key, checkbox.checked);
+  updatePreferences() {
+    const weatherPreference = {
+      notificationType: 'weatherChanges',
+      isActive: this.typeWeather
+    };
 
-    this.updatePreferences();
-  }
+    const suggestionsPreference = {
+      notificationType: 'suggestions',
+      isActive: this.typeSuggestions
+    };
 
-  updatePreferences(){    
-    for (const [key, value] of this.notificationsEnabled.entries()) {
-      this.preference.isActive = value
-      this.preference.notificationType = key
-      this.preferenceService.updatePreference("b56d1ad8-46a6-4f6d-a8bb-aac67261ff5f", this.preference );      
-    }
+    const remindersPreference = {
+      notificationType: 'reminders',
+      isActive: this.typeReminders
+    };
+
+    const userId = this.authService.getUserId();
+    this.preferenceService.updatePreference(userId, weatherPreference );      
+    this.preferenceService.updatePreference(userId, suggestionsPreference );      
+    this.preferenceService.updatePreference(userId, remindersPreference );      
+
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Preferences updated!' });
   }
 
   private getSeverity(type: NotificationType): string {

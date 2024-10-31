@@ -21,7 +21,7 @@ import { CompanyEventsComponent } from './features/events/pages/company-events/c
 import { ProfileComponent } from './features/user/pages/profile/profile.component';
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
-import { NotificationListComponent } from './features/preferences/pages/notification-list/notification-list.component';
+import { NotificationsComponent } from './features/preferences/pages/notifications/notifications.component';
 
 export const routes: Routes = [
     {
@@ -57,9 +57,8 @@ export const routes: Routes = [
                 component: ProfileComponent
             },
             {
-                path:'notifications',
-                component: NotificationListComponent
-
+                path: 'notifications',
+                component: NotificationsComponent
             },
             {
                 path: 'event/:id',

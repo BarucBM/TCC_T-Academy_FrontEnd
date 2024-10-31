@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CardModule } from 'primeng/card';
-import { CommonModule } from '@angular/common';
 import { WeatherApiRes } from '../../../core/models/weather-api-res.model';
 import { WeatherService } from '../../../core/services/weather.service';
+import { SharedModule } from '../../modules/shared.module';
 
 @Component({
   selector: 'app-weather-card',
   standalone: true,
-  imports: [CardModule, CommonModule],
+  imports: [SharedModule, CardModule],
   templateUrl: './weather-card.component.html',
   styleUrl: './weather-card.component.scss'
 })

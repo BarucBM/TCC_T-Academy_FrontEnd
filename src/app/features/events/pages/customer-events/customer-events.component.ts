@@ -19,6 +19,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CustomerEventComponent } from '../../components/customer-event/customer-event.component';
 import { AuthService } from '../../../../core/auth/services/auth.service';
+import { UserCalendarComponent } from '../../components/user-calendar/user-calendar.component';
 
 @Component({
   selector: 'app-customer-events',
@@ -35,7 +36,8 @@ import { AuthService } from '../../../../core/auth/services/auth.service';
     RatingModule,
     RouterLink,
     FormsModule,
-    CustomerEventComponent
+    CustomerEventComponent,
+    UserCalendarComponent
   ],
   templateUrl: './customer-events.component.html',
   styleUrl: './customer-events.component.scss',

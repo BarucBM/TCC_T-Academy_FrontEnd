@@ -12,17 +12,23 @@
                 <P>R${{event.ticketUnitPrice * ticketQt}}</P>
             </div>
         </span>
-        <div class="background w-full h-10rem ">
+        <div class="background w-full h-10rem"></div>
 
-        </div>
-        <div class="flex flex-row justify-content-between my-4">
-            <p>event.address.city</p>
-        </div>
-        <div class="flex flex-row justify-content-between mb-4">
-            <p class="my-3 mx-0">{{event.startTime | date: 'dd/MM/yyyy - HH:mm'}}  </p>
-        </div>
-        <div class="flex flex-row justify-content-between my-4">
-            <p class="text-sm">Sold by: company.name</p>
+        <div class="flex flex-column gap-3 mt-3 mb-5">
+            <h2 class="m-0 mb-1">{{event.title}}</h2>
+            <p class="mb-2">{{event.description}}</p>
+            <div class="flex align-items-center gap-2">
+                <span class="material-symbols-rounded text-lg">apartment</span>
+                <span class="font-medium text-secondary text-sm">{{ event.company?.name}}</span>
+            </div>
+            <div class="flex align-items-center gap-2">
+                <span class="material-symbols-rounded text-lg">location_on</span>
+                <span class="font-medium text-secondary text-sm">{{ event.address.fullAddress}}</span>
+            </div>
+            <div class="flex align-items-center gap-2">
+                <span class="material-symbols-rounded text-lg">calendar_month</span>
+                <span class="font-medium text-secondary text-sm">{{ event.startTime | date: 'dd/MM/yyyy - HH:mm' }} - {{event.endTime | date: 'dd/MM/yyyy - HH:mm'}}</span>
+            </div>
         </div>
         <div class="flex align-items-center justify-content-around my-4">
             <p-button label="Buy Now" [outlined]="true" severity="danger"  />

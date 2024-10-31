@@ -35,7 +35,16 @@
 		"register": "Registrar",
 		"save": "Salvar",
 		"delete": "Remover",
-		"discoverEvents": "Explorar Eventos"
+		"discoverEvents": "Explorar Eventos",
+		"showSuggestions": "Mostrar Sugestões",
+		"showReminders": "Mostrar Lembretes",
+		"showWeatherChanges": "Mostrar Mudanças Climáticas",
+		"clear": "Limpar"
+	},
+	"checkbox": {
+		"activateSug": "Ativar Sugestões",
+		"activateRem": "Ativar Lembretes",
+		"activateWea": "Ativar Mudanças Climáticas"
 	},
 	"forms": {
 		"requiredMessage": "Este campo é obrigatório.",
@@ -172,6 +181,9 @@
 			},
 			"backHomeBtn": "Voltar à Página Inicial"
 		},
+		"home": {
+			"adText": "Adquira os Tickets Agora ou Nunca!"
+		},
 		"emptyMessage": "Nenhum registro encontrado!"
 	},
 	"events": {
@@ -194,9 +206,9 @@
 		"btnReview": "Avalie Agora!",
 		"cancelDialog": {
 			"message": "Você tem certeza que deseja cancelar este evento?",
-      "header": "Confirmação",
+			"header": "Confirmação",
 			"acceptLabel": "Sim",
-      "rejectLabel": "Não"
+			"rejectLabel": "Não"
 		},
 		"customer": {
 			"title": "Meus Eventos",
@@ -210,6 +222,32 @@
 		}
 	},
 	"messages": {
-		"exploreEvents": "Que tal explorar novos eventos?"
+		"exploreEvents": "Que tal explorar novos eventos?",
+		"currentWeather": "Temperatura Atual"
+	},
+	"notifications": {
+		"preferences": {
+			"title": "Preferências de Notificações",
+			"description": "Escolha os tipos de notificações que você deseja receber:",
+			"descriptionExamples": "Veja exemplos das notificações que podem ser enviadas:"
+		},
+		"examples": {
+			"info": "Alterações no clima para o dia 05/11: previsão de chuva leve.",
+			"success": "Previsão para o dia 04/11 dentro do esperado: Sol entre nuvens.",
+			"success2": "Evento adquirido com sucesso! Boa sorte!",
+			"warning": "Seu evento “Festival de Dança” acontecerá daqui a 2 dias!",
+			"suggestions": {
+				"title": "Sugestão:",
+				"description": "Descubra os melhores eventos acontecendo em Blumenau e nas proximidades. Não perca as festividades, shows e feiras que estão agitando a região!"
+			},
+			"reminders": {
+				"title": "Lembrete:",
+				"description": "O evento Oktoberfest Blumenau está se aproximando e promete ser incrível! Prepare-se para aproveitar."
+			},
+			"weatherChanges": {
+				"title": "Atenção!",
+				"description": "O serviço meteorológico emitiu um alerta para condições climáticas adversas nas próximas horas. Esperam-se: tempestades, chuvas intensas e interrupções no transporte."
+			}
+		}
 	}
 }

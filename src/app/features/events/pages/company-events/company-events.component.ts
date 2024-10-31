@@ -19,6 +19,7 @@ import { RatingModule } from 'primeng/rating';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CompanyEventComponent } from '../../components/company-event/company-event.component';
+import { UserCalendarComponent } from '../../components/user-calendar/user-calendar.component';
 
 @Component({
   selector: 'app-company-events',
@@ -35,7 +36,8 @@ import { CompanyEventComponent } from '../../components/company-event/company-ev
     RatingModule,
     RouterLink,
     FormsModule,
-    CompanyEventComponent
+    CompanyEventComponent,
+    UserCalendarComponent
   ],
   templateUrl: './company-events.component.html',
   styleUrl: './company-events.component.scss',

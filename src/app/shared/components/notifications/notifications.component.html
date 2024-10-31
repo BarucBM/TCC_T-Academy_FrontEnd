@@ -1,0 +1,14 @@
+<div class="w-25rem px-4">
+  <div class="flex align-items-center justify-content-between">
+    <h3>{{ 'navbar.notifications' | translate }}</h3>
+    <p-badge [value]="4" />
+  </div>
+  <div class="flex flex-column gap-3 mt-2 mb-4">
+    <div *ngFor="let message of messages" class="p-message p-message-{{message.severity}} my-0">
+      <div class="px-3 flex align-items-center gap-3">
+        <i class="{{message.icon}}"></i>
+        <p>{{ message.detail }}</p>
+      </div>
+    </div>
+  </div>
+</div>

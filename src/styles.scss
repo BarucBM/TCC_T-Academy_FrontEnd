@@ -75,6 +75,10 @@ html[data-theme='light'] {
     .main-bg {
         background-color: var(--surface-100);
     }
+
+    .show-card::before {
+        background-color: rgba(0, 0, 0, 0.336);
+    }
 }
 
 html[data-theme='dark'] {
@@ -92,6 +96,10 @@ html[data-theme='dark'] {
 
     .main-bg {
         background-color: #1e1e22;
+    }
+
+    .show-card::before {
+        background-color: rgba(0, 0, 0, 0.671);
     }
 }
 
