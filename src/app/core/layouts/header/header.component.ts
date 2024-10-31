@@ -5,15 +5,15 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { SharedModule } from '../../../shared/modules/shared.module';
 import { BadgeModule } from 'primeng/badge';
-import { NotificationListComponent } from '../../../features/preferences/pages/notification-list/notification-list.component';
 import { UserProfile } from '../../models/user.model';
 import { AuthService } from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
+import { NotificationsComponent } from '../../../shared/components/notifications/notifications.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [SharedModule, BadgeModule, OverlayPanelModule, SwitchThemeComponent, AvatarModule, AvatarGroupModule, NotificationListComponent],
+  imports: [SharedModule, BadgeModule, OverlayPanelModule, SwitchThemeComponent, AvatarModule, AvatarGroupModule, NotificationsComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

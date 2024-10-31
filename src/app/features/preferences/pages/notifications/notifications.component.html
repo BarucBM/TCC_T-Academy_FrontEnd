@@ -1,0 +1,41 @@
+<div class="flex flex-column gap-4">
+  <div class="flex align-items-center gap-3 text-color">
+    <i class="material-symbols-rounded text-3xl">notifications</i>
+    <h1 class="text-3xl">{{ 'notifications.preferences.title' | translate }}</h1>
+  </div>
+
+  <p-card>
+    <div class="text-700 mb-5">
+      {{ 'notifications.preferences.description' | translate }}
+    </div>
+    <div class="flex flex-column gap-3">
+      <div class="flex align-items-center gap-2 font-semibold">
+        <p-inputSwitch [(ngModel)]="typeSuggestions" />
+        {{ 'checkbox.activateSug' | translate }}
+      </div>
+      <div class="flex align-items-center gap-2 font-semibold">
+        <p-inputSwitch [(ngModel)]="typeReminders" />
+        {{ 'checkbox.activateRem' | translate }}
+      </div>
+      <div class="flex align-items-center gap-2 font-semibold">
+        <p-inputSwitch [(ngModel)]="typeWeather" />
+        {{ 'checkbox.activateWea' | translate }}
+      </div>
+
+      <p-button label="{{ 'buttons.save' | translate }}" (onClick)="updatePreferences()" class="mt-3" />
+    </div>
+  </p-card>
+
+  <p-card>
+    <div class="text-700 mb-5">
+      {{ 'notifications.preferences.descriptionExamples' | translate }}
+    </div>
+    <div class="flex align-items-center gap-2">
+      <p-button type="button" outlined="true" (onClick)="addMessage('suggestions')" [label]="'buttons.showSuggestions' | translate" />
+      <p-button type="button" outlined="true" (onClick)="addMessage('reminders')" [label]="'buttons.showReminders' | translate" />
+      <p-button type="button" outlined="true" (onClick)="addMessage('weatherChanges')" [label]="'buttons.showWeatherChanges' | translate" />
+      <p-button type="button" (onClick)="clearMessages()" [label]="'buttons.clear' | translate" severity="secondary" />
+    </div>
+
+    <p-messages [(value)]="messages" [enableService]="false"></p-messages>
+  </p-card>

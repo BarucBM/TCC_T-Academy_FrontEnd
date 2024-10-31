@@ -221,5 +221,12 @@
 	},
 	"messages": {
 		"exploreEvents": "Que tal explorar novos eventos?"
+	},
+	"notifications": {
+		"preferences": {
+			"title": "Preferências de Notificações",
+			"description": "Escolha os tipos de notificações que você deseja receber:",
+			"descriptionExamples": "Veja exemplos das notificações que podem ser enviadas:"
+		}
 	}
 }
