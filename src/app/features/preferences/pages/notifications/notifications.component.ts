@@ -17,6 +17,7 @@ import { SendActive } from '../../../../core/models/preference.model';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { CheckboxModule } from 'primeng/checkbox';
 import { AuthService } from '../../../../core/auth/services/auth.service';
+import { LanguageService } from '../../../../core/services/language.service';
 
 type NotificationType = 'suggestions' | 'reminders' | 'weatherChanges';
 
@@ -57,7 +58,7 @@ export class NotificationsComponent implements OnInit {
     }
   }
 
-  constructor(private messageService: MessageService, private preferenceService: PreferenceserviceService, private authService: AuthService) {}
+  constructor(private messageService: MessageService, private preferenceService: PreferenceserviceService, private authService: AuthService, private languageService: LanguageService) {}
 
   ngOnInit() {
     this.loadNotifications();
@@ -98,9 +99,11 @@ export class NotificationsComponent implements OnInit {
     this.messageService.clear();
   }
 
-  addMessage(type: NotificationType) {
+  async addMessage(type: NotificationType) {
+    const translations = await this.languageService.getTranslations();
+
     this.messages = [
-      { severity: this.getSeverity(type), summary: this.predefinedMessages[type].title, detail: this.predefinedMessages[type].description }
+      { severity: this.getSeverity(type), summary: translations.notifications.examples[type].title, detail: translations.notifications.examples[type].description }
     ];
   }
 
