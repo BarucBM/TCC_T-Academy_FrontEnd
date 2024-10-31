@@ -45,7 +45,6 @@
 		"activateSug": "Activate Suggestions",
 		"activateRem": "Activate Reminders",
 		"activateWea": "Activate Weather Changes"
-
 	},
 	"forms": {
 		"requiredMessage": "This field is required.",
@@ -204,9 +203,9 @@
 		"btnReview": "Review Now!",
 		"cancelDialog": {
 			"message": "Are you sure that you want to cancel this event?",
-      "header": "Confirmation",
+			"header": "Confirmation",
 			"acceptLabel": "Yes",
-      "rejectLabel": "No"
+			"rejectLabel": "No"
 		},
 		"customer": {
 			"title": "My Events",
@@ -227,6 +226,24 @@
 			"title": "Notifications Preferences",
 			"description": "Choose the types of notifications you want to receive:",
 			"descriptionExamples": "Check out the examples of notifications that can be sent:"
+		},
+		"examples": {
+			"info": "Weather changes for 05/11: light rain forecast.",
+			"success": "Forecast for 04/11 as expected: sunny with clouds.",
+			"success2": "Event successfully acquired! Good luck! ",
+			"warning": "Your “Dance Festival” event will take place in 2 days!",
+			"suggestions": {
+				"title": "Suggestion:",
+				"description": "Discover the best events happening in Blumenau and nearby. Don’t miss the festivals, concerts, and fairs bringing excitement to the region!"
+			},
+			"reminders": {
+				"title": "Reminder:",
+				"description": "The Oktoberfest Blumenau event is approaching and promises to be amazing! Get ready to enjoy."
+			},
+			"weatherChanges": {
+				"title": "Attention!",
+				"description": "The weather service has issued an alert for adverse conditions in the coming hours. Expected: storms, heavy rain, and transportation disruptions."
+			}
 		}
 	}
 }
